@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom" xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:batch="http://schemas.google.com/gdata/batch" xmlns:gd="http://schemas.google.com/g/2005">
+  <name xmlns="http://www.opengis.net/kml/2.2">Home Zope House</name>
+  <description xmlns="http://www.opengis.net/kml/2.2"><![CDATA[]]></description>
+  <Style xmlns="http://www.opengis.net/kml/2.2">
+    <IconStyle>
+      <Icon>
+        <href>
+        </href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Point xmlns="http://www.opengis.net/kml/2.2">
+    <coordinates>34.360902,-89.520753,0.0</coordinates>
+  </Point>
+  <title type="text">Home Zope House</title>
+  <id>http://maps.google.com/maps/feeds/features/208433541473729117510/0004779109f86bbabd62d/0004791c8ac431d7d4480</id>
+  <link href="http://maps.google.com/maps/feeds/features/208433541473729117510/0004779109f86bbabd62d/full/0004791c8ac431d7d4480" rel="self" type="application/atom+xml" />
+  <link href="http://maps.google.com/maps/feeds/features/208433541473729117510/0004779109f86bbabd62d/full/0004791c8ac431d7d4480" rel="edit" type="application/atom+xml" />
+  <author>
+    <atom:name>hankbeasleymail</atom:name>
+  </author>
+  <contributor>
+    <atom:name>hankbeasleymail</atom:name>
+  </contributor>
+  <category term="http://schemas.google.com/maps/2008#feature" scheme="http://schemas.google.com/g/2005#kind" />
+  <content type="application/vnd.google-earth.kml+xml" />
+  <updated>2009-11-24T05:50:01-06:00</updated>
+  <published>2009-11-24T05:50:01-06:00</published>
+</entry>

@@ -1,0 +1,49 @@
+package com.trackerTest;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
+
+import _root_.android.test.suitebuilder.TestSuiteBuilder;
+
+/**
+ * A test suite containing all tests for ApiDemos.
+ *
+ * To run all suites found in this apk:
+ * $ adb shell am instrument -w \
+ *   com.example.android.apis.tests/android.test.InstrumentationTestRunner
+ *
+ * To run just this suite from the command line:
+ * $ adb shell am instrument -w \
+ *   -e class com.example.android.apis.AllTests \
+ *   com.example.android.apis.tests/android.test.InstrumentationTestRunner
+ *
+ * To run an individual test case, e.g. {@link com.example.android.apis.os.MorseCodeConverterTest}:
+ * $ adb shell am instrument -w \
+ *   -e class com.example.android.apis.os.MorseCodeConverterTest \
+ *   com.example.android.apis.tests/android.test.InstrumentationTestRunner
+ *
+ * To run an individual test, e.g. {@link com.example.android.apis.os.MorseCodeConverterTest#testCharacterS()}:
+ * $ adb shell am instrument -w \
+ *   -e class com.example.android.apis.os.MorseCodeConverterTest#testCharacterS \
+ *   com.example.android.apis.tests/android.test.InstrumentationTestRunner
+ */
+object TestSuiteScala2{
+  var c=1;
+}
+class TestSuiteScala2 extends TestSuite {
+
+	def TestSuiteScala2(){
+		
+		addTest(new aTestCase());
+	}
+    def suites() {
+        
+      var s = new TestSuiteBuilder(TestSuiteScala2.getClass())
+                .includeAllPackagesUnderHere()
+                .build();
+      //s.addTest(BasicScalaTest());
+      return s;
+      
+    
+    }
+}

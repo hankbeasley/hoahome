@@ -1,0 +1,378 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetOpenAuth.ApplicationBlock</name>
+    </assembly>
+    <members>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.Util.GetIndividualFlags(System.Enum)">
+            <summary>
+            Enumerates through the individual set bits in a flag enum.
+            </summary>
+            <param name="flags">The flags enum value.</param>
+            <returns>An enumeration of just the <i>set</i> bits in the flags enum.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.Util.GetNonCryptoRandomData(System.Int32)">
+            <summary>
+            Gets a buffer of random data (not cryptographically strong).
+            </summary>
+            <param name="length">The length of the sequence to generate.</param>
+            <returns>The generated values, which may contain zeros.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.Util.CopyTo(System.IO.Stream,System.IO.Stream)">
+            <summary>
+            Copies the contents of one stream to another.
+            </summary>
+            <param name="copyFrom">The stream to copy from, at the position where copying should begin.</param>
+            <param name="copyTo">The stream to copy to, at the position where bytes should be written.</param>
+            <returns>The total number of bytes copied.</returns>
+            <remarks>
+            Copying begins at the streams' current positions.
+            The positions are NOT reset after copying is complete.
+            </remarks>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.Util.CopyTo(System.IO.Stream,System.IO.Stream,System.Int32)">
+            <summary>
+            Copies the contents of one stream to another.
+            </summary>
+            <param name="copyFrom">The stream to copy from, at the position where copying should begin.</param>
+            <param name="copyTo">The stream to copy to, at the position where bytes should be written.</param>
+            <param name="maximumBytesToCopy">The maximum bytes to copy.</param>
+            <returns>The total number of bytes copied.</returns>
+            <remarks>
+            Copying begins at the streams' current positions.
+            The positions are NOT reset after copying is complete.
+            </remarks>
+        </member>
+        <member name="T:DotNetOpenAuth.ApplicationBlock.OAuthPrincipal">
+            <summary>
+            Represents an OAuth consumer that is impersonating a known user on the system.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.OAuthPrincipal.roles">
+            <summary>
+            The roles this user belongs to.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.OAuthPrincipal.#ctor(DotNetOpenAuth.ApplicationBlock.OAuthIdentity,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.ApplicationBlock.OAuthPrincipal"/> class.
+            </summary>
+            <param name="identity">The identity.</param>
+            <param name="roles">The roles this user belongs to.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.OAuthPrincipal.#ctor(System.String,System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.ApplicationBlock.OAuthPrincipal"/> class.
+            </summary>
+            <param name="username">The username.</param>
+            <param name="roles">The roles this user belongs to.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.OAuthPrincipal.IsInRole(System.String)">
+            <summary>
+            Determines whether the current principal belongs to the specified role.
+            </summary>
+            <param name="role">The name of the role for which to check membership.</param>
+            <returns>
+            true if the current principal is a member of the specified role; otherwise, false.
+            </returns>
+        </member>
+        <member name="P:DotNetOpenAuth.ApplicationBlock.OAuthPrincipal.Identity">
+            <summary>
+            Gets the identity of the current principal.
+            </summary>
+            <value></value>
+            <returns>
+            The <see cref="T:System.Security.Principal.IIdentity"/> object associated with the current principal.
+            </returns>
+        </member>
+        <member name="T:DotNetOpenAuth.ApplicationBlock.TwitterConsumer">
+            <summary>
+            A consumer capable of communicating with Twitter.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.TwitterConsumer.ServiceDescription">
+            <summary>
+            The description of Twitter's OAuth protocol URIs.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.TwitterConsumer.GetFavoritesEndpoint">
+            <summary>
+            The URI to get a user's favorites.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.TwitterConsumer.GetFriendTimelineStatusEndpoint">
+            <summary>
+            The URI to get the data on the user's home page.
+            </summary>
+        </member>
+        <member name="T:DotNetOpenAuth.ApplicationBlock.CustomExtensions.Acme">
+            <summary>
+            A sample custom OpenID extension factory.
+            </summary>
+            <remarks>
+            OpenID extension factories must be registered with the library.  This can be
+            done by calling <see cref="M:DotNetOpenAuth.ApplicationBlock.CustomExtensions.Acme.Register(DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty)"/>, or by adding a snippet
+            such as the following to your web.config file:
+            <example>
+              &lt;dotNetOpenAuth&gt;
+                &lt;openid&gt;
+                  &lt;extensionFactories&gt;
+                    &lt;add type="DotNetOpenAuth.ApplicationBlock.CustomExtensions.Acme, DotNetOpenAuth.ApplicationBlock" /&gt;
+                  &lt;/extensionFactories&gt;
+                &lt;/openid&gt;
+              &lt;/dotNetOpenAuth&gt;
+            </example>
+            </remarks>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.CustomExtensions.Acme.Create(System.String,System.Collections.Generic.IDictionary{System.String,System.String},DotNetOpenAuth.Messaging.IProtocolMessageWithExtensions,System.Boolean)">
+            <summary>
+            Creates a new instance of some extension based on the received extension parameters.
+            </summary>
+            <param name="typeUri">The type URI of the extension.</param>
+            <param name="data">The parameters associated specifically with this extension.</param>
+            <param name="baseMessage">The OpenID message carrying this extension.</param>
+            <param name="isProviderRole">A value indicating whether this extension is being received at the OpenID Provider.</param>
+            <returns>
+            An instance of <see cref="T:DotNetOpenAuth.OpenId.Messages.IOpenIdMessageExtension"/> if the factory recognizes
+            the extension described in the input parameters; <c>null</c> otherwise.
+            </returns>
+            <remarks>
+            This factory method need only initialize properties in the instantiated extension object
+            that are not bound using <see cref="T:DotNetOpenAuth.Messaging.MessagePartAttribute"/>.
+            </remarks>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.Provider.AuthenticationRequestExtensions.ScrubPersonallyIdentifiableInformation(DotNetOpenAuth.OpenId.Provider.IAuthenticationRequest,DotNetOpenAuth.OpenId.Identifier,DotNetOpenAuth.ApplicationBlock.Provider.AnonymousIdentifierProviderBase,System.Boolean)">
+            <summary>
+            Removes all personally identifiable information from the positive assertion.
+            </summary>
+            <param name="request">The incoming authentication request.</param>
+            <param name="localIdentifier">The OP local identifier, before the anonymous hash is applied to it.</param>
+            <param name="anonymousIdentifierProvider">The anonymous identifier provider.</param>
+            <param name="pairwiseUnique">if set to <c>true</c> the anonymous identifier will be unique to the requesting relying party's realm.</param>
+            <remarks>
+            The openid.claimed_id and openid.identity values are hashed.
+            </remarks>
+        </member>
+        <member name="T:DotNetOpenAuth.ApplicationBlock.OAuthIdentity">
+            <summary>
+            Represents an OAuth consumer that is impersonating a known user on the system.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.OAuthIdentity.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.ApplicationBlock.OAuthIdentity"/> class.
+            </summary>
+            <param name="username">The username.</param>
+        </member>
+        <member name="P:DotNetOpenAuth.ApplicationBlock.OAuthIdentity.AuthenticationType">
+            <summary>
+            Gets the type of authentication used.
+            </summary>
+            <value>The constant "OAuth"</value>
+            <returns>
+            The type of authentication used to identify the user.
+            </returns>
+        </member>
+        <member name="P:DotNetOpenAuth.ApplicationBlock.OAuthIdentity.IsAuthenticated">
+            <summary>
+            Gets a value indicating whether the user has been authenticated.
+            </summary>
+            <value>The value <c>true</c></value>
+            <returns>true if the user was authenticated; otherwise, false.
+            </returns>
+        </member>
+        <member name="P:DotNetOpenAuth.ApplicationBlock.OAuthIdentity.Name">
+            <summary>
+            Gets the name of the user who authorized the OAuth token the consumer is using for authorization.
+            </summary>
+            <returns>
+            The name of the user on whose behalf the code is running.
+            </returns>
+        </member>
+        <member name="T:DotNetOpenAuth.ApplicationBlock.GoogleConsumer">
+            <summary>
+            A consumer capable of communicating with Google Data APIs.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.ServiceDescription">
+            <summary>
+            The Consumer to use for accessing Google data APIs.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.DataScopeUris">
+            <summary>
+            A mapping between Google's applications and their URI scope values.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.GetContactsEndpoint">
+            <summary>
+            The URI to get contacts once authorization is granted.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.CreateRsaSha1ServiceDescription(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+            The service description to use for accessing Google data APIs using an X509 certificate.
+            </summary>
+            <param name="signingCertificate">The signing certificate.</param>
+            <returns>A service description that can be used to create an instance of
+            <see cref="T:DotNetOpenAuth.OAuth.DesktopConsumer"/> or <see cref="T:DotNetOpenAuth.OAuth.WebConsumer"/>. </returns>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.RequestAuthorization(DotNetOpenAuth.OAuth.WebConsumer,DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications)">
+            <summary>
+            Requests authorization from Google to access data from a set of Google applications.
+            </summary>
+            <param name="consumer">The Google consumer previously constructed using <see cref="!:CreateWebConsumer"/> or <see cref="!:CreateDesktopConsumer"/>.</param>
+            <param name="requestedAccessScope">The requested access scope.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.RequestAuthorization(DotNetOpenAuth.OAuth.DesktopConsumer,DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications,System.String@)">
+            <summary>
+            Requests authorization from Google to access data from a set of Google applications.
+            </summary>
+            <param name="consumer">The Google consumer previously constructed using <see cref="!:CreateWebConsumer"/> or <see cref="!:CreateDesktopConsumer"/>.</param>
+            <param name="requestedAccessScope">The requested access scope.</param>
+            <param name="requestToken">The unauthorized request token assigned by Google.</param>
+            <returns>The request token</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.GetContacts(DotNetOpenAuth.OAuth.ConsumerBase,System.String)">
+            <summary>
+            Gets the Gmail address book's contents.
+            </summary>
+            <param name="consumer">The Google consumer previously constructed using <see cref="!:CreateWebConsumer"/> or <see cref="!:CreateDesktopConsumer"/>.</param>
+            <param name="accessToken">The access token previously retrieved.</param>
+            <returns>An XML document returned by Google.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.GetScopeUri(DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications)">
+            <summary>
+            Gets the scope URI in Google's format.
+            </summary>
+            <param name="scope">The scope, which may include one or several Google applications.</param>
+            <returns>A space-delimited list of URIs for the requested Google applications.</returns>
+        </member>
+        <member name="T:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications">
+            <summary>
+            The many specific authorization scopes Google offers.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Contacts">
+            <summary>
+            The Gmail address book.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Calendar">
+            <summary>
+            Appointments in Google Calendar.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Blogger">
+            <summary>
+            Blog post authoring.
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Finance">
+            <summary>
+            Google Finance
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Gmail">
+            <summary>
+            Google Gmail
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Health">
+            <summary>
+            Google Health
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.OpenSocial">
+            <summary>
+            Google OpenSocial
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.PicasaWeb">
+            <summary>
+            Picasa Web
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Spreadsheets">
+            <summary>
+            Google Spreadsheets
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.WebmasterTools">
+            <summary>
+            Webmaster Tools
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.YouTube">
+            <summary>
+            YouTube service
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.DocumentsList">
+            <summary>
+            Google Docs
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.BookSearch">
+            <summary>
+            Google Book Search
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.GoogleBase">
+            <summary>
+            Google Base
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Analytics">
+            <summary>
+            Google Analytics
+            </summary>
+        </member>
+        <member name="F:DotNetOpenAuth.ApplicationBlock.GoogleConsumer.Applications.Maps">
+            <summary>
+            Google Maps
+            </summary>
+        </member>
+        <member name="P:DotNetOpenAuth.ApplicationBlock.CustomExtensions.AcmeResponse.TypeUri">
+            <summary>
+            Gets the TypeURI the extension uses in the OpenID protocol and in XRDS advertisements.
+            </summary>
+        </member>
+        <member name="P:DotNetOpenAuth.ApplicationBlock.CustomExtensions.AcmeResponse.AdditionalSupportedTypeUris">
+            <summary>
+            Gets the additional TypeURIs that are supported by this extension, in preferred order.
+            May be empty if none other than <see cref="P:DotNetOpenAuth.ApplicationBlock.CustomExtensions.AcmeResponse.TypeUri"/> is supported, but
+            should not be null.
+            </summary>
+            <remarks>
+            Useful for reading in messages with an older version of an extension.
+            The value in the <see cref="P:DotNetOpenAuth.ApplicationBlock.CustomExtensions.AcmeResponse.TypeUri"/> property is always checked before
+            trying this list.
+            If you do support multiple versions of an extension using this method,
+            consider adding a CreateResponse method to your request extension class
+            so that the response can have the context it needs to remain compatible
+            given the version of the extension in the request message.
+            The <see cref="!:Extensions.SimpleRegistration.ClaimsRequest.CreateResponse"/> for an example.
+            </remarks>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.Provider.AnonymousIdentifierProviderBase.#ctor(System.Uri)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.ApplicationBlock.Provider.AnonymousIdentifierProviderBase"/> class.
+            </summary>
+            <param name="baseIdentifier">The base URI on which to append the anonymous part.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.ApplicationBlock.Provider.AnonymousIdentifierProviderBase.GetHashSaltForLocalIdentifier(DotNetOpenAuth.OpenId.Identifier)">
+            <summary>
+            Gets the salt to use for generating an anonymous identifier for a given OP local identifier.
+            </summary>
+            <param name="localIdentifier">The OP local identifier.</param>
+            <returns>The salt to use in the hash.</returns>
+            <remarks>
+            It is important that this method always return the same value for a given 
+            <paramref name="localIdentifier"/>.  
+            New salts can be generated for local identifiers without previously assigned salt
+            values by calling <see cref="M:DotNetOpenAuth.ApplicationBlock.Provider.AnonymousIdentifierProviderBase.GetNewSalt"/> or by a custom method.
+            </remarks>
+        </member>
+    </members>
+</doc>

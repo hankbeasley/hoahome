@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="COHHomeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="COHHomeModelStoreContainer">
+          <EntitySet Name="AppUser" EntityType="COHHomeModel.Store.AppUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Home" EntityType="COHHomeModel.Store.Home" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Neighborhood" EntityType="COHHomeModel.Store.Neighborhood" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserHome" EntityType="COHHomeModel.Store.UserHome" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Neighborhood_AppUser" Association="COHHomeModel.Store.FK_Neighborhood_AppUser">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="Neighborhood" EntitySet="Neighborhood" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHome_AppUser" Association="COHHomeModel.Store.FK_UserHome_AppUser">
+            <End Role="AppUser" EntitySet="AppUser" />
+            <End Role="UserHome" EntitySet="UserHome" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserHome_Home" Association="COHHomeModel.Store.FK_UserHome_Home">
+            <End Role="Home" EntitySet="Home" />
+            <End Role="UserHome" EntitySet="UserHome" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="GoogleId" Type="varchar" MaxLength="100" />
+          <Property Name="AccessToken" Type="varchar" MaxLength="50" />
+          <Property Name="AccessTokenSecret" Type="varchar" MaxLength="50" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="CompletedRegistration" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Home">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddressFull" Type="varchar" MaxLength="200" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="50" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Zip" Type="varchar" MaxLength="50" />
+          <Property Name="GoogleFeatureId" Type="varchar" MaxLength="200" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6005: The data type 'geography' is not supported; the column 'Geo' in table 'COHHome.dbo.Neighborhood' was excluded.
+      -->
+        <EntityType Name="Neighborhood">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" />
+          <Property Name="PrimaryContactId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KML" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="UserHome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AppUserId" Type="uniqueidentifier" />
+          <Property Name="HomeId" Type="uniqueidentifier" />
+          <Property Name="RelationType" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_Neighborhood_AppUser">
+          <End Role="AppUser" Type="COHHomeModel.Store.AppUser" Multiplicity="1" />
+          <End Role="Neighborhood" Type="COHHomeModel.Store.Neighborhood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Neighborhood">
+              <PropertyRef Name="PrimaryContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHome_AppUser">
+          <End Role="AppUser" Type="COHHomeModel.Store.AppUser" Multiplicity="0..1" />
+          <End Role="UserHome" Type="COHHomeModel.Store.UserHome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHome">
+              <PropertyRef Name="AppUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserHome_Home">
+          <End Role="Home" Type="COHHomeModel.Store.Home" Multiplicity="0..1" />
+          <End Role="UserHome" Type="COHHomeModel.Store.UserHome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Home">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserHome">
+              <PropertyRef Name="HomeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="COHHomeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="COHHomeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppUsers" EntityType="COHHomeModel.AppUser" />
+          <EntitySet Name="Homes" EntityType="COHHomeModel.Home" />
+          <EntitySet Name="Neighborhoods" EntityType="COHHomeModel.Neighborhood" />
+          <EntitySet Name="UserHomes" EntityType="COHHomeModel.UserHome" />
+          <AssociationSet Name="FK_UserHome_AppUser" Association="COHHomeModel.FK_UserHome_AppUser">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="UserHome" EntitySet="UserHomes" /></AssociationSet>
+          <AssociationSet Name="FK_UserHome_Home" Association="COHHomeModel.FK_UserHome_Home">
+            <End Role="Home" EntitySet="Homes" />
+            <End Role="UserHome" EntitySet="UserHomes" /></AssociationSet>
+          <AssociationSet Name="FK_Neighborhood_AppUser" Association="COHHomeModel.FK_Neighborhood_AppUser">
+            <End Role="AppUser" EntitySet="AppUsers" />
+            <End Role="Neighborhood" EntitySet="Neighborhoods" /></AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GoogleId" Type="String" MaxLength="100" Unicode="false" FixedLength="false" Nullable="false" />
+          <Property Name="AccessToken" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AccessTokenSecret" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastLogin" Type="DateTime" />
+          <Property Type="Boolean" Name="CompletedRegistration" Nullable="false" />
+          <NavigationProperty Name="UserHomes" Relationship="COHHomeModel.FK_UserHome_AppUser" FromRole="AppUser" ToRole="UserHome" />
+          <Property Type="String" Name="CreatedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <Property Type="String" Name="ModifiedBy" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ModifiedDate" Nullable="false" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Neighborhoods" Relationship="COHHomeModel.FK_Neighborhood_AppUser" FromRole="AppUser" ToRole="Neighborhood" />
+        </EntityType>
+        <EntityType Name="Home">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="AddressLine1" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AddressLine2" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="State" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Zip" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserHomes" Relationship="COHHomeModel.FK_UserHome_Home" FromRole="Home" ToRole="UserHome" />
+          <Property Type="String" Name="AddressFull" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GoogleFeatureId" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="Latitude" />
+          <Property Type="Double" Name="Longitude" /></EntityType>
+        <EntityType Name="Neighborhood">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PrimaryContactId" Nullable="false" Type="Guid" />
+          <Property Type="String" Name="KML" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PrimaryContact" Relationship="COHHomeModel.FK_Neighborhood_AppUser" FromRole="Neighborhood" ToRole="AppUser" />
+          </EntityType>
+        <EntityType Name="UserHome">
+          <Key>
+            <PropertyRef Name="Id" /></Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Guid" Name="AppUserId" />
+          <Property Type="Guid" Name="HomeId" />
+          <Property Type="String" Name="RelationType" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AppUser" Relationship="COHHomeModel.FK_UserHome_AppUser" FromRole="UserHome" ToRole="AppUser" />
+          <NavigationProperty Name="Home" Relationship="COHHomeModel.FK_UserHome_Home" FromRole="UserHome" ToRole="Home" />
+          </EntityType>
+        <Association Name="FK_UserHome_AppUser">
+          <End Type="COHHomeModel.AppUser" Role="AppUser" Multiplicity="0..1" />
+          <End Type="COHHomeModel.UserHome" Role="UserHome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" /></Principal>
+            <Dependent Role="UserHome">
+              <PropertyRef Name="AppUserId" /></Dependent></ReferentialConstraint></Association>
+        <Association Name="FK_UserHome_Home">
+          <End Type="COHHomeModel.Home" Role="Home" Multiplicity="0..1" />
+          <End Type="COHHomeModel.UserHome" Role="UserHome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Home">
+              <PropertyRef Name="Id" /></Principal>
+            <Dependent Role="UserHome">
+              <PropertyRef Name="HomeId" /></Dependent></ReferentialConstraint></Association>
+        <Association Name="FK_Neighborhood_AppUser">
+          <End Type="COHHomeModel.AppUser" Role="AppUser" Multiplicity="1" />
+          <End Type="COHHomeModel.Neighborhood" Role="Neighborhood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AppUser">
+              <PropertyRef Name="Id" /></Principal>
+            <Dependent Role="Neighborhood">
+              <PropertyRef Name="PrimaryContactId" /></Dependent></ReferentialConstraint></Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="COHHomeModelStoreContainer" CdmEntityContainer="COHHomeEntities">
+          <EntitySetMapping Name="AppUsers"><EntityTypeMapping TypeName="COHHomeModel.AppUser"><MappingFragment StoreEntitySet="AppUser">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CompletedRegistration" ColumnName="CompletedRegistration" />
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
+            <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+            <ScalarProperty Name="AccessTokenSecret" ColumnName="AccessTokenSecret" />
+            <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Homes">
+            <EntityTypeMapping TypeName="COHHomeModel.Home">
+              <MappingFragment StoreEntitySet="Home">
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="GoogleFeatureId" ColumnName="GoogleFeatureId" />
+                <ScalarProperty Name="AddressFull" ColumnName="AddressFull" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Neighborhoods">
+            <EntityTypeMapping TypeName="COHHomeModel.Neighborhood">
+              <MappingFragment StoreEntitySet="Neighborhood">
+                <ScalarProperty Name="KML" ColumnName="KML" />
+                <ScalarProperty Name="PrimaryContactId" ColumnName="PrimaryContactId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserHomes">
+            <EntityTypeMapping TypeName="COHHomeModel.UserHome">
+              <MappingFragment StoreEntitySet="UserHome">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RelationType" ColumnName="RelationType" />
+                <ScalarProperty Name="HomeId" ColumnName="HomeId" />
+                <ScalarProperty Name="AppUserId" ColumnName="AppUserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EFModel">
+        <EntityTypeShape EntityType="COHHomeModel.AppUser" Width="1.5" PointX="0.5" PointY="0.5" Height="2.41404296875" IsExpanded="true" />
+        <EntityTypeShape EntityType="COHHomeModel.Home" Width="1.5" PointX="6.875" PointY="3.625" Height="2.0853483072916665" />
+        <EntityTypeShape EntityType="COHHomeModel.Neighborhood" Width="1.5" PointX="3.875" PointY="3.5" Height="1.7566536458333335" />
+        <EntityTypeShape EntityType="COHHomeModel.UserHome" Width="1.5" PointX="5.625" PointY="0.75" Height="2.0853483072916661" />
+        <AssociationConnector Association="COHHomeModel.FK_UserHome_AppUser" >
+          <ConnectorPoint PointX="2" PointY="1.7926741536458333" />
+          <ConnectorPoint PointX="5.625" PointY="1.7926741536458333" /></AssociationConnector>
+        <AssociationConnector Association="COHHomeModel.FK_UserHome_Home" >
+          <ConnectorPoint PointX="7.7812525" PointY="3.625" />
+          <ConnectorPoint PointX="7.7812525" PointY="2.2456247456337759" />
+          <ConnectorPoint PointX="7.125" PointY="2.2456247456337759" />
+          </AssociationConnector>
+        <AssociationConnector Association="COHHomeModel.FK_Neighborhood_AppUser" >
+          <ConnectorPoint PointX="2" PointY="3.7822371419270828" />
+          <ConnectorPoint PointX="3.875" PointY="3.7822371419270828" />
+          </AssociationConnector>
+        </Diagram></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,17 @@
+package com.trackerTest;
+
+import junit.framework.Assert;
+import _root_.android.test.ActivityUnitTestCase;
+import _root_.android.test.suitebuilder.annotation.SmallTest;
+import _root_.android.view.KeyEvent;
+import _root_.android.widget.Button;
+import com.trackerpak.MainActivity;
+
+class BasicScalaTest(activityClass: Class[MainActivity]) extends ActivityUnitTestCase[MainActivity]( activityClass: Class[MainActivity]) {
+
+  @SmallTest def testThings() {
+		//Assert.assertEquals(1,this.getActivity().count);
+		Assert.assertEquals(1,2);
+	}
+	
+}

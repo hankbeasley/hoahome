@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HOAHome", "HOAHome\HOAHome.csproj", "{DC323B82-05E9-49DB-B303-33B5DDDEB43F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HOAHome.Tests", "HOAHome.Tests\HOAHome.Tests.csproj", "{904A3EB3-C94F-493A-BC67-CB579E159233}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA2C5858-614D-4442-AE05-E6FF593C8574}"
+	ProjectSection(SolutionItems) = preProject
+		HOAHome.vsmdi = HOAHome.vsmdi
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tx047vmtfs2010:8080/tfs/DefaultCollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HOAHome\\HOAHome.csproj
+		SccProjectName1 = HOAHome
+		SccLocalPath1 = HOAHome
+		SccProjectUniqueName2 = HOAHome.Tests\\HOAHome.Tests.csproj
+		SccProjectName2 = HOAHome.Tests
+		SccLocalPath2 = HOAHome.Tests
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = HOAHome.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC323B82-05E9-49DB-B303-33B5DDDEB43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC323B82-05E9-49DB-B303-33B5DDDEB43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC323B82-05E9-49DB-B303-33B5DDDEB43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC323B82-05E9-49DB-B303-33B5DDDEB43F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{904A3EB3-C94F-493A-BC67-CB579E159233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{904A3EB3-C94F-493A-BC67-CB579E159233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{904A3EB3-C94F-493A-BC67-CB579E159233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{904A3EB3-C94F-493A-BC67-CB579E159233}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

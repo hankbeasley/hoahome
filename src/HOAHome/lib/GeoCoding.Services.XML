@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GeoCoding.Services</name>
+    </assembly>
+    <members>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.CustomerInfoHeader">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CustomerInfoHeader.CustomLogEntry">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.TokenSpecification">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.TokenSpecification.ClientIPAddress">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.TokenSpecification.TokenValidityDurationMinutes">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.DataSource">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.DataSource.Name">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.DataSource.Version">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.DataSource.Description">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.DataSource.Capability">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.DataSource.EntityExtent">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.DataSourceCapability">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DataSourceCapability.CanDrawMaps">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DataSourceCapability.CanFindPlaces">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DataSourceCapability.CanFindNearby">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DataSourceCapability.CanRoute">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DataSourceCapability.CanFindAddress">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DataSourceCapability.HasIcons">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DataSourceCapability.DataServiceQuery">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.EntityProperty">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.EntityProperty.Name">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.EntityProperty.DisplayName">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.EntityProperty.DataType">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.EntityType">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.EntityType.Name">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.EntityType.DisplayName">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.EntityType.ParentName">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.EntityType.Definition">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.EntityType.Properties">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.LatLong">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.LatLong.Latitude">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.LatLong.Longitude">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.CountryRegionInfo">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CountryRegionInfo.EntityID">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CountryRegionInfo.LatLong">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CountryRegionInfo.Iso2">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CountryRegionInfo.Iso3">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CountryRegionInfo.FriendlyName">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CountryRegionInfo.OfficialName">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.CountryRegionContext">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CountryRegionContext.EntityID">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CountryRegionContext.Iso2">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.CultureInfo">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CultureInfo.Name">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.CultureInfo.Lcid">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.UserInfoHeader">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.UserInfoHeader.Culture">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.UserInfoHeader.DefaultDistanceUnit">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.UserInfoHeader.Context">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.DistanceUnit">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DistanceUnit.Kilometer">
+            <remarks/>
+        </member>
+        <member name="F:GeoCoding.Services.VirtualEarth.Token.DistanceUnit.Mile">
+            <remarks/>
+        </member>
+        <member name="T:GeoCoding.Services.VirtualEarth.Token.VersionInfo">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.VersionInfo.Component">
+            <remarks/>
+        </member>
+        <member name="P:GeoCoding.Services.VirtualEarth.Token.VersionInfo.Version">
+            <remarks/>
+        </member>
+    </members>
+</doc>

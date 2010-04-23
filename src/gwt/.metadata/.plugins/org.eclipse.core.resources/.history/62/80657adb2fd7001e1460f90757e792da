@@ -1,0 +1,99 @@
+package com.hoagwt.client;
+
+import com.claudiushauptmann.gwt.multipage.client.MultipageEntryPoint;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.maps.client.InfoWindowContent;
+import com.google.gwt.maps.client.MapWidget;
+import com.google.gwt.maps.client.control.LargeMapControl;
+import com.google.gwt.maps.client.geocode.Geocoder;
+import com.google.gwt.maps.client.geocode.LocationCallback;
+import com.google.gwt.maps.client.geocode.Placemark;
+import com.google.gwt.maps.client.geom.LatLng;
+import com.google.gwt.maps.client.overlay.Marker;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.Grid;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
+
+/**
+ * Entry point classes define <code>onModuleLoad()</code>.
+ */
+@MultipageEntryPoint(urlPattern = "/UserHome/CreateChild")
+//@MultipageEntryPoint(urlPattern = "/")
+public class HOAGwtProject implements EntryPoint {
+	
+	public void onModuleLoad() {
+		RootPanel panel = RootPanel.get("map");
+		
+		LatLng cawkerCity = LatLng.newInstance(39.509, -98.434);
+		// Open a map centered on Cawker City, KS USA
+		final MapWidget map = new MapWidget(cawkerCity, 2);
+		
+		map.setSize("400px", "400px");
+		// Add some controls for the zoom level
+		map.addControl(new LargeMapControl());
+//		// Add a marker
+//		map.addOverlay(new Marker(cawkerCity));
+//		// Add an info window to highlight a point of interest
+//		map.getInfoWindow().open(map.getCenter(),
+//				new InfoWindowContent("World's Largest Ball of Sisal Twine"));
+		
+		panel.add(map);
+		
+		final TextBox textBox = new TextBox();
+		
+		Button button = new Button();
+	
+		panel.add(textBox);
+		panel.add(button);
+		final Grid grid = new Grid(1,2);
+		panel.add(grid);
+		button.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				Geocoder geocoder = new Geocoder();
+				geocoder.getLocations(textBox.getValue(), new LocationCallback() {
+					
+					@Override
+					public void onSuccess(JsArray<Placemark> locations) {
+						grid.resize(locations.length(), 2);
+						String mapUrl = "http://maps.google.com/maps/api/staticmap?size=100x100&zoom=17&sensor=false&key=key=ABQIAAAACPMbozlNv9AIzNvsWUm6vhSvnLMDprvOSMH9Qt_oH5Ww7FTw1hRHT7gTSie1yM34rowNwVfw424XPA&center=";
+						for(int i=0;i<locations.length();i++){
+							grid.setWidget(i, 0, new Label(locations.get(i).getAddress()));
+							Image image = new Image();
+							image.setUrl(mapUrl + locations.get(i).getPoint().getLatitude() + "," + locations.get(i).getPoint().getLongitude());
+							//Window.alert(locations.get(i).getAddress() +locations.get(i).getPostalCode() );
+						}
+						map.setCenter(locations.get(0).getPoint());
+						map.setZoomLevel(16);
+						
+					}
+					
+					@Override
+					public void onFailure(int statusCode) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+				
+			}
+		});
+		
+		
+	}
+}

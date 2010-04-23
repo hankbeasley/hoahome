@@ -1,0 +1,26 @@
+package com.hoagwt.client;
+
+import com.claudiushauptmann.gwt.multipage.client.MultipageEntryPoint;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.maps.client.MapWidget;
+import com.google.gwt.maps.client.geom.LatLng;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.RootPanel;
+
+@MultipageEntryPoint(urlPattern = "/UserHome/Details/[\\\\w\\\\W]*")
+public class MapHomeDisplay implements EntryPoint {
+
+	@Override
+	public void onModuleLoad() {
+		RootPanel panel = RootPanel.get("MapDisplay");
+		
+		LatLng latLng = LatLng.fromUrlValue(panel.getElement().getAttribute("coordinates"));
+		MapWidget map = new MapWidget(latLng, 16);
+		map.setSize("500px", "300px");
+		panel.add(map);
+		
+		
+
+	}
+
+}

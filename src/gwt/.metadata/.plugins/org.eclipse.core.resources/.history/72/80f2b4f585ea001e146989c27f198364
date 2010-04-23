@@ -1,0 +1,27 @@
+package com.trackerTest;
+
+import junit.framework.Assert;
+import android.test.ActivityInstrumentationTestCase2;
+import android.test.suitebuilder.annotation.MediumTest;
+import android.view.KeyEvent;
+import android.widget.Button;
+
+import com.trackerpak.ActivityTwo;
+import com.trackerpak.MainActivity;
+import android.test.suitebuilder.annotation.MediumTest;
+
+public class BasicTest extends ActivityInstrumentationTestCase2<ActivityTwo> {
+
+	public BasicTest(String pkg, Class<ActivityTwo> activityClass) {
+		super("com.trackerpak", ActivityTwo.class);
+		
+		//Assert.assertEquals(0, this.getActivity().getCount());
+		// TODO Auto-generated constructor stub
+	}
+	
+	@MediumTest
+	public void testCount(){
+		Assert.assertEquals(1,2);
+	}
+	
+}
