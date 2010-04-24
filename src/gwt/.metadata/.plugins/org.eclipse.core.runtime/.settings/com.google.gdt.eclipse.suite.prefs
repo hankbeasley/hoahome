@@ -1,4 +1,4 @@
-#Sat Apr 24 14:41:33 CDT 2010
+#Sat Apr 24 17:35:59 CDT 2010
 addedNewWizardActions1.2_org.eclipse.jdt.ui.JavaPerspective=com.google.gdt.eclipse.suite.wizards.newProjectWizard|com.google.gwt.eclipse.core.newModuleWizard|com.google.gwt.eclipse.core.newHostPageWizard|com.google.gwt.eclipse.core.newEntryPointWizard|com.google.gwt.eclipse.core.newClientBundleWizard|com.google.gwt.eclipse.core.newUiBinderWizard
 eclipse.preferences.version=1
 versionForLastForcedRebuild_hoasitereview=1.2.0.v200912062003
