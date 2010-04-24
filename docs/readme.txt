@@ -1,0 +1,1 @@
+For google integration a host entry is need that points from www.speedhq.com -> 127.0.0.1

@@ -78,6 +78,12 @@ namespace HOAHome.Code.Google
             var attibuteExtension = response.GetExtension<FetchResponse>();
             var oAuth = response.GetExtension<AuthorizationApprovedResponse>();
             AuthorizedTokenResponse accessToken = MvcApplication.GoogleWebConsumer.ProcessUserAuthorization(response);
+
+            if (accessToken == null)
+            {
+                throw new ApplicationException("User did not authorize access through google");
+            }
+
             State.GoogleAccessToken = accessToken.AccessToken;
 
             AppUser claimedUser = new AppUser();
