@@ -1,0 +1,3 @@
+﻿ALTER TABLE [dbo].[UserHome]
+    ADD CONSTRAINT [FK_UserHome_AppUser] FOREIGN KEY ([AppUserId]) REFERENCES [dbo].[AppUser] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+

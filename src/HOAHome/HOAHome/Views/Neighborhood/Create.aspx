@@ -15,10 +15,10 @@
         <%: this.Html.EditorCombo(c=> this.Model.Name) %> 
         <%= Html.Hidden("KML")%>
         </p>
-    <p>
+
     
     <div id="map"></div>
-    </p>
+   
     </fieldset>
     
     <%} %>
