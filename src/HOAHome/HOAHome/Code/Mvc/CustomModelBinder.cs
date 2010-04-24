@@ -11,10 +11,10 @@ namespace HOAHome.Code.Mvc
         protected override object CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
         {
             
-           
-            if (!string.IsNullOrEmpty(bindingContext.ValueProvider["Id"].AttemptedValue))
+            
+            if (!string.IsNullOrEmpty(bindingContext.ValueProvider.GetValue("Id").AttemptedValue))
             {
-                Guid id = new Guid(bindingContext.ValueProvider["Id"].AttemptedValue);
+                Guid id = new Guid(bindingContext.ValueProvider.GetValue("Id").AttemptedValue);
                 var entity = ((IPersistanceContainer)controllerContext.Controller).Load(id);
                 return entity;
             }
