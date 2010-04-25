@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<section name="Workbench">
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item value="btn = new Button(&quot;Cancel editing&quot;);&#x0D;&#x0A;&#x09;&#x09;btn.addClickHandler(new ClickHandler() {&#x0D;&#x0A;&#x09;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;&#x09;@Override&#x0D;&#x0A;&#x09;&#x09;&#x09;public void onClick(ClickEvent event) {&#x0D;&#x0A;&#x09;&#x09;&#x09;&#x09;cancelEdit();&#x0D;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x0D;&#x0A;&#x09;&#x09;&#x09;}&#x0D;&#x0A;&#x09;&#x09;});&#x0D;&#x0A;&#x09;&#x09;panel.add(btn);" key="selection"/>
-		<list key="findhistory">
-			<item value="btn = new Button(&quot;Cancel editing&quot;);"/>
-		</list>
-	</section>
-</section>

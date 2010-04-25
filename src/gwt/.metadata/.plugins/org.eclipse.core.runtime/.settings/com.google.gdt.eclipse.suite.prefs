@@ -1,8 +1,0 @@
-#Sat Apr 24 17:35:59 CDT 2010
-addedNewWizardActions1.2_org.eclipse.jdt.ui.JavaPerspective=com.google.gdt.eclipse.suite.wizards.newProjectWizard|com.google.gwt.eclipse.core.newModuleWizard|com.google.gwt.eclipse.core.newHostPageWizard|com.google.gwt.eclipse.core.newEntryPointWizard|com.google.gwt.eclipse.core.newClientBundleWizard|com.google.gwt.eclipse.core.newUiBinderWizard
-eclipse.preferences.version=1
-versionForLastForcedRebuild_hoasitereview=1.2.0.v200912062003
-addedNewWizardActionsorg.eclipse.debug.ui.DebugPerspective=true
-SdkRegistrants=com.google.appengine.eclipse.sdkbundle_1.2.6.v200910131704,com.google.gwt.eclipse.sdkbundle.win32_1.7.1.v200909221731,com.google.appengine.eclipse.sdkbundle_1.2.8.v200912041521,com.google.gwt.eclipse.sdkbundle.2.0.0_2.0.0.v200912062003,com.google.appengine.eclipse.sdkbundle.1.3.3_1.3.3.v201004211208,com.google.gwt.eclipse.sdkbundle.2.0.3_2.0.3.v201002191036
-versionForLastForcedRebuild_HOAGwtProject=1.3.2.v201003242055
-addedNewWizardActionsorg.eclipse.jdt.ui.JavaPerspective=true

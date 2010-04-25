@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?> 
-<Module>
-  <ModulePrefs title="Links n stuff" /> 
-  <Content type="html">
-     <![CDATA[ 
-       <a href="http://www.hoasitereview.com/">review site</a>
-     ]]>
-  </Content> 
-</Module>

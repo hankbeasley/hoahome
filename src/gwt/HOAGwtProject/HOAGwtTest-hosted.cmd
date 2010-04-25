@@ -1,1 +1,0 @@
-@java -Dgwt.args="-out www-test" -Xmx256M -cp "%~dp0\src;%~dp0\test;%~dp0\war\WEB-INF\classes;c:\eclipse\plugins\org.junit_3.8.2.v20090203-1005\junit.jar;C:/projects/gwt-windows-1.7.1/gwt-user.jar;C:/projects/gwt-windows-1.7.1/gwt-dev-windows.jar" junit.textui.TestRunner com.hoagwt.client.HOAGwtTest %*
