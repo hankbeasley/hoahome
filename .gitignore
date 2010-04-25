@@ -3,6 +3,8 @@ obj/
 TestResults/
 src/gwt/.metadata
 src/HOAHome/HOAHome/gwt/hoagwtproject
+.metadata/
+war/
 _ReSharper*
 *.cache.*
 *.suo
