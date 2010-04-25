@@ -7,12 +7,15 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%= Html.Encode(ViewData["Message"]) %></h2>
    
-   <% using (Html.BeginForm("DisplaySearchResults", "Home"))
+   <% using (Html.BeginForm(MVC.Home.DisplaySearchResults()))
       { %>
         <fieldset style="width:260px;float:left">
          <legend>Find a Neighborhood</legend>
             <p>
-                <label for="address">Address:</label> <%= Html.TextBox("address")%>
+                Search by<br />
+                <label for="Name">Name:</label> <%= Html.TextBox("name")%><br />
+                OR<br />
+                <label for="Address">Address:</label> <%= Html.TextBox("address")%>
             </p>
             <p>
                 <input type="submit" value="Search" />

@@ -1,0 +1,5 @@
+﻿1. Implement find nieghborhood.  
+
+Search by Name or by address.  Name search be a contains search. address search will find nieghborhods with in a couple of miles.
+
+working: Got search by name services working. Need to finish display results and search by address

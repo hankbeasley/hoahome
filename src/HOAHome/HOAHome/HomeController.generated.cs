@@ -22,9 +22,6 @@ using T4MVC;
 namespace HOAHome.Controllers {
     public partial class HomeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public HomeController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected HomeController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -33,6 +30,11 @@ namespace HOAHome.Controllers {
             return RedirectToRoute(callInfo.RouteValueDictionary);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public System.Web.Mvc.ActionResult DisplaySearchResults() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.DisplaySearchResults);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Home; } }
@@ -76,8 +78,9 @@ namespace HOAHome.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult DisplaySearchResults() {
+        public override System.Web.Mvc.ActionResult DisplaySearchResults(HOAHome.Repositories.NeighborhoodRepository.SearchCriteria criteria) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DisplaySearchResults);
+            callInfo.RouteValueDictionary.Add("criteria", criteria);
             return callInfo;
         }
 

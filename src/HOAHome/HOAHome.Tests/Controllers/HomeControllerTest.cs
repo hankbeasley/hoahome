@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using HOAHome.Models;
+using HOAHome.Repositories;
+using HOAHome.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HOAHome;
 using HOAHome.Controllers;
@@ -14,7 +17,7 @@ using System.Xml;
 namespace HOAHome.Tests.Controllers
 {
     [TestClass]
-    public class HomeControllerTest
+    public class HomeControllerTest 
     {
         private class MapsExtension : ExtensionBase
         {
@@ -115,6 +118,29 @@ namespace HOAHome.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestSearchByName()
+        {
+          
+            
+
+            // Arrange
+            var fakeRepository = new FakeRepositoryFactory();
+            HomeController controller = new HomeController(fakeRepository);
+            NeighborhoodRepository.SearchCriteria criteria = new NeighborhoodRepository.SearchCriteria();
+            criteria.Name = "Brays";
+            fakeRepository.MockNeighborhoodRepository.Setup(n => n.Search(criteria)).Returns(new List<Neighborhood>{new Neighborhood{Name="Brays Village"}});
+
+            // Act
+            ViewResult result = controller.DisplaySearchResults(criteria) as ViewResult;
+
+            var resultList = result.ViewData.Model as IList<Models.Neighborhood>;
+
+            // Assert
+            Assert.IsNotNull(resultList);
+            Assert.AreEqual("Brays Village",resultList[0].Name);
         }
     }
 }

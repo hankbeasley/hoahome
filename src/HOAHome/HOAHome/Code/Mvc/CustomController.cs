@@ -7,7 +7,7 @@ using HOAHome.Code.EntityFramework;
 
 namespace HOAHome.Code.Mvc
 {
-    public class CustomController<T> : Controller, IPersistanceContainer where T : IEntity, new ()
+    public abstract class CustomController<T> : Controller, IPersistanceContainer where T : IEntity, new ()
     {
         protected IPersistanceFramework Persistance = new PersistanceFramework(new Models.COHHomeEntities());
 

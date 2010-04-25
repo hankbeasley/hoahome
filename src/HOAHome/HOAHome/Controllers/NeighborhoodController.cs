@@ -48,6 +48,8 @@ namespace HOAHome.Controllers
 
         public virtual ViewResult Locate(string searchString)
         {
+
+            //TODO: I don't think this is used yet?
             IGeoCoder geoCoder = new GoogleGeoCoder(Configuration.GoogleApiKey);
             return View();
         }

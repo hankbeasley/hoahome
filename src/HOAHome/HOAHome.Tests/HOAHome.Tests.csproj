@@ -71,9 +71,11 @@
     <Compile Include="Controllers\UserHomeControllerTest.cs" />
     <Compile Include="Google\GoogleOAuthTest.cs" />
     <Compile Include="Google\MapDataServiceTest.cs" />
+    <Compile Include="Helpers\FakeRepositoryFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\AccountControllerTestOld.cs" />
+    <Compile Include="Repositories\NeighborhoodRepositoryTest.cs" />
     <Compile Include="Services\GisServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
