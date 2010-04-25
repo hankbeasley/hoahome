@@ -16,32 +16,45 @@ namespace HOAHome.Repositories
             _persistance = persistance;
         }
 
-        public IList<Neighborhood> Search(SearchCriteria criteria)
+        //public IList<Neighborhood> Search(SearchCriteria criteria)
+        //{
+        //    var results = new List<Neighborhood>();
+        //    if (!string.IsNullOrEmpty(criteria.Name))
+        //    {
+        //        results.AddRange(this._persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name.Contains(criteria.Name)));
+        //    }
+
+        //    if (!string.IsNullOrEmpty(criteria.Address))
+        //    {
+        //        var stuff = new COHHomeEntities().ExecuteStoreQuery<Neighborhood>("select * from");
+        //        //stuff.
+        //        throw new NotImplementedException("Have not complete this type of search yet");
+        //    }
+
+        //    return results.AsReadOnly();
+        //}
+
+        public IList<Neighborhood> FindBySimilarName(string name)
         {
             var results = new List<Neighborhood>();
-            if (!string.IsNullOrEmpty(criteria.Name))
-            {
-                results.AddRange(this._persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name.Contains(criteria.Name)));
-            }
-
-            if (!string.IsNullOrEmpty(criteria.Address))
-            {
-                throw new NotImplementedException("Have not complete this type of search yet");
-            }
-
+            results.AddRange(this._persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name.Contains(name)));
             return results.AsReadOnly();
         }
-        public class SearchCriteria
+        /// <summary>
+        /// Find Nieghborhoods less that 5km from point
+        /// </summary>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public IList<Neighborhood> FindNearPoint(Point point)
         {
-            /// <summary>
-            /// Searchs for a Neighborhood where the name Like '%name%'
-            /// </summary>
-            public string Name { get; set; }
-
-            /// <summary>
-            /// Searches within two miles of this address entered
-            /// </summary>
-            public string Address { get; set; }
+            var results = new List<Neighborhood>();
+            results.AddRange(this._persistance.ExecuteStoreQuery<Neighborhood>(
+                string.Format(
+                "SELECT * FROM Neighborhood WHERE geography::STGeomFromText('POINT({0} {1})', 4326).STDistance(Geo) < 5000",
+                point.Longitude, point.Latitude)));
+            return results.AsReadOnly();
         }
+
+
     }
 }

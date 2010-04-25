@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using Google.GData.Client;
 using System.Xml;
 using Google.GData.Extensions;
 using HOAHome.Models;
 using System.IO;
+using HOAHome.Repositories;
 
 namespace HOAHome.Code.Google
 {
-    public class MapDataService
+    public class MapDataService : IMapDataService
     {
         const string MAPID = "0004779109f86bbabd62d";
         const string USERID = "208433541473729117510";
@@ -49,6 +51,53 @@ namespace HOAHome.Code.Google
 
         }
 
+
+        public IList<Point> GeoCodeAddress(string address)
+        {
+
+
+
+            //Create a path string with address and api key
+
+            string sPath = "http://maps.google.com/maps/geo?q=" + address + "&output=csv&key=" + Configuration.GoogleApiKey;
+
+
+            //Using WebClient class to download the CSV
+            //WebClient is part of System.Net class
+
+            WebClient client = new WebClient();
+            //Downloading CSV with Latitute and Longitute
+            //.DownloadString method download CSV file from browser
+
+            List<Point> results = new List<Point>();
+            string response = client.DownloadString(sPath);
+            foreach (string result in response.Split('\r'))
+            {
+                string[] eResult = result.Split(',');
+
+                //As you can see, I’m spliting the string into array
+                //I’m not using element 0 as it keeps status code if address if found, //but you can if you want too.
+                //Once the result / response is in string array eResult, we can access //it by calling its GetValue method and pass the 0 based index.
+
+
+                int statusCode = int.Parse(eResult[0]);
+                if (statusCode == 610) throw new ApplicationException("Bad Key");
+                if (statusCode == 620) throw new ApplicationException("Too many queries");
+                if (statusCode != 200 && statusCode != 602 && statusCode != 603) throw new ApplicationException("Geocoding error:" + statusCode);
+
+                if (statusCode == 200)
+                {
+                    Point point;
+                    point.Longitude = double.Parse(eResult[3]);
+                    point.Latitude = double.Parse(eResult[2]);
+
+                    results.Add(point);
+                }
+            }
+            return results.AsReadOnly();
+
+        }
+
         public void Delete(string featureId)
         {
             var service = CreateService();
@@ -57,7 +106,7 @@ namespace HOAHome.Code.Google
 
         private static string AddFull(string featureid)
         {
-            return featureid.Substring(0, featureid.LastIndexOf('/'))  +  "/full" + featureid.Substring(featureid.LastIndexOf('/'));
+            return featureid.Substring(0, featureid.LastIndexOf('/')) + "/full" + featureid.Substring(featureid.LastIndexOf('/'));
         }
 
         public bool Exist(string featureId)
@@ -67,7 +116,7 @@ namespace HOAHome.Code.Google
             AtomEntry atom = null;
             try
             {
-               atom = service.Get(AddFull(featureId));
+                atom = service.Get(AddFull(featureId));
             }
             catch (GDataRequestException ex)
             {

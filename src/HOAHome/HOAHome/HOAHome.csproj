@@ -135,6 +135,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Code\Google\GoogleOAuth.cs" />
+    <Compile Include="Code\Google\IMapDataService.cs" />
     <Compile Include="Code\Google\MapDataService.cs" />
     <Compile Include="Code\InMemoryTokenManager.cs" />
     <Compile Include="Code\Mvc\CustomController.cs">
@@ -186,6 +187,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Point.cs" />
     <Compile Include="Repositories\INeighborhoodRepository.cs" />
     <Compile Include="Repositories\IRepositoryFactory.cs" />
     <Compile Include="Repositories\NeighborhoodRepository.cs" />

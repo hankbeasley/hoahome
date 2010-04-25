@@ -10,4 +10,12 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+--EXEC sp_generate_inserts 'Neighborhood',@cols_to_exclude = "'Geo'"
+
 INSERT INTO [AppUser] ([Id],[Email],[FirstName],[LastName],[DisplayName],[GoogleId],[AccessToken],[AccessTokenSecret],[LastLogin],[CompletedRegistration],[CreatedBy],[CreatedDate],[ModifiedBy],[ModifiedDate])VALUES('F421D52D-C47F-4D0E-AB9D-7CD85D8EC6B4','hankbeasleymail@gmail.com','Hank','Beasley','Beasley, Hank','https://www.google.com/accounts/o8/id?id=AItOawnDYrc6ZaxYrBHE1Vu-l2zYt_M11tZd0zs','1/Sj1JpvEF8kwTnhICj6Nfm-j-72cWCxm8LIwxBnWXHHM','izGUJ0nqNEFfQIGu4Y/9fBBF','Apr 24 2010  4:46:19:957PM',0,'021e34c9-5d15-43c5-9429-282fecef4e34','Apr 24 2010  4:46:19:957PM','021e34c9-5d15-43c5-9429-282fecef4e34','Apr 24 2010  4:46:19:957PM')
+
+--Alief
+INSERT INTO [Neighborhood] ([Id],[Name],[PrimaryContactId],[KML])VALUES('6B696DBE-616C-4421-9011-D080354977B6','Brays Village(Test)','F421D52D-C47F-4D0E-AB9D-7CD85D8EC6B4','POLYGON((-95.57532548904419 29.703478878844557,-95.57004690170288 29.712834801678493,-95.57438135147095 29.715220236151897,-95.57815790176392 29.704410782755083,-95.57532548904419 29.703478878844557))')
+
+--Skyline
+INSERT INTO [Neighborhood] ([Id],[Name],[PrimaryContactId],[KML])VALUES('BB88BDAF-41C8-48DC-B278-00633A6FF749','Skyline Village Park(Test)','F421D52D-C47F-4D0E-AB9D-7CD85D8EC6B4','POLYGON((-95.48691183328629 29.72821054132166,-95.48687428236008 29.72722295706981,-95.48611253499985 29.727246249263132,-95.48613399267197 29.728243150069847,-95.48691183328629 29.72821054132166))')

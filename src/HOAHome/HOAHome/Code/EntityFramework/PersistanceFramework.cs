@@ -127,5 +127,16 @@ namespace HOAHome.Code.EntityFramework
         {
             return AttachNew(new T());
         }
+
+
+        public ObjectResult<TElement> ExecuteStoreQuery<TElement>(string commandText, params object[] parameters)
+        {
+            return this._context.ExecuteStoreQuery<TElement>(commandText, parameters);
+        }
+
+        public ObjectResult<TEntity> ExecuteStoreQuery<TEntity>(string commandText, string entitySetName, MergeOption mergeOption, params object[] parameters)
+        {
+            return this._context.ExecuteStoreQuery<TEntity>(commandText,entitySetName, mergeOption, parameters);
+        }
     }
 }

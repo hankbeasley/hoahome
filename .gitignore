@@ -6,3 +6,4 @@ src/HOAHome/HOAHome/gwt/hoagwtproject
 _ReSharper*
 *.cache.*
 *.suo
+*.user

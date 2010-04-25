@@ -20,6 +20,9 @@ namespace HOAHome.Code.EntityFramework
         ObjectStateManager ObjectStateManager { get; }
         void Refresh(RefreshMode refreshMode, object entity);
         void ApplyPropertyChanges(string entitySetName, object entity);
+        ObjectResult<TElement> ExecuteStoreQuery<TElement>(string commandText, params object[] parameters);
 
+        ObjectResult<TEntity> ExecuteStoreQuery<TEntity>(string commandText, string entitySetName,
+                                                                MergeOption mergeOption, params object[] parameters);
     }
 }

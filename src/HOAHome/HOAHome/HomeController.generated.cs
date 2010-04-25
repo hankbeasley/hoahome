@@ -78,11 +78,7 @@ namespace HOAHome.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult DisplaySearchResults(HOAHome.Repositories.NeighborhoodRepository.SearchCriteria criteria) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DisplaySearchResults);
-            callInfo.RouteValueDictionary.Add("criteria", criteria);
-            return callInfo;
-        }
+        
 
     }
 }
