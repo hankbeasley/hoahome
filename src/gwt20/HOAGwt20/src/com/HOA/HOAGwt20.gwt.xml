@@ -20,7 +20,6 @@
 <script  src="http://maps.google.com/maps?gwt=1&amp;file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAACPMbozlNv9AIzNvsWUm6vhTwYZrfuq8RhPrMzx_6oEMr4Xj-YxSm1csqqNyFwnwGbU025B-rCDsb4w" ></script>
 
   
-
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.claudiushauptmann.gwt.multipage.client.EntrypointDispatcher'/>
 
