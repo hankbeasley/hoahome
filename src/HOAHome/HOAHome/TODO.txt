@@ -2,4 +2,7 @@
 
 Search by Name or by address.  Name search be a contains search. address search will find nieghborhods with in a couple of miles.
 
-working: finish backend data and geo search. need to work on map view
+working: finish backend data and geo search. need to work on map view. Or perhaps don't need map on this page?
+
+2. upgrade to gwt 2.0
+3. Address bug when creating map and starting over.

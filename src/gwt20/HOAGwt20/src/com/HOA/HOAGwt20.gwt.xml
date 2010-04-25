@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='hoagwt20'>
   <!-- Inherit the core Web Toolkit stuff.                        -->
-  <inherits name='com.google.gwt.user.User'/>
+    <inherits name='com.google.gwt.user.User'/>
+
+ <inherits name="com.google.gwt.maps.GoogleMaps" />
+ <inherits name='com.claudiushauptmann.gwt.multipage.gwt-multipage'/>
 
   <!-- Inherit the default GWT style sheet.  You can change       -->
   <!-- the theme of your GWT application by uncommenting          -->
@@ -12,8 +15,17 @@
 
   <!-- Other module inherits                                      -->
 
+<!--  <script  src="http://maps.google.com/maps?gwt=1&amp;file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAACPMbozlNv9AIzNvsWUm6vhSvnLMDprvOSMH9Qt_oH5Ww7FTw1hRHT7gTSie1yM34rowNwVfw424XPA" ></script>-->
+<!-- below is api key for 192.168.2.102  -->
+<script  src="http://maps.google.com/maps?gwt=1&amp;file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAACPMbozlNv9AIzNvsWUm6vhTwYZrfuq8RhPrMzx_6oEMr4Xj-YxSm1csqqNyFwnwGbU025B-rCDsb4w" ></script>
+
+  
+
   <!-- Specify the app entry point class.                         -->
-  <entry-point class='com.HOA.client.HOAGwt20'/>
+  <entry-point class='com.claudiushauptmann.gwt.multipage.client.EntrypointDispatcher'/>
+
+  <!-- Specify the app entry point class.                         -->
+<!--  <entry-point class='com.HOA.client.MapHomeDisplay'/>-->
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>

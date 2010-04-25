@@ -2,10 +2,11 @@ bin/
 obj/
 TestResults/
 src/gwt/.metadata
-src/HOAHome/HOAHome/gwt/hoagwtproject
+src/HOAHome/HOAHome/hoagwt20/
 .metadata/
 war/
 _ReSharper*
 *.cache.*
 *.suo
 *.user
+.gwt-tmp/
