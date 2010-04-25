@@ -15,9 +15,9 @@
 
   <!-- Other module inherits                                      -->
 
-<!--  <script  src="http://maps.google.com/maps?gwt=1&amp;file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAACPMbozlNv9AIzNvsWUm6vhSvnLMDprvOSMH9Qt_oH5Ww7FTw1hRHT7gTSie1yM34rowNwVfw424XPA" ></script>-->
+  <script  src="http://maps.google.com/maps?gwt=1&amp;file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAACPMbozlNv9AIzNvsWUm6vhSvnLMDprvOSMH9Qt_oH5Ww7FTw1hRHT7gTSie1yM34rowNwVfw424XPA" ></script>
 <!-- below is api key for 192.168.2.102  -->
-<script  src="http://maps.google.com/maps?gwt=1&amp;file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAACPMbozlNv9AIzNvsWUm6vhTwYZrfuq8RhPrMzx_6oEMr4Xj-YxSm1csqqNyFwnwGbU025B-rCDsb4w" ></script>
+<!--<script  src="http://maps.google.com/maps?gwt=1&amp;file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAACPMbozlNv9AIzNvsWUm6vhTwYZrfuq8RhPrMzx_6oEMr4Xj-YxSm1csqqNyFwnwGbU025B-rCDsb4w" ></script>-->
 
   
   <!-- Specify the app entry point class.                         -->

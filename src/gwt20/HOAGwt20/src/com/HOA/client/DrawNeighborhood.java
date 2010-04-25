@@ -117,29 +117,33 @@ public class DrawNeighborhood implements EntryPoint {
 			});
 			panel.add(drawbtn);
 			
-			editbtn.setVisible(false);
-			editbtn.addClickHandler(new ClickHandler() {
-				
-				@Override
-				public void onClick(ClickEvent event) {
-					editbtn.setVisible(false);
-					editPolygon();
-					
-				}
-			});
-			panel.add(editbtn);
+			
+
 		}
+		editbtn.setVisible(false);
+		editbtn.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				editbtn.setVisible(false);
+				startOverbtn.setVisible(true);
+				editPolygon();
+				
+			}
+		});
+		panel.add(editbtn);
 		
 		startOverbtn.setVisible(edit);
 		startOverbtn.addClickHandler(new ClickHandler() {
 			
 			@Override
 			public void onClick(ClickEvent event) {
+				lastPolygon.setEditingEnabled(false);
 				lastPolygon.setVisible(false);
 				createPolygon(null);
 				editbtn.setVisible(false);
 				savebtn.setVisible(false);
-				startOverbtn.setVisible(false);
+				//startOverbtn.setVisible(false);
 			}
 		});
 		panel.add(startOverbtn);
@@ -180,7 +184,7 @@ public class DrawNeighborhood implements EntryPoint {
 	  }
 	private Boolean TryLoadExistingPolygon(){
 		String kml = Util.GetHiddenValue("KML");
-		if (kml != ""){
+		if (kml != "" && kml.length() != 0){ //some weird thing here in debug mode
 			createPolygon(Util.StringToPolygon(kml));
 			map.setCenter(lastPolygon.getBounds().getCenter(),  map.getBoundsZoomLevel(lastPolygon.getBounds()));
 			return true;
@@ -220,9 +224,16 @@ public class DrawNeighborhood implements EntryPoint {
 
 	      public void onUpdate(PolygonLineUpdatedEvent event) {
 	        message2.setText(message2.getText() + " : Polygon Updated");
+//	        if (poly.getArea()/(1000*1000) > 10 ){
+//	    		  Window.alert("Neighborhood can not be larger than 10 square KM");
+//	    		  startOverbtn.click();
+//	    	  }
+	        
 	      }
 	    });
 
+	  
+	    
 	    poly.addPolygonCancelLineHandler(new PolygonCancelLineHandler() {
 
 	      public void onCancel(PolygonCancelLineEvent event) {
@@ -240,6 +251,11 @@ public class DrawNeighborhood implements EntryPoint {
 	            + poly.getBounds().getNorthEast() + ","
 	            + poly.getBounds().getSouthWest() + " area=" + poly.getArea()
 	            + "m");
+	    	  
+	    	  if (poly.getArea()/(1000*1000) > 10 ){
+	    		  Window.alert("Neighborhood can not be larger than 10 square KM");
+	    		  startOverbtn.click();
+	    	  }
 	      }
 	    });
 	    
