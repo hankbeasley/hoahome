@@ -22,7 +22,7 @@ using T4MVC;
 namespace HOAHome.Controllers {
     public partial class AccountController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected AccountController(Dummy d) { }
+        protected AccountController(Dummy d):this() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {

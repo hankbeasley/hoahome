@@ -210,6 +210,48 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_Table_1]
 
 
 GO
+PRINT N'Creating [dbo].[Content]...';
+
+
+GO
+CREATE TABLE [dbo].[Content] (
+    [Id]             UNIQUEIDENTIFIER NOT NULL,
+    [Text]           VARCHAR (MAX)    NULL,
+    [ContentTypeId]  UNIQUEIDENTIFIER NULL,
+    [NeighborhoodId] UNIQUEIDENTIFIER NULL
+);
+
+
+GO
+PRINT N'Creating PK_Content...';
+
+
+GO
+ALTER TABLE [dbo].[Content]
+    ADD CONSTRAINT [PK_Content] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
+PRINT N'Creating [dbo].[ContentType]...';
+
+
+GO
+CREATE TABLE [dbo].[ContentType] (
+    [Id]   UNIQUEIDENTIFIER NOT NULL,
+    [Name] VARCHAR (50)     NULL
+);
+
+
+GO
+PRINT N'Creating PK_ContentType...';
+
+
+GO
+ALTER TABLE [dbo].[ContentType]
+    ADD CONSTRAINT [PK_ContentType] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
 PRINT N'Creating [dbo].[Home]...';
 
 
@@ -271,6 +313,26 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_Neighborhood]
 
 
 GO
+PRINT N'Creating [dbo].[Role]...';
+
+
+GO
+CREATE TABLE [dbo].[Role] (
+    [Id]   UNIQUEIDENTIFIER NOT NULL,
+    [Name] VARCHAR (50)     NOT NULL
+);
+
+
+GO
+PRINT N'Creating PK_Role...';
+
+
+GO
+ALTER TABLE [dbo].[Role]
+    ADD CONSTRAINT [PK_Role] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
 PRINT N'Creating [dbo].[UserHome]...';
 
 
@@ -294,6 +356,28 @@ ALTER TABLE [dbo].[UserHome]
 
 
 GO
+PRINT N'Creating [dbo].[UserNeighborhood]...';
+
+
+GO
+CREATE TABLE [dbo].[UserNeighborhood] (
+    [Id]             UNIQUEIDENTIFIER NOT NULL,
+    [UserId]         UNIQUEIDENTIFIER NOT NULL,
+    [NeighborhoodId] UNIQUEIDENTIFIER NOT NULL,
+    [RoleId]         UNIQUEIDENTIFIER NOT NULL
+);
+
+
+GO
+PRINT N'Creating PK_UserNeighborHood...';
+
+
+GO
+ALTER TABLE [dbo].[UserNeighborhood]
+    ADD CONSTRAINT [PK_UserNeighborHood] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
 PRINT N'Creating DF_AppUser_CreatedDate...';
 
 
@@ -309,6 +393,24 @@ PRINT N'Creating DF_AppUser_ModifiedDate...';
 GO
 ALTER TABLE [dbo].[AppUser]
     ADD CONSTRAINT [DF_AppUser_ModifiedDate] DEFAULT (getdate()) FOR [ModifiedDate];
+
+
+GO
+PRINT N'Creating FK_Content_ContentType...';
+
+
+GO
+ALTER TABLE [dbo].[Content] WITH NOCHECK
+    ADD CONSTRAINT [FK_Content_ContentType] FOREIGN KEY ([ContentTypeId]) REFERENCES [dbo].[ContentType] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_Content_Neighborhood...';
+
+
+GO
+ALTER TABLE [dbo].[Content] WITH NOCHECK
+    ADD CONSTRAINT [FK_Content_Neighborhood] FOREIGN KEY ([NeighborhoodId]) REFERENCES [dbo].[Neighborhood] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 
 GO
@@ -336,6 +438,33 @@ PRINT N'Creating FK_UserHome_Home...';
 GO
 ALTER TABLE [dbo].[UserHome] WITH NOCHECK
     ADD CONSTRAINT [FK_UserHome_Home] FOREIGN KEY ([HomeId]) REFERENCES [dbo].[Home] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_UserNeighborHood_AppUser...';
+
+
+GO
+ALTER TABLE [dbo].[UserNeighborhood] WITH NOCHECK
+    ADD CONSTRAINT [FK_UserNeighborHood_AppUser] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AppUser] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_UserNeighborHood_Neighborhood...';
+
+
+GO
+ALTER TABLE [dbo].[UserNeighborhood] WITH NOCHECK
+    ADD CONSTRAINT [FK_UserNeighborHood_Neighborhood] FOREIGN KEY ([NeighborhoodId]) REFERENCES [dbo].[Neighborhood] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_UserNeighborHood_Role...';
+
+
+GO
+ALTER TABLE [dbo].[UserNeighborhood] WITH NOCHECK
+    ADD CONSTRAINT [FK_UserNeighborHood_Role] FOREIGN KEY ([RoleId]) REFERENCES [dbo].[Role] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 
 GO
@@ -391,11 +520,21 @@ USE [$(DatabaseName)];
 
 
 GO
+ALTER TABLE [dbo].[Content] WITH CHECK CHECK CONSTRAINT [FK_Content_ContentType];
+
+ALTER TABLE [dbo].[Content] WITH CHECK CHECK CONSTRAINT [FK_Content_Neighborhood];
+
 ALTER TABLE [dbo].[Neighborhood] WITH CHECK CHECK CONSTRAINT [FK_Neighborhood_AppUser];
 
 ALTER TABLE [dbo].[UserHome] WITH CHECK CHECK CONSTRAINT [FK_UserHome_AppUser];
 
 ALTER TABLE [dbo].[UserHome] WITH CHECK CHECK CONSTRAINT [FK_UserHome_Home];
+
+ALTER TABLE [dbo].[UserNeighborhood] WITH CHECK CHECK CONSTRAINT [FK_UserNeighborHood_AppUser];
+
+ALTER TABLE [dbo].[UserNeighborhood] WITH CHECK CHECK CONSTRAINT [FK_UserNeighborHood_Neighborhood];
+
+ALTER TABLE [dbo].[UserNeighborhood] WITH CHECK CHECK CONSTRAINT [FK_UserNeighborHood_Role];
 
 
 GO

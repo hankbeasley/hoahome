@@ -36,43 +36,43 @@ namespace HOAHome.Controllers
         {
             return View();
         }
-
-        public virtual ActionResult DisplaySearchResults(SearchCriteria criteria)
+        [HttpPost]
+        public virtual ActionResult DisplaySearchResults(string search)
         {
-            if (!string.IsNullOrWhiteSpace(criteria.Name) && !string.IsNullOrWhiteSpace(criteria.Address))
-            {
-                throw new InvalidOperationException("Can not search by address and name at the same time");
-            }
+            //if (!string.IsNullOrWhiteSpace(criteria.Name) && !string.IsNullOrWhiteSpace(criteria.Address))
+            //{
+            //    throw new InvalidOperationException("Can not search by address and name at the same time");
+            //}
 
             var results = new List<Neighborhood>();
-            if (!string.IsNullOrEmpty(criteria.Name))
-            {
-                results.AddRange(this._repositoryFactory.Neighborhood.FindBySimilarName(criteria.Name));
-            }
+            //if (!string.IsNullOrEmpty(criteria.Name))
+            //{
+                results.AddRange(this._repositoryFactory.Neighborhood.FindBySimilarName(search));
+            //}
 
-            if (!string.IsNullOrEmpty(criteria.Address))
-            {
-                var points = this._mapService.GeoCodeAddress(criteria.Address);
+            //if (!string.IsNullOrEmpty(criteria.Address))
+            //{
+                var points = this._mapService.GeoCodeAddress(search);
                 foreach(Point point in points)
                 {
                     results.AddRange(this._repositoryFactory.Neighborhood.FindNearPoint(point));
                 }
-            }
+           // }
             return View(results.AsReadOnly());
         }
 
-        public class SearchCriteria
-        {
-            /// <summary>
-            /// Searchs for a Neighborhood where the name Like '%name%'
-            /// </summary>
-            public string Name { get; set; }
+        //public class SearchCriteria
+        //{
+        //    /// <summary>
+        //    /// Searchs for a Neighborhood where the name Like '%name%'
+        //    /// </summary>
+        //    public string Name { get; set; }
 
-            /// <summary>
-            /// Searches within two miles of this address entered
-            /// </summary>
-            public string Address { get; set; }
-        }
+        //    /// <summary>
+        //    /// Searches within two miles of this address entered
+        //    /// </summary>
+        //    public string Address { get; set; }
+        //}
 
     }
 }

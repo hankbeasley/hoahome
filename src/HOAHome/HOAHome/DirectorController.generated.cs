@@ -25,7 +25,7 @@ namespace HOAHome.Controllers {
         public DirectorController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected DirectorController(Dummy d) { }
+        protected DirectorController(Dummy d):this() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {

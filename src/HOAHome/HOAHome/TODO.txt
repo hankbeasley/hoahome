@@ -4,5 +4,4 @@ Search by Name or by address.  Name search be a contains search. address search 
 
 working: finish backend data and geo search. need to work on map view. Or perhaps don't need map on this page?
 
-2. upgrade to gwt 2.0
-3. Address bug when creating map and starting over.
+2. After searching and clicking on a neighborhood, need to switch to neighborhood context somehow.

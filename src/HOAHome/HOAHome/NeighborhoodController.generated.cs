@@ -22,10 +22,7 @@ using T4MVC;
 namespace HOAHome.Controllers {
     public partial class NeighborhoodController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public NeighborhoodController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected NeighborhoodController(Dummy d) { }
+        protected NeighborhoodController(Dummy d):this() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -35,28 +32,13 @@ namespace HOAHome.Controllers {
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ViewResult Locate() {
-            return new T4MVC_ViewResult(Area, Name, ActionNames.Locate);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Details() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public System.Web.Mvc.ActionResult Edit() {
             return new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult Delete() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public System.Web.Mvc.ActionResult CreateChild() {
-            return new T4MVC_ActionResult(Area, Name, ActionNames.CreateChild);
+        public System.Web.Mvc.ActionResult Details() {
+            return new T4MVC_ActionResult(Area, Name, ActionNames.Details);
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -72,12 +54,10 @@ namespace HOAHome.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Create = "Create";
-            public readonly string Locate = "Locate";
-            public readonly string Details = "Details";
+            public readonly string Index = "Index";
             public readonly string Edit = "Edit";
-            public readonly string Delete = "Delete";
+            public readonly string Details = "Details";
             public readonly string List = "List";
-            public readonly string CreateChild = "CreateChild";
         }
 
 
@@ -103,15 +83,8 @@ namespace HOAHome.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ViewResult Locate(string searchString) {
-            var callInfo = new T4MVC_ViewResult(Area, Name, ActionNames.Locate);
-            callInfo.RouteValueDictionary.Add("searchString", searchString);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult Details(System.Guid id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
-            callInfo.RouteValueDictionary.Add("id", id);
+        public override System.Web.Mvc.ViewResult Index() {
+            var callInfo = new T4MVC_ViewResult(Area, Name, ActionNames.Index);
             return callInfo;
         }
 
@@ -126,33 +99,20 @@ namespace HOAHome.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult Delete(System.Guid id) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Delete);
-            callInfo.RouteValueDictionary.Add("id", id);
-            return callInfo;
-        }
-
-        public override System.Web.Mvc.ActionResult List() {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.List);
-            return callInfo;
-        }
-
         public override System.Web.Mvc.ActionResult Edit(HOAHome.Models.Neighborhood entity) {
             var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Edit);
             callInfo.RouteValueDictionary.Add("entity", entity);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult CreateChild(System.Guid parentId) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateChild);
-            callInfo.RouteValueDictionary.Add("parentId", parentId);
+        public override System.Web.Mvc.ActionResult Details(System.Guid id) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.Details);
+            callInfo.RouteValueDictionary.Add("id", id);
             return callInfo;
         }
 
-        public override System.Web.Mvc.ActionResult CreateChild(System.Guid parentId, HOAHome.Models.Neighborhood entity) {
-            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.CreateChild);
-            callInfo.RouteValueDictionary.Add("parentId", parentId);
-            callInfo.RouteValueDictionary.Add("entity", entity);
+        public override System.Web.Mvc.ActionResult List() {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.List);
             return callInfo;
         }
 

@@ -12,11 +12,9 @@
         <fieldset style="width:260px;float:left">
          <legend>Find a Neighborhood</legend>
             <p>
-                Search by<br />
-                <label for="Name">Name:</label> <%= Html.TextBox("name")%><br />
-                OR<br />
-                <label for="Address">Address:</label> <%= Html.TextBox("address")%>
-            </p>
+                Search by name or address<br />
+                <label for="Name">Search:</label> <%= Html.TextBox("search")%><br />
+           </p>
             <p>
                 <input type="submit" value="Search" />
              </p>

@@ -22,6 +22,11 @@ using HOAHome.Code.EntityFramework;
 [assembly: EdmRelationshipAttribute("COHHomeModel", "FK_UserHome_AppUser", "AppUser", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(HOAHome.Models.AppUser), "UserHome", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.UserHome), true)]
 [assembly: EdmRelationshipAttribute("COHHomeModel", "FK_UserHome_Home", "Home", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(HOAHome.Models.Home), "UserHome", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.UserHome), true)]
 [assembly: EdmRelationshipAttribute("COHHomeModel", "FK_Neighborhood_AppUser", "AppUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.AppUser), "Neighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.Neighborhood), true)]
+[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_Content_ContentType", "ContentType", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(HOAHome.Models.ContentType), "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.Content), true)]
+[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_Content_Neighborhood", "Neighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(HOAHome.Models.Neighborhood), "Content", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.Content), true)]
+[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_UserNeighborHood_AppUser", "AppUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.AppUser), "UserNeighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.UserNeighborhood), true)]
+[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_UserNeighborHood_Neighborhood", "Neighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.Neighborhood), "UserNeighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.UserNeighborhood), true)]
+[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_UserNeighborHood_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.Role), "UserNeighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.UserNeighborhood), true)]
 
 #endregion
 
@@ -136,6 +141,70 @@ namespace HOAHome.Models
             }
         }
         private ObjectSet<UserHome> _UserHomes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Content> Contents
+        {
+            get
+            {
+                if ((_Contents == null))
+                {
+                    _Contents = base.CreateObjectSet<Content>("Contents");
+                }
+                return _Contents;
+            }
+        }
+        private ObjectSet<Content> _Contents;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ContentType> ContentTypes
+        {
+            get
+            {
+                if ((_ContentTypes == null))
+                {
+                    _ContentTypes = base.CreateObjectSet<ContentType>("ContentTypes");
+                }
+                return _ContentTypes;
+            }
+        }
+        private ObjectSet<ContentType> _ContentTypes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Role> Roles
+        {
+            get
+            {
+                if ((_Roles == null))
+                {
+                    _Roles = base.CreateObjectSet<Role>("Roles");
+                }
+                return _Roles;
+            }
+        }
+        private ObjectSet<Role> _Roles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<UserNeighborhood> UserNeighborhoods
+        {
+            get
+            {
+                if ((_UserNeighborhoods == null))
+                {
+                    _UserNeighborhoods = base.CreateObjectSet<UserNeighborhood>("UserNeighborhoods");
+                }
+                return _UserNeighborhoods;
+            }
+        }
+        private ObjectSet<UserNeighborhood> _UserNeighborhoods;
 
         #endregion
         #region AddTo Methods
@@ -170,6 +239,38 @@ namespace HOAHome.Models
         public void AddToUserHomes(UserHome userHome)
         {
             base.AddObject("UserHomes", userHome);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Contents EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToContents(Content content)
+        {
+            base.AddObject("Contents", content);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ContentTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToContentTypes(ContentType contentType)
+        {
+            base.AddObject("ContentTypes", contentType);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Roles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToRoles(Role role)
+        {
+            base.AddObject("Roles", role);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the UserNeighborhoods EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUserNeighborhoods(UserNeighborhood userNeighborhood)
+        {
+            base.AddObject("UserNeighborhoods", userNeighborhood);
         }
 
         #endregion
@@ -597,6 +698,338 @@ namespace HOAHome.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Neighborhood>("COHHomeModel.FK_Neighborhood_AppUser", "Neighborhood", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_UserNeighborHood_AppUser", "UserNeighborhood")]
+        public EntityCollection<UserNeighborhood> UserNeighborhoods
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_AppUser", "UserNeighborhood");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_AppUser", "UserNeighborhood", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="Content")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Content : EntityObject, IEntity 
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Content object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static Content CreateContent(global::System.Guid id)
+        {
+            Content content = new Content();
+            content.Id = id;
+            return content;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id = Guid.NewGuid();
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> ContentTypeId
+        {
+            get
+            {
+                return _ContentTypeId;
+            }
+            set
+            {
+                OnContentTypeIdChanging(value);
+                ReportPropertyChanging("ContentTypeId");
+                _ContentTypeId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ContentTypeId");
+                OnContentTypeIdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _ContentTypeId;
+        partial void OnContentTypeIdChanging(Nullable<global::System.Guid> value);
+        partial void OnContentTypeIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Guid> NeighborhoodId
+        {
+            get
+            {
+                return _NeighborhoodId;
+            }
+            set
+            {
+                OnNeighborhoodIdChanging(value);
+                ReportPropertyChanging("NeighborhoodId");
+                _NeighborhoodId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NeighborhoodId");
+                OnNeighborhoodIdChanged();
+            }
+        }
+        private Nullable<global::System.Guid> _NeighborhoodId;
+        partial void OnNeighborhoodIdChanging(Nullable<global::System.Guid> value);
+        partial void OnNeighborhoodIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_Content_ContentType", "ContentType")]
+        public ContentType ContentType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ContentType>("COHHomeModel.FK_Content_ContentType", "ContentType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ContentType>("COHHomeModel.FK_Content_ContentType", "ContentType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ContentType> ContentTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ContentType>("COHHomeModel.FK_Content_ContentType", "ContentType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ContentType>("COHHomeModel.FK_Content_ContentType", "ContentType", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_Content_Neighborhood", "Neighborhood")]
+        public Neighborhood Neighborhood
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_Content_Neighborhood", "Neighborhood").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_Content_Neighborhood", "Neighborhood").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Neighborhood> NeighborhoodReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_Content_Neighborhood", "Neighborhood");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Neighborhood>("COHHomeModel.FK_Content_Neighborhood", "Neighborhood", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="ContentType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ContentType : EntityObject, IEntity 
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ContentType object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        public static ContentType CreateContentType(global::System.Guid id)
+        {
+            ContentType contentType = new ContentType();
+            contentType.Id = id;
+            return contentType;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id = Guid.NewGuid();
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_Content_ContentType", "Content")]
+        public EntityCollection<Content> Contents
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Content>("COHHomeModel.FK_Content_ContentType", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Content>("COHHomeModel.FK_Content_ContentType", "Content", value);
                 }
             }
         }
@@ -1066,6 +1499,156 @@ namespace HOAHome.Models
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_Content_Neighborhood", "Content")]
+        public EntityCollection<Content> Contents
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Content>("COHHomeModel.FK_Content_Neighborhood", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Content>("COHHomeModel.FK_Content_Neighborhood", "Content", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_UserNeighborHood_Neighborhood", "UserNeighborhood")]
+        public EntityCollection<UserNeighborhood> UserNeighborhoods
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "UserNeighborhood");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "UserNeighborhood", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="Role")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Role : EntityObject, IEntity 
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Role object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Role CreateRole(global::System.Guid id, global::System.String name)
+        {
+            Role role = new Role();
+            role.Id = id;
+            role.Name = name;
+            return role;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id = Guid.NewGuid();
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_UserNeighborHood_Role", "UserNeighborhood")]
+        public EntityCollection<UserNeighborhood> UserNeighborhoods
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_Role", "UserNeighborhood");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_Role", "UserNeighborhood", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -1293,6 +1876,256 @@ namespace HOAHome.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Home>("COHHomeModel.FK_UserHome_Home", "Home", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="UserNeighborhood")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class UserNeighborhood : EntityObject, IEntity 
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new UserNeighborhood object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="userId">Initial value of the UserId property.</param>
+        /// <param name="neighborhoodId">Initial value of the NeighborhoodId property.</param>
+        /// <param name="roleId">Initial value of the RoleId property.</param>
+        public static UserNeighborhood CreateUserNeighborhood(global::System.Guid id, global::System.Guid userId, global::System.Guid neighborhoodId, global::System.Guid roleId)
+        {
+            UserNeighborhood userNeighborhood = new UserNeighborhood();
+            userNeighborhood.Id = id;
+            userNeighborhood.UserId = userId;
+            userNeighborhood.NeighborhoodId = neighborhoodId;
+            userNeighborhood.RoleId = roleId;
+            return userNeighborhood;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id = Guid.NewGuid();
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid UserId
+        {
+            get
+            {
+                return _UserId;
+            }
+            set
+            {
+                OnUserIdChanging(value);
+                ReportPropertyChanging("UserId");
+                _UserId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("UserId");
+                OnUserIdChanged();
+            }
+        }
+        private global::System.Guid _UserId;
+        partial void OnUserIdChanging(global::System.Guid value);
+        partial void OnUserIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid NeighborhoodId
+        {
+            get
+            {
+                return _NeighborhoodId;
+            }
+            set
+            {
+                OnNeighborhoodIdChanging(value);
+                ReportPropertyChanging("NeighborhoodId");
+                _NeighborhoodId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NeighborhoodId");
+                OnNeighborhoodIdChanged();
+            }
+        }
+        private global::System.Guid _NeighborhoodId;
+        partial void OnNeighborhoodIdChanging(global::System.Guid value);
+        partial void OnNeighborhoodIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid RoleId
+        {
+            get
+            {
+                return _RoleId;
+            }
+            set
+            {
+                OnRoleIdChanging(value);
+                ReportPropertyChanging("RoleId");
+                _RoleId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("RoleId");
+                OnRoleIdChanged();
+            }
+        }
+        private global::System.Guid _RoleId;
+        partial void OnRoleIdChanging(global::System.Guid value);
+        partial void OnRoleIdChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_UserNeighborHood_AppUser", "AppUser")]
+        public AppUser AppUser
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_UserNeighborHood_AppUser", "AppUser").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_UserNeighborHood_AppUser", "AppUser").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AppUser> AppUserReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_UserNeighborHood_AppUser", "AppUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AppUser>("COHHomeModel.FK_UserNeighborHood_AppUser", "AppUser", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_UserNeighborHood_Neighborhood", "Neighborhood")]
+        public Neighborhood Neighborhood
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "Neighborhood").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "Neighborhood").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Neighborhood> NeighborhoodReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "Neighborhood");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Neighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "Neighborhood", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_UserNeighborHood_Role", "Role")]
+        public Role Role
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("COHHomeModel.FK_UserNeighborHood_Role", "Role").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("COHHomeModel.FK_UserNeighborHood_Role", "Role").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Role> RoleReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Role>("COHHomeModel.FK_UserNeighborHood_Role", "Role");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Role>("COHHomeModel.FK_UserNeighborHood_Role", "Role", value);
                 }
             }
         }

@@ -4,5 +4,6 @@
 </asp:Content>
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
     Welcome to brays village
+    <%=this.ViewData["id"] %>
 </asp:Content>
 

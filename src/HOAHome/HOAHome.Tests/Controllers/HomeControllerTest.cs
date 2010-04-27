@@ -130,19 +130,22 @@ namespace HOAHome.Tests.Controllers
 
             // Arrange
             var fakeRepository = new FakeRepositoryFactory();
-            HomeController controller = new HomeController(fakeRepository, null);
-            HomeController.SearchCriteria criteria = new HomeController.SearchCriteria();
-            criteria.Name = "Brays";
-            fakeRepository.MockNeighborhoodRepository.Setup(n => n.FindBySimilarName(criteria.Name)).Returns(new List<Neighborhood>{new Neighborhood{Name="Brays Village"}});
-
+            var mockMapServer = new Mock<IMapDataService>();
+            HomeController controller = new HomeController(fakeRepository, mockMapServer.Object);
+            //HomeController.SearchCriteria criteria = new HomeController.SearchCriteria();
+            //criteria.Name = "Brays";
+            string search = "Brays";
+            fakeRepository.MockNeighborhoodRepository.Setup(n => n.FindBySimilarName(search)).Returns(new List<Neighborhood>{new Neighborhood{Name="Brays Village"}});
+            mockMapServer.Setup(m => m.GeoCodeAddress(search)).Returns(new List<Point>());
             // Act
-            ViewResult result = controller.DisplaySearchResults(criteria) as ViewResult;
+            ViewResult result = controller.DisplaySearchResults(search) as ViewResult;
 
             var resultList = result.ViewData.Model as IList<Models.Neighborhood>;
 
             // Assert
             Assert.IsNotNull(resultList);
             Assert.AreEqual("Brays Village",resultList[0].Name);
+            //Assert.AreEqual("DisplaySearchResults", result.ViewName);
         }
 
 
@@ -158,6 +161,8 @@ namespace HOAHome.Tests.Controllers
                                      {new Point {Longitude = 1, Latitude = 2}, new Point {Longitude = 3, Latitude = 4}};
 
             mockMapServer.Setup(m => m.GeoCodeAddress(address)).Returns(geoCodedPoints);
+            fakeRepository.MockNeighborhoodRepository.Setup(n => n.FindBySimilarName(address)).Returns(new List<Neighborhood>());
+          
             fakeRepository.MockNeighborhoodRepository.Setup(n => n.FindNearPoint(geoCodedPoints[0])).Returns(
                 new List<Neighborhood>() {new Neighborhood() {Name = "FirstOne"}});
             fakeRepository.MockNeighborhoodRepository.Setup(n => n.FindNearPoint(geoCodedPoints[1])).Returns(
@@ -166,11 +171,11 @@ namespace HOAHome.Tests.Controllers
 
             
             HomeController controller = new HomeController(fakeRepository, mockMapServer.Object);
-            HomeController.SearchCriteria criteria = new HomeController.SearchCriteria();
-            criteria.Address = address;
+            //HomeController.SearchCriteria criteria = new HomeController.SearchCriteria();
+            //criteria.Address = address;
 
             // Act
-            ViewResult result = controller.DisplaySearchResults(criteria) as ViewResult;
+            ViewResult result = controller.DisplaySearchResults(address) as ViewResult;
 
             var resultList = result.ViewData.Model as IList<Models.Neighborhood>;
 

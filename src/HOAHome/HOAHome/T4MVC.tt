@@ -275,7 +275,7 @@ namespace <#=controller.Namespace #> {
 
 <#} #>
         [<#= GeneratedCode #>, DebuggerNonUserCode]
-        protected <#=controller.ClassName #>(Dummy d) { }
+        protected <#=controller.ClassName #>(Dummy d):this() { }
 
         [<#= GeneratedCode #>, DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {

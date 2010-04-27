@@ -13,45 +13,76 @@ using Google.GData.Client;
 using DotNetOpenAuth.ApplicationBlock;
 using Google.GData.Contacts;
 using Google.Contacts;
+using HOAHome.Code.EntityFramework;
 using HOAHome.Code.Mvc;
+using HOAHome.Code.Rules.Services;
 using HOAHome.Models;
 using GeoCoding.Services;
 using GeoCoding.Services.Google;
+using HOAHome.Repositories;
 
 namespace HOAHome.Controllers
 {
-    public partial class NeighborhoodController : CustomController<Neighborhood>
+    public partial class NeighborhoodController : RepositoryController<INeighborhoodRepository, Neighborhood>
     {
-        public override ActionResult Create(Neighborhood entity)
+        public NeighborhoodController()
+            : base(new NeighborhoodRepository(new PersistanceFramework(new COHHomeEntities())))
         {
-            entity.PrimaryContactId = HOAHome.Code.Security.Identity.Current.Id;
-            return base.Create(entity);
+        }
+        public NeighborhoodController(INeighborhoodRepository repository)
+            : base(repository)
+        {
         }
 
-        protected override void Validate(CustomController<Neighborhood>.ActionType actionType, Neighborhood entity)
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual ActionResult Create([Bind(Exclude = "Id")]Neighborhood entity)
         {
-            var existingCount = this.Persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name == entity.Name).Count();
-            if (existingCount > 0)
+            this.Repository.CreateNew(entity, HOAHome.Code.Security.Identity.Current.Id);
+            entity.Rules.AddErrorsToModelState(this.ModelState, this.Repository);
+            if (this.ModelState.IsValid)
             {
-                this.ModelState.AddModelError("Name", string.Format("The neighborhood name, {0}, is already in the system. Please pick another one", entity.Name));
-            }
-            base.Validate(actionType, entity);
-        }
-
-        protected override ActionResult GetInitialResult(CustomController<Neighborhood>.ActionType type, Neighborhood entity)
-        {
-            if (type == ActionType.Edit) {
+                this.Repository.SaveChanges();
+                return this.RedirectToAction("Details", new {entity.Id});
+            } else
+            {
                 return this.View("Create");
             }
-            return base.GetInitialResult(type, entity);
         }
 
-        public virtual ViewResult Locate(string searchString)
-        {
+        //protected override void Validate(CustomController<Neighborhood>.ActionType actionType, Neighborhood entity)
+        //{
+        //    var existingCount = this.Persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name == entity.Name).Count();
+        //    if (existingCount > 0)
+        //    {
+        //        this.ModelState.AddModelError("Name", string.Format("The neighborhood name, {0}, is already in the system. Please pick another one", entity.Name));
+        //    }
+        //    base.Validate(actionType, entity);
+        //}
 
-            //TODO: I don't think this is used yet?
-            IGeoCoder geoCoder = new GoogleGeoCoder(Configuration.GoogleApiKey);
+        //protected override ActionResult GetInitialResult(CustomController<Neighborhood>.ActionType type, Neighborhood entity)
+        //{
+        //    if (type == ActionType.Edit) {
+        //        return this.View("Create");
+        //    }
+        //    return base.GetInitialResult(type, entity);
+        //}
+
+        //public virtual ViewResult Locate(string searchString)
+        //{
+
+        //    //TODO: I don't think this is used yet?
+        //    IGeoCoder geoCoder = new GoogleGeoCoder(Configuration.GoogleApiKey);
+        //    return View();
+        //}
+
+        public virtual ViewResult Index()
+        {
+            //this.ControllerContext.RouteData.
+            this.ViewData.Add("id", this.ControllerContext.RouteData.Values["nhid"]);
             return View();
         }
+
     }
 }

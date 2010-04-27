@@ -22,7 +22,7 @@ using T4MVC;
 namespace HOAHome.Controllers {
     public partial class HomeController {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected HomeController(Dummy d) { }
+        protected HomeController(Dummy d):this() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result) {
@@ -78,7 +78,11 @@ namespace HOAHome.Controllers {
             return callInfo;
         }
 
-        
+        public override System.Web.Mvc.ActionResult DisplaySearchResults(string search) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.DisplaySearchResults);
+            callInfo.RouteValueDictionary.Add("search", search);
+            return callInfo;
+        }
 
     }
 }

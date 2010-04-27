@@ -3,25 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using HOAHome.Code.EntityFramework;
+using HOAHome.Code.Rules.Services;
 using HOAHome.Models;
 
 namespace HOAHome.Repositories
 {
-    public class NeighborhoodRepository : INeighborhoodRepository
+    public class NeighborhoodRepository : RepositoryBase<Neighborhood>, INeighborhoodRepository, IAlreadyExistService
     {
-        private IPersistanceFramework _persistance;
-
-        public NeighborhoodRepository(IPersistanceFramework persistance)
+        public NeighborhoodRepository(IPersistanceFramework persistance) : base(persistance)
         {
-            _persistance = persistance;
         }
+
+        public Neighborhood CreateNew(Neighborhood newNeighborhood, Guid userIdThatCreatedNeighborhood)
+        {
+            if (newNeighborhood.PrimaryContactId == Guid.Empty)
+            {
+                newNeighborhood.PrimaryContactId = userIdThatCreatedNeighborhood;
+            }
+            this.Persistance.AttachNew(newNeighborhood);
+            UserNeighborhood userNeighborhood = new UserNeighborhood();
+            userNeighborhood.Neighborhood = newNeighborhood;
+            userNeighborhood.UserId = userIdThatCreatedNeighborhood;
+            userNeighborhood.RoleId = Role.Administrator.Id;
+            this.Persistance.AttachNew(userNeighborhood);
+            return newNeighborhood;
+        }
+
+       public bool DoesAnotherNeighborhoodWithNameExist(Guid notId, string name)
+       {
+           return this.Persistance.CreateQueryContext<Neighborhood>().Where(n => n.Id != notId && n.Name == name).Count()>0;
+       }
+
 
         //public IList<Neighborhood> Search(SearchCriteria criteria)
         //{
         //    var results = new List<Neighborhood>();
         //    if (!string.IsNullOrEmpty(criteria.Name))
         //    {
-        //        results.AddRange(this._persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name.Contains(criteria.Name)));
+        //        results.AddRange(this.Persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name.Contains(criteria.Name)));
         //    }
 
         //    if (!string.IsNullOrEmpty(criteria.Address))
@@ -37,18 +56,18 @@ namespace HOAHome.Repositories
         public IList<Neighborhood> FindBySimilarName(string name)
         {
             var results = new List<Neighborhood>();
-            results.AddRange(this._persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name.Contains(name)));
+            results.AddRange(this.Persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name.Contains(name)));
             return results.AsReadOnly();
         }
         /// <summary>
-        /// Find Nieghborhoods less that 5km from point
+        /// Find Neighborhoods less that 5km from point
         /// </summary>
         /// <param name="point"></param>
         /// <returns></returns>
         public IList<Neighborhood> FindNearPoint(Point point)
         {
             var results = new List<Neighborhood>();
-            results.AddRange(this._persistance.ExecuteStoreQuery<Neighborhood>(
+            results.AddRange(this.Persistance.ExecuteStoreQuery<Neighborhood>(
                 string.Format(
                 "SELECT * FROM Neighborhood WHERE geography::STGeomFromText('POINT({0} {1})', 4326).STDistance(Geo) < 5000",
                 point.Longitude, point.Latitude)));
@@ -56,5 +75,14 @@ namespace HOAHome.Repositories
         }
 
 
+
+        bool IAlreadyExistService.Exist(Guid notId, string fieldName, object value)
+        {
+            if (fieldName == "Name")
+            {
+                return this.DoesAnotherNeighborhoodWithNameExist(notId, value.ToString());
+            }
+            throw new InvalidOperationException("Don't know how to find unique on other columns");
+        }
     }
 }

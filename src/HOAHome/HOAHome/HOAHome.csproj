@@ -150,8 +150,17 @@
     <Compile Include="Code\Mvc\IPersistanceContainer.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Code\Mvc\RepositoryController.cs" />
     <Compile Include="Code\OAuthRequest.cs" />
     <Compile Include="Code\OAuthRequestFactory.cs" />
+    <Compile Include="Code\Rules\IEntityWithRules.cs" />
+    <Compile Include="Code\Rules\IRule.cs" />
+    <Compile Include="Code\Rules\IValidatableRegardingPersistence.cs" />
+    <Compile Include="Code\Rules\RuleSet.cs" />
+    <Compile Include="Code\Rules\IRuleThatNeedsServices.cs" />
+    <Compile Include="Code\Rules\Services\AlreadyExistService.cs" />
+    <Compile Include="Code\Rules\Services\IAlreadyExistService.cs" />
+    <Compile Include="Code\Rules\UniqueFieldRule.cs" />
     <Compile Include="Code\Security\Identity.cs" />
     <Compile Include="Code\State.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -182,15 +191,18 @@
     <Compile Include="Models\Custom\AppUser.cs" />
     <Compile Include="Models\Custom\COHHomeEntities.cs" />
     <Compile Include="Models\Custom\Neighborhood.cs" />
+    <Compile Include="Models\Custom\Role.cs" />
     <Compile Include="Models\Custom\UserHome.cs" />
     <Compile Include="NeighborhoodController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IRepositoryBase.cs" />
     <Compile Include="Repositories\Point.cs" />
     <Compile Include="Repositories\INeighborhoodRepository.cs" />
     <Compile Include="Repositories\IRepositoryFactory.cs" />
     <Compile Include="Repositories\NeighborhoodRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\RepositoryFactory.cs" />
     <Compile Include="Services\GisService.cs" />
     <Compile Include="Services\HoaService.cs" />
@@ -262,7 +274,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="gwt\" />
+    <Folder Include="Diagrams\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\NeighborHood.Master" />
