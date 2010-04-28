@@ -17,6 +17,9 @@ INSERT INTO Role (Id, Name) VALUES ('EC5FE847-90D9-4DE4-BF49-503EC4CEC8D5','Admi
 INSERT INTO Role (Id, Name) VALUES ('8487A6E8-2857-4320-9936-B14A25D22410','Member');
 
 
+--Content Type
+INSERT INTO ContentType (Id, Name) VALUES ('49DEE62E-D6C1-4322-BD79-ADB350540AFB','HomePageMain')
+
 
 INSERT INTO [AppUser] ([Id],[Email],[FirstName],[LastName],[DisplayName],[GoogleId],[AccessToken],[AccessTokenSecret],[LastLogin],[CompletedRegistration],[CreatedBy],[CreatedDate],[ModifiedBy],[ModifiedDate])VALUES('F421D52D-C47F-4D0E-AB9D-7CD85D8EC6B4','hankbeasleymail@gmail.com','Hank','Beasley','Beasley, Hank','https://www.google.com/accounts/o8/id?id=AItOawnDYrc6ZaxYrBHE1Vu-l2zYt_M11tZd0zs','1/Sj1JpvEF8kwTnhICj6Nfm-j-72cWCxm8LIwxBnWXHHM','izGUJ0nqNEFfQIGu4Y/9fBBF','Apr 24 2010  4:46:19:957PM',0,'021e34c9-5d15-43c5-9429-282fecef4e34','Apr 24 2010  4:46:19:957PM','021e34c9-5d15-43c5-9429-282fecef4e34','Apr 24 2010  4:46:19:957PM')
 

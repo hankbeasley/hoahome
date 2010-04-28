@@ -60,6 +60,7 @@ public class DrawNeighborhood implements EntryPoint {
 			
 			@Override
 			public void onClick(ClickEvent event) {
+				//ThisIsAJavascriptmethod();
 				Geocoder geocoder = new Geocoder();
 				geocoder.getLocations(searchBox.getValue(), new LocationCallback() {
 					
@@ -259,7 +260,7 @@ public class DrawNeighborhood implements EntryPoint {
 	      }
 	    });
 	    
-	    
+	   
 	  }
 
 }

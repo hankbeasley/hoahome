@@ -13,6 +13,7 @@ using Google.GData.Client;
 using DotNetOpenAuth.ApplicationBlock;
 using Google.GData.Contacts;
 using Google.Contacts;
+using HOAHome.Code.ContentManagement;
 using HOAHome.Code.EntityFramework;
 using HOAHome.Code.Mvc;
 using HOAHome.Code.Rules.Services;
@@ -26,14 +27,29 @@ namespace HOAHome.Controllers
     public partial class NeighborhoodController : RepositoryController<INeighborhoodRepository, Neighborhood>
     {
         public NeighborhoodController()
-            : base(new NeighborhoodRepository(new PersistanceFramework(new COHHomeEntities())))
+            : this(new NeighborhoodRepository(new PersistanceFramework(new COHHomeEntities())))
         {
         }
         public NeighborhoodController(INeighborhoodRepository repository)
             : base(repository)
         {
+            
+        }
+        private ContentRepository ContentRepository
+        {
+            get
+            {
+                if (this._contentRepository == null)
+                {
+                    this._contentRepository =
+                   new ContentRepository(new Guid(this.ControllerContext.RouteData.Values["nhid"].ToString()),
+                                         new PersistanceFramework(new COHHomeEntities()));
+                }
+                return this._contentRepository;
+            }
         }
 
+        private ContentRepository _contentRepository;
 
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -81,6 +97,9 @@ namespace HOAHome.Controllers
         {
             //this.ControllerContext.RouteData.
             this.ViewData.Add("id", this.ControllerContext.RouteData.Values["nhid"]);
+            var bundle = new ContentBundle();
+            bundle.Add(ContentType.HomePageMain.Id, this.ContentRepository.GetContent(ContentType.HomePageMain));
+            this.ViewData.Add(typeof(ContentBundle).Name, bundle);
             return View();
         }
 

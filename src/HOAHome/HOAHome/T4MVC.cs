@@ -23,6 +23,7 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC {
     public static HOAHome.Controllers.AccountController Account = new HOAHome.Controllers.T4MVC_AccountController();
+    public static HOAHome.Controllers.ContentController Content = new HOAHome.Controllers.T4MVC_ContentController();
     public static HOAHome.Controllers.DevelopmentController Development = new HOAHome.Controllers.T4MVC_DevelopmentController();
     public static HOAHome.Controllers.DirectorController Director = new HOAHome.Controllers.T4MVC_DirectorController();
     public static HOAHome.Controllers.HomeController Home = new HOAHome.Controllers.T4MVC_HomeController();

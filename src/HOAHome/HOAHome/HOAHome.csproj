@@ -121,6 +121,8 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Code\Configuration.cs" />
+    <Compile Include="Code\ContentManagement\ContentBundle.cs" />
+    <Compile Include="Code\ContentManagement\HtmlHelperExtensions.cs" />
     <Compile Include="Code\EntityFramework\IAuditable.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -163,7 +165,11 @@
     <Compile Include="Code\Rules\UniqueFieldRule.cs" />
     <Compile Include="Code\Security\Identity.cs" />
     <Compile Include="Code\State.cs" />
+    <Compile Include="ContentController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\DevelopmentController.cs" />
     <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -190,6 +196,7 @@
     </Compile>
     <Compile Include="Models\Custom\AppUser.cs" />
     <Compile Include="Models\Custom\COHHomeEntities.cs" />
+    <Compile Include="Models\Custom\ContentType.cs" />
     <Compile Include="Models\Custom\Neighborhood.cs" />
     <Compile Include="Models\Custom\Role.cs" />
     <Compile Include="Models\Custom\UserHome.cs" />
@@ -197,6 +204,7 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Code\ContentManagement\ContentRepository.cs" />
     <Compile Include="Repositories\IRepositoryBase.cs" />
     <Compile Include="Repositories\Point.cs" />
     <Compile Include="Repositories\INeighborhoodRepository.cs" />
