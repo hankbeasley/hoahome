@@ -9,4 +9,5 @@ _ReSharper*
 *.cache.*
 *.suo
 *.user
+*.dbmdl
 .gwt-tmp/

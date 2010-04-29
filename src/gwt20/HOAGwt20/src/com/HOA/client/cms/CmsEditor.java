@@ -10,6 +10,7 @@ import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.http.client.RequestBuilder.Method;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Grid;
@@ -18,8 +19,10 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CmsEditor extends DialogBox {
 	private RichTextArea area;
-
-	public CmsEditor(){
+	private ContentWidget contentWidget;
+	public CmsEditor(ContentWidget contentWidget){
+		this.contentWidget = contentWidget;
+		
 		VerticalPanel dialogVPanel = new VerticalPanel();
 		this.setText("Content Administration");
 		this.setAnimationEnabled(true);
@@ -32,6 +35,8 @@ public class CmsEditor extends DialogBox {
 		area = new RichTextArea();
 	    area.setSize("100%", "14em");
 	    area.setHeight("500px");
+	    area.setHTML(contentWidget.getHtmlContent());
+	    
 	    RichTextToolbar toolbar = new RichTextToolbar(area);
 	    toolbar.ensureDebugId("cwRichText-toolbar");
 	    toolbar.setWidth("100%");
@@ -66,6 +71,8 @@ public class CmsEditor extends DialogBox {
 		{
 			@Override
 			public void onClick(ClickEvent event) {
+				
+				
 				String url = "http://www.speedhq.com:81/nh/6b696dbe-616c-4421-9011-d080354977b6/Content/Update/49DEE62E-D6C1-4322-BD79-ADB350540AFB";
 				RequestBuilder request = new com.google.gwt.http.client.RequestBuilder(RequestBuilder.POST, url);
 				request.setHeader("Content-Type", "application/x-www-form-urlencoded"); 
@@ -74,13 +81,13 @@ public class CmsEditor extends DialogBox {
 					
 					@Override
 					public void onResponseReceived(Request request, Response response) {
-						// TODO Auto-generated method stub
-						
+						contentWidget.setHtmlContent(area.getHTML());
+						hide();
 					}
 					
 					@Override
 					public void onError(Request request, Throwable exception) {
-						// TODO Auto-generated method stub
+						Window.alert("Error saving content:" + exception.getMessage());
 						
 					}
 				});

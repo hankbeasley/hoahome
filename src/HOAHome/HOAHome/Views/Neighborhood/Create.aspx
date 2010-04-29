@@ -5,8 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-<%= Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.") %>s
+<%= Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.") %>
  <%using (this.Html.BeginForm())
       { %>
         <fieldset style="float:left">

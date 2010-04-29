@@ -4,6 +4,11 @@ Search by Name or by address.  Name search be a contains search. address search 
 
 working: finish backend data and geo search. need to work on map view. Or perhaps don't need map on this page?
 
-2. After searching and clicking on a neighborhood, need to switch to neighborhood context somehow. Done with new route
+2. After searching and clicking on a neighborhood, need to switch to neighborhood context somehow. Added a new route with nhid, seems to work 
+pretty well except links to other stuff such as user settings does not switch url without nhid
 
-3. Figure out how content management is going to work
+3. Figure out how content management is going to work. Content management is implement for neighborhood home. Is it need else where?
+
+4. Add security to site so that only administrators can admin neighbor content and only logged in people can create new neighborhoods
+
+5. Add ability to associate homes with neighborhood.
