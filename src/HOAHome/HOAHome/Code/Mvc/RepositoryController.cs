@@ -23,7 +23,7 @@ namespace HOAHome.Code.Mvc
         {
             this.Repository = repository;
         }
-
+        [Authorize]
         public virtual ActionResult Create()
         {
             return View();
@@ -33,7 +33,7 @@ namespace HOAHome.Code.Mvc
             this.ViewData.Model = this.Repository.Get(id);
             return this.View("Create");
         }
-
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult Edit(TE entity)
         {

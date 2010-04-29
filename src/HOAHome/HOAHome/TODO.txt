@@ -9,6 +9,6 @@ pretty well except links to other stuff such as user settings does not switch ur
 
 3. Figure out how content management is going to work. Content management is implement for neighborhood home. Is it need else where?
 
-4. Add security to site so that only administrators can admin neighbor content and only logged in people can create new neighborhoods
+4. Security has pretty much been implement. Need to finish Principle class
 
 5. Add ability to associate homes with neighborhood.

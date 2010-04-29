@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using HOAHome.Code.ContentManagement;
 using HOAHome.Code.EntityFramework;
+using HOAHome.Code.Mvc;
 using HOAHome.Models;
 
 namespace HOAHome.Controllers
@@ -26,6 +27,7 @@ namespace HOAHome.Controllers
         }
 
         private ContentRepository _contentRepository;
+        [NeighborhoodRole(NeighborhoodRoleName = "Administrator")]
         [ValidateInput(false)]
         public virtual ActionResult Update(Guid id, string content)
         {

@@ -51,7 +51,7 @@ namespace HOAHome.Controllers
 
         private ContentRepository _contentRepository;
 
-
+        [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult Create([Bind(Exclude = "Id")]Neighborhood entity)
         {

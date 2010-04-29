@@ -140,6 +140,7 @@
     <Compile Include="Code\Google\IMapDataService.cs" />
     <Compile Include="Code\Google\MapDataService.cs" />
     <Compile Include="Code\InMemoryTokenManager.cs" />
+    <Compile Include="Code\Mvc\NeighborhoodRoleAttribute.cs" />
     <Compile Include="Code\Mvc\CustomController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -164,6 +165,7 @@
     <Compile Include="Code\Rules\Services\IAlreadyExistService.cs" />
     <Compile Include="Code\Rules\UniqueFieldRule.cs" />
     <Compile Include="Code\Security\Identity.cs" />
+    <Compile Include="Code\Security\Principal.cs" />
     <Compile Include="Code\State.cs" />
     <Compile Include="ContentController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -205,6 +207,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Code\ContentManagement\ContentRepository.cs" />
+    <Compile Include="Repositories\AppUserRepository.cs" />
     <Compile Include="Repositories\IRepositoryBase.cs" />
     <Compile Include="Repositories\Point.cs" />
     <Compile Include="Repositories\INeighborhoodRepository.cs" />

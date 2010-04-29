@@ -20,8 +20,17 @@ namespace HOAHome.Code.ContentManagement
         private static string cmsbinding = @"<script>var cmsIds=""{0}"";</script>";
         public static string CmsEditorBinding(this HtmlHelper htmlHelper)
         {
+            Guid nhid = new Guid((String) htmlHelper.ViewContext.RouteData.Values["nhid"]);
+            bool isAdmin = htmlHelper.ViewContext.HttpContext.User.Identity.IsAuthenticated &&
+                Code.Security.Principal.IsUserInNeighborhoodRole(Code.Security.Identity.Current.Id, nhid,
+                                                                            Role.Administrator.Id);
             var bundle = (ContentBundle)htmlHelper.ViewData[ViewDataKey];
-            return string.Format(cmsbinding, string.Join(",",bundle.GetIds().Select(b=>b.ToString())));
+            string ids = string.Join(",", bundle.GetIds().Select(b => b.ToString()));
+            if (!isAdmin)
+            {
+                ids = string.Empty;
+            }
+            return string.Format(cmsbinding, ids);
         }
     }
 }

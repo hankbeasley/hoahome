@@ -17,8 +17,13 @@ namespace HOAHome.Code.ContentManagement
 
         public string GetContent(ContentType contentType)
         {
-            return this._persistance.CreateQueryContext<Content>().Where(
+            var content = this._persistance.CreateQueryContext<Content>().Where(
                 c => c.ContentTypeId == contentType.Id && c.NeighborhoodId == this._neighborhoodId).Select(c=>c.Text).FirstOrDefault();
+            if (content == null)
+            {
+                content = contentType.Name;
+            }
+            return content;
         }
 
         public void SetContent(Guid contentTypeId, string content)
