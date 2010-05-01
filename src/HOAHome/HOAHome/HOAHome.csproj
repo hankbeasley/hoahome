@@ -22,6 +22,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +33,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRunCodeAnalysis>True</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>True</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>True</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>True</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>True</CodeContractsRedundantAssumptions>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>True</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>True</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsPlatformPath />
+    <CodeContractsExtraAnalysisOptions>-maxWarnings 1000</CodeContractsExtraAnalysisOptions>
+    <CodeContractsBaseLineFile>..\..\baseline.xml</CodeContractsBaseLineFile>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -71,9 +93,6 @@
     <Reference Include="Google.GData.Contacts, Version=1.4.0.2, Culture=neutral, PublicKeyToken=7e065189dd4b982f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Google.GData.Contacts.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Contracts">
-      <HintPath>..\lib\Microsoft.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="MvcContrib">
       <HintPath>..\lib\MvcContrib.dll</HintPath>
@@ -208,6 +227,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Code\ContentManagement\ContentRepository.cs" />
     <Compile Include="Repositories\AppUserRepository.cs" />
+    <Compile Include="Repositories\HomeRepository.cs" />
+    <Compile Include="Repositories\IHomeRepository.cs" />
     <Compile Include="Repositories\IRepositoryBase.cs" />
     <Compile Include="Repositories\Point.cs" />
     <Compile Include="Repositories\INeighborhoodRepository.cs" />
@@ -243,11 +264,14 @@
     <Content Include="Views\Director\Financals.aspx" />
     <Content Include="Views\Director\Members.aspx" />
     <Content Include="Views\Home\DisplaySearchResults.aspx" />
+    <Content Include="Views\Neighborhood\AddHome.aspx" />
     <Content Include="Views\Neighborhood\Calendar.aspx" />
     <Content Include="Views\Neighborhood\Create.aspx" />
     <Content Include="Views\Neighborhood\Details.aspx" />
+    <Content Include="Views\Neighborhood\Homes.aspx" />
     <Content Include="Views\Neighborhood\Index.aspx" />
     <Content Include="Views\Neighborhood\List.aspx" />
+    <Content Include="Views\Shared\DisplayTemplates\Home.ascx" />
     <Content Include="Views\Shared\DisplayTemplates\UserHome.ascx" />
     <Content Include="Views\Shared\EditorTemplates\UserHome.ascx" />
     <Content Include="Views\UserHome\CreateChildByAddress.aspx" />

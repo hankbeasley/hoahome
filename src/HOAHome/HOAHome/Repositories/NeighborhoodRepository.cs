@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using HOAHome.Code.EntityFramework;
@@ -8,7 +9,7 @@ using HOAHome.Models;
 
 namespace HOAHome.Repositories
 {
-    public class NeighborhoodRepository : RepositoryBase<Neighborhood>, INeighborhoodRepository, IAlreadyExistService
+    public class NeighborhoodRepository : RepositoryBase<Neighborhood>, INeighborhoodRepository
     {
         public NeighborhoodRepository(IPersistanceFramework persistance) : base(persistance)
         {
@@ -34,7 +35,11 @@ namespace HOAHome.Repositories
            return this.Persistance.CreateQueryContext<Neighborhood>().Where(n => n.Id != notId && n.Name == name).Count()>0;
        }
 
-
+       public IList<Home> GetHomes(Guid neighborhoodId)
+       {
+           return this.Persistance.CreateQueryContext<Home>().Where(
+               h => h.NeighboorhoodHomes.Any(n => n.NeighborhoodId == neighborhoodId)).ToList();
+       }
         //public IList<Neighborhood> Search(SearchCriteria criteria)
         //{
         //    var results = new List<Neighborhood>();
@@ -83,6 +88,23 @@ namespace HOAHome.Repositories
                 return this.DoesAnotherNeighborhoodWithNameExist(notId, value.ToString());
             }
             throw new InvalidOperationException("Don't know how to find unique on other columns");
+        }
+
+
+        public void RemoveHome(Guid neighborhoodId, Guid homeId)
+        {
+            var neighboorhoodHome = this.Persistance.CreateQueryContext<NeighboorhoodHome>().Where(nh => nh.NeighborhoodId == neighborhoodId).Single();
+            Contract.Assume(neighboorhoodHome != null);
+            this.Persistance.Delete(neighboorhoodHome);
+        }
+
+
+        public NeighboorhoodHome AddHome(Guid neighborhoodId, Home home)
+        {
+            var neighborhoodHome = this.Persistance.Create<NeighboorhoodHome>();
+            neighborhoodHome.NeighborhoodId = neighborhoodId;
+            neighborhoodHome.HomeId = home.Id;
+            return neighborhoodHome;
         }
     }
 }

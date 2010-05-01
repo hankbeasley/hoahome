@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using DotNetOpenAuth.OAuth.ChannelElements;
@@ -10,7 +11,7 @@ namespace HOAHome.Code
 {
     public class InMemoryTokenManager : IConsumerTokenManager, IOpenIdOAuthTokenManager
     {
-        private Dictionary<string, string> tokensAndSecrets = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> tokensAndSecrets = new Dictionary<string, string>();
 
         public InMemoryTokenManager(string consumerKey, string consumerSecret)
         {
@@ -48,6 +49,8 @@ namespace HOAHome.Code
 
         public void StoreNewRequestToken(UnauthorizedTokenRequest request, ITokenSecretContainingMessage response)
         {
+            if (response == null) throw new ArgumentNullException("response");
+            // Contract.Requires(response != null);
             this.tokensAndSecrets[response.Token] = response.TokenSecret;
         }
 

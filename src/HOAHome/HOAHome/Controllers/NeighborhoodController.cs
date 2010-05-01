@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,14 +28,19 @@ namespace HOAHome.Controllers
     public partial class NeighborhoodController : RepositoryController<INeighborhoodRepository, Neighborhood>
     {
         public NeighborhoodController()
-            : this(new NeighborhoodRepository(new PersistanceFramework(new COHHomeEntities())))
-        {
-        }
-        public NeighborhoodController(INeighborhoodRepository repository)
-            : base(repository)
+            : this(new RepositoryFactory())
         {
             
         }
+
+        public NeighborhoodController(IRepositoryFactory repositoryFactory)
+            : base(repositoryFactory.Neighborhood)
+        {
+            _repositoryFactory = repositoryFactory;
+        }
+
+        private IRepositoryFactory _repositoryFactory;
+
         private ContentRepository ContentRepository
         {
             get
@@ -103,5 +109,64 @@ namespace HOAHome.Controllers
             return View();
         }
 
+        public virtual ViewResult Homes()
+        {
+            var homes = this.Repository.GetHomes(new Guid(this.ControllerContext.RouteData.Values["nhid"].ToString()));
+            return View(homes);
+        }
+        public virtual ViewResult AddHome()
+        {
+            return View();
+
+        }
+
+        private Guid GetNhId()
+        {
+            Contract.Ensures(Contract.Result<Guid>() != Guid.Empty);
+            string nhidText = (String) this.ControllerContext.RouteData.Values["nhid"];
+            if (nhidText == null)
+            {
+                throw new ApplicationException("Could not get routing value nhid");
+            }
+            var nhid = new Guid(nhidText);
+            if (nhid == Guid.Empty)
+            {
+                throw new ApplicationException("Invalid nhid");
+            }
+            Contract.Assume(nhid != Guid.Empty);
+            return nhid;
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public virtual RedirectToRouteResult AddHome(string addressFull, double latitude, double longitude)
+        {
+            Contract.Requires(addressFull != null, "addressFull cannot be null");
+            //Contract.Requires(latitude != 0.0);
+            //Contract.Requires(longitude != 0.0);
+            
+            var nhid = this.GetNhId();
+
+            var home= this._repositoryFactory.Home.GetOrCreateHome(addressFull, latitude, longitude);
+            this._repositoryFactory.Home.SaveChanges();
+
+            this._repositoryFactory.Neighborhood.AddHome(nhid, home);
+            this._repositoryFactory.Neighborhood.SaveChanges();
+
+            return this.RedirectToAction("Homes");
+        }
+
+        public virtual RedirectToRouteResult RemoveHome(Guid homeId)
+        {
+            Contract.Requires(homeId != Guid.Empty);
+
+            var nhid = this.GetNhId();
+            this._repositoryFactory.Neighborhood.RemoveHome(nhid,homeId);
+            this._repositoryFactory.Neighborhood.SaveChanges();
+
+            this._repositoryFactory.Home.DeleteIfNotAssociatedWithHomesOrNeighborHoods(homeId);
+            this._repositoryFactory.Home.SaveChanges();
+
+            return this.RedirectToAction("Homes");
+        }
     }
 }

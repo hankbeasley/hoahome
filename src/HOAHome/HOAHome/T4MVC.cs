@@ -188,6 +188,16 @@ public class T4MVC_ViewResult : System.Web.Mvc.ViewResult, IT4MVCActionResult {
     public string Action { get; set; }
     public RouteValueDictionary RouteValueDictionary { get; set; }
 }
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+public class T4MVC_RedirectToRouteResult : System.Web.Mvc.RedirectToRouteResult, IT4MVCActionResult {
+    public T4MVC_RedirectToRouteResult(string area, string controller, string action): base(" ", default(System.Web.Routing.RouteValueDictionary))  {
+        this.InitMVCT4Result(area, controller, action);
+    }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
 
 
 

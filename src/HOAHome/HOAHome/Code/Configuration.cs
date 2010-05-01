@@ -12,10 +12,11 @@ namespace HOAHome.Code
         {
             get
             {
+
                 return System.Configuration.ConfigurationManager.AppSettings["GoogleApiKey"];
             }
         }
 
-        public static string ConnectionString { get{return @"Data Source=localhost\MSSQLSERVER2008;Initial Catalog=COHHome;Integrated Security=True;MultipleActiveResultSets=True";}  }
+        public static string ConnectionString { get { return @"Data Source=localhost;Initial Catalog=HOAHomeDB;Integrated Security=True;MultipleActiveResultSets=True"; } }
     }
 }

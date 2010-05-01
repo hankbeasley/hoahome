@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -20,6 +21,7 @@ namespace HOAHome.Code.Rules
         //}
         public RuleSet(T entity, params IRule[] persistenceRelatedRules)
         {
+            Contract.Requires(persistenceRelatedRules != null);
             _entity = entity;
             _persistenceRelatedRules = new List<IRule>();
             this._persistenceRelatedRules.AddRange(persistenceRelatedRules);
@@ -69,13 +71,19 @@ namespace HOAHome.Code.Rules
 
         public void AddErrorsToModelState(ModelStateDictionary modelState, object service)
         {
+
             bool valid = this.ValidateAllRules(new Dictionary<Type, object> { { typeof(IAlreadyExistService), service } });
             if (!valid)
             {
                
                 foreach (var rule in this._brokenRules)
                 {
-                    modelState.AddModelError(rule.ParticipatingLogicalFields[0], rule.GetErrorMessage());
+                    string field = null;
+                    if (rule.ParticipatingLogicalFields.Length > 0)
+                    {
+                        field = rule.ParticipatingLogicalFields[0];
+                    }
+                    modelState.AddModelError(field, rule.GetErrorMessage());
                 }
             }
         }

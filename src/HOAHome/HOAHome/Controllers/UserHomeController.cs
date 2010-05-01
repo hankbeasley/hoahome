@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,6 +29,9 @@ namespace HOAHome.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult CreateChildByAddress(Guid parentId, [Bind(Exclude = "Id")] UserHome userHome, string addressFull, double latitude, double longitude)
         {
+            Contract.Requires(addressFull != null, "addressFull cannot be null");
+            //Contract.Requires(latitude != 0);
+            //Contract.Requires(longitude != 0);
 
             var home = this.Persistance.CreateQueryContext<Home>().Where(h => h.AddressFull == addressFull).FirstOrDefault();
             if (home == null)

@@ -12,8 +12,8 @@
   
         <%=this.Html.Hidden("Name") %>
         <%=this.Html.Hidden("addressFull")%>
-        <%=this.Html.Hidden("Latitude") %>
-        <%=this.Html.Hidden("Longitude") %>        
+        <%=this.Html.Hidden("latitude") %>
+        <%=this.Html.Hidden("longitude") %>        
     <% } %>
     <div id="map"></div>
     <div>

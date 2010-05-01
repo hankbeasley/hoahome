@@ -31,6 +31,7 @@ namespace T4MVC {
             static readonly _DisplayTemplates s_DisplayTemplates = new _DisplayTemplates();
             public _DisplayTemplates DisplayTemplates { get { return s_DisplayTemplates; } }
             public partial class _DisplayTemplates{
+                public readonly string Home = "~/Views/Shared/DisplayTemplates/Home.ascx";
                 public readonly string UserHome = "~/Views/Shared/DisplayTemplates/UserHome.ascx";
             }
             static readonly _EditorTemplates s_EditorTemplates = new _EditorTemplates();

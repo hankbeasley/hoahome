@@ -280,6 +280,27 @@ ALTER TABLE [dbo].[Home]
 
 
 GO
+PRINT N'Creating [dbo].[NeighboorhoodHome]...';
+
+
+GO
+CREATE TABLE [dbo].[NeighboorhoodHome] (
+    [Id]             UNIQUEIDENTIFIER NOT NULL,
+    [NeighborhoodId] UNIQUEIDENTIFIER NOT NULL,
+    [HomeId]         UNIQUEIDENTIFIER NOT NULL
+);
+
+
+GO
+PRINT N'Creating PK_NeighboorhoodHome...';
+
+
+GO
+ALTER TABLE [dbo].[NeighboorhoodHome]
+    ADD CONSTRAINT [PK_NeighboorhoodHome] PRIMARY KEY CLUSTERED ([Id] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF);
+
+
+GO
 PRINT N'Creating [dbo].[Neighborhood]...';
 
 
@@ -414,6 +435,24 @@ ALTER TABLE [dbo].[Content] WITH NOCHECK
 
 
 GO
+PRINT N'Creating FK_NeighboorhoodHome_Home...';
+
+
+GO
+ALTER TABLE [dbo].[NeighboorhoodHome] WITH NOCHECK
+    ADD CONSTRAINT [FK_NeighboorhoodHome_Home] FOREIGN KEY ([HomeId]) REFERENCES [dbo].[Home] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
+PRINT N'Creating FK_NeighboorhoodHome_Neighborhood...';
+
+
+GO
+ALTER TABLE [dbo].[NeighboorhoodHome] WITH NOCHECK
+    ADD CONSTRAINT [FK_NeighboorhoodHome_Neighborhood] FOREIGN KEY ([NeighborhoodId]) REFERENCES [dbo].[Neighborhood] ([Id]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+GO
 PRINT N'Creating FK_Neighborhood_AppUser...';
 
 
@@ -535,6 +574,10 @@ GO
 ALTER TABLE [dbo].[Content] WITH CHECK CHECK CONSTRAINT [FK_Content_ContentType];
 
 ALTER TABLE [dbo].[Content] WITH CHECK CHECK CONSTRAINT [FK_Content_Neighborhood];
+
+ALTER TABLE [dbo].[NeighboorhoodHome] WITH CHECK CHECK CONSTRAINT [FK_NeighboorhoodHome_Home];
+
+ALTER TABLE [dbo].[NeighboorhoodHome] WITH CHECK CHECK CONSTRAINT [FK_NeighboorhoodHome_Neighborhood];
 
 ALTER TABLE [dbo].[Neighborhood] WITH CHECK CHECK CONSTRAINT [FK_Neighborhood_AppUser];
 

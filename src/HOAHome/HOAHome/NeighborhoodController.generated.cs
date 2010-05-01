@@ -55,6 +55,8 @@ namespace HOAHome.Controllers {
         public class ActionNamesClass {
             public readonly string Create = "Create";
             public readonly string Index = "Index";
+            public readonly string Homes = "Homes";
+            public readonly string AddHome = "AddHome";
             public readonly string Edit = "Edit";
             public readonly string Details = "Details";
             public readonly string List = "List";
@@ -65,9 +67,11 @@ namespace HOAHome.Controllers {
         public ViewNames Views { get { return s_views; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
+            public readonly string AddHome = "~/Views/Neighborhood/AddHome.aspx";
             public readonly string Calendar = "~/Views/Neighborhood/Calendar.aspx";
             public readonly string Create = "~/Views/Neighborhood/Create.aspx";
             public readonly string Details = "~/Views/Neighborhood/Details.aspx";
+            public readonly string Homes = "~/Views/Neighborhood/Homes.aspx";
             public readonly string Index = "~/Views/Neighborhood/Index.aspx";
             public readonly string List = "~/Views/Neighborhood/List.aspx";
         }
@@ -85,6 +89,24 @@ namespace HOAHome.Controllers {
 
         public override System.Web.Mvc.ViewResult Index() {
             var callInfo = new T4MVC_ViewResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ViewResult Homes() {
+            var callInfo = new T4MVC_ViewResult(Area, Name, ActionNames.Homes);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.ViewResult AddHome() {
+            var callInfo = new T4MVC_ViewResult(Area, Name, ActionNames.AddHome);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.RedirectToRouteResult AddHome(string addressFull, double latitude, double longitude) {
+            var callInfo = new T4MVC_RedirectToRouteResult(Area, Name, ActionNames.AddHome);
+            callInfo.RouteValueDictionary.Add("addressFull", addressFull);
+            callInfo.RouteValueDictionary.Add("latitude", latitude);
+            callInfo.RouteValueDictionary.Add("longitude", longitude);
             return callInfo;
         }
 

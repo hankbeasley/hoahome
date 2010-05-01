@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,7 +8,7 @@ using HOAHome.Code.EntityFramework;
 
 namespace HOAHome.Code.Mvc
 {
-    public abstract class CustomController<T> : Controller, IPersistanceContainer where T : IEntity, new ()
+    public abstract class CustomController<T> : Controller, IPersistanceContainer where T : class, IEntity, new ()
     {
         protected IPersistanceFramework Persistance = new PersistanceFramework(new Models.COHHomeEntities());
 
@@ -23,6 +24,7 @@ namespace HOAHome.Code.Mvc
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult Create([Bind(Exclude = "Id")] T entity)
         {
+            Contract.Requires(entity != null);
             this.Validate(ActionType.Create, entity);
 
             if (this.ModelState.IsValid)
@@ -57,6 +59,7 @@ namespace HOAHome.Code.Mvc
 
         public virtual ActionResult Delete(Guid id)
         {
+            Contract.Requires(id != Guid.Empty);
             Persistance.Delete<T>(id);
             Persistance.SaveChanges();
             return GetCompletionResult(ActionType.Delete, new T());
@@ -107,6 +110,7 @@ namespace HOAHome.Code.Mvc
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult CreateChild(Guid parentId,[Bind(Exclude="Id")] T entity)
         {
+            Contract.Requires(entity != null);
             this.Persistance.AttachNew(entity);
             AssociateParent(parentId, entity);
             AdditionalBindings(entity, ActionType.Create);

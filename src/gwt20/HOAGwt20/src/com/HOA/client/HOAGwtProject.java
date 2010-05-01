@@ -11,6 +11,7 @@ import com.google.gwt.maps.client.geocode.Placemark;
 import com.google.gwt.maps.client.geom.LatLng;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DeferredCommand;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Grid;
@@ -25,12 +26,19 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-@MultipageEntryPoint(urlPattern = "UserHome/CreateChildByAddress.*")
+@MultipageEntryPoint(urlPattern = "UserHome/CreateChildByAddress.*|nh/.*/Neighborhood/AddHome.*")
 //@MultipageEntryPoint(urlPattern = "/")
 public class HOAGwtProject implements EntryPoint {
 	
 	private RootPanel panel;
+	private Boolean allowName = false;
+	
+	
 	public void onModuleLoad() {
+		
+		this.setAllowName();
+		//Window.alert((allowName? "true": "false"));
+		
 		panel = RootPanel.get("map");
 		final TextBox textBox = new TextBox();
 		
@@ -78,7 +86,13 @@ public class HOAGwtProject implements EntryPoint {
 		
 
 	}
-	
+	private void setAllowName() {
+		String strallowName = getAllowNameFromPage();
+		//if (allowName == null) this.allowName = true;
+		//Boolean.parseBoolean(allowName);
+		allowName = Boolean.parseBoolean(strallowName);
+		//allowName = getAllowNameFromPage();
+	}
 	private class AddHomeClickHandler implements ClickHandler{
 		private Placemark placeMark;
 		public AddHomeClickHandler(Placemark placeMark){
@@ -86,10 +100,14 @@ public class HOAGwtProject implements EntryPoint {
 			}
 		@Override
 		public void onClick(ClickEvent event) {
+			if (allowName) {
 			DialogBox createPopUpForName = CreatePopUpForName(placeMark.getAddress(), placeMark.getPoint());
 			//createPopUpForName.setPopupPosition(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientX());
 			createPopUpForName.showRelativeTo((UIObject)event.getSource());
-
+			} else {
+				setHiddenFormValues(placeMark.getAddress(), placeMark.getPoint());
+				Util.submitForm();
+			}
 		}
 	}
 	
@@ -121,9 +139,7 @@ public class HOAGwtProject implements EntryPoint {
 			@Override
 			public void onClick(ClickEvent event) {
 				Util.SetHiddenValue("Name", textBox.getValue());
-				Util.SetHiddenValue("Latitude", String.valueOf(point.getLatitude()));
-				Util.SetHiddenValue("Longitude", String.valueOf(point.getLongitude()));
-				Util.SetHiddenValue("addressFull", address);
+				setHiddenFormValues(address, point);
 				dialogBox.hide();
 				
 				DeferredCommand.addCommand(new Command() {
@@ -151,6 +167,13 @@ public class HOAGwtProject implements EntryPoint {
 		return dialogBox;
 	}
 	
+	private void setHiddenFormValues(final String address, final LatLng point) {
+		Util.SetHiddenValue("latitude", String.valueOf(point.getLatitude()));
+		Util.SetHiddenValue("longitude", String.valueOf(point.getLongitude()));
+		Util.SetHiddenValue("addressFull", address);
+		//dialogBox.hide();
+	}
+	
 	
 	private static String GetPoint(LatLng point){
 		return point.getLatitude() + "," + point.getLongitude();
@@ -158,4 +181,10 @@ public class HOAGwtProject implements EntryPoint {
 	private static String GetLocationMarker(LatLng point) {
 		return "markers=label:my|" + GetPoint(point);
 	}
+	
+	private static native String getAllowNameFromPage()/*-{
+		//alert($wnd.allowName);
+		if ($wnd.allowName) return "true";
+		return "false";
+	}-*/;
 }

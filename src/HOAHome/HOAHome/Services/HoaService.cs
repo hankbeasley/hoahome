@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using HOAHome.Models;
@@ -12,6 +13,7 @@ namespace HOAHome.Services
     {
         public Neighborhood[] GetNeighborhoods(string latitude, string longitude)
         {
+           
             return  new GisService().GetIntersectingNeighborhoods(double.Parse(latitude), double.Parse(longitude));
         }
 

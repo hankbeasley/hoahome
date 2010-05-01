@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Security.Principal;
@@ -21,7 +22,7 @@ namespace HOAHome.Code.Security
             get { return true; }
         }
 
-        private AppUser appUser; 
+        private readonly AppUser appUser;
         public string Name
         {
             get { return this.appUser.DisplayName; }
@@ -37,6 +38,7 @@ namespace HOAHome.Code.Security
 
         public Identity(AppUser appUser)
         {
+            Contract.Requires(appUser !=null);
             this.appUser = appUser;
         }
 
@@ -48,11 +50,13 @@ namespace HOAHome.Code.Security
                 {
                     return new Identity(TestingAppUser);
                 }
-
-                if (HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName] != null){
+                var formsCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+                if (formsCookie != null){
                     
-                        string cookieValue = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName].Value;
+                    
+                        string cookieValue = formsCookie.Value;
                         var ticket = FormsAuthentication.Decrypt(cookieValue);
+                        Contract.Assume(ticket.Name != null);
                         var identity = new Identity(AppUser.FromCookieString(new Guid(ticket.Name), ticket.UserData));
                         return identity;
                     
@@ -62,5 +66,15 @@ namespace HOAHome.Code.Security
             }
         }
         private static AppUser TestingAppUser = new AppUser() { Id = Guid.NewGuid(), DisplayName = "testUser" };
+
+
+        [ContractInvariantMethod]
+        private void ObjectInvariant()
+        {
+            Contract.Invariant(this.appUser != null);
+            //Contract. Invariant ( this .x > this.y );
+
+
+        }
     }
 }

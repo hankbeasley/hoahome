@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -74,7 +75,10 @@ namespace HOAHome.Code.Google
             foreach (string result in response.Split('\r'))
             {
                 string[] eResult = result.Split(',');
-
+                if(eResult.Length != 4) throw new ApplicationException("Google return invalid results");
+                //Contract.Assume(eResult[0] != null);
+                Contract.Assume(eResult[2] != null);
+                Contract.Assume(eResult[3] != null);
                 //As you can see, I’m spliting the string into array
                 //I’m not using element 0 as it keeps status code if address if found, //but you can if you want too.
                 //Once the result / response is in string array eResult, we can access //it by calling its GetValue method and pass the 0 based index.
@@ -87,7 +91,7 @@ namespace HOAHome.Code.Google
 
                 if (statusCode == 200)
                 {
-                    Point point;
+                    Point point = new Point();
                     point.Longitude = double.Parse(eResult[3]);
                     point.Latitude = double.Parse(eResult[2]);
 
@@ -106,7 +110,15 @@ namespace HOAHome.Code.Google
 
         private static string AddFull(string featureid)
         {
-            return featureid.Substring(0, featureid.LastIndexOf('/')) + "/full" + featureid.Substring(featureid.LastIndexOf('/'));
+           // Contract.Requires(featureid.LastIndexOf("/") >= 0);
+            Contract.Ensures(Contract.Result<string>() != null);
+            int lastForwardSlash = featureid.LastIndexOf('/');
+            if (lastForwardSlash < 0)
+            {
+                throw new ArgumentException("must have /", "featureid");
+            }
+
+            return featureid.Substring(0, lastForwardSlash) + "/full" + featureid.Substring(lastForwardSlash);
         }
 
         public bool Exist(string featureId)

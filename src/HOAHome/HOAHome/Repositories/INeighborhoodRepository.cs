@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using HOAHome.Code.Rules.Services;
 using HOAHome.Models;
 
 
 namespace HOAHome.Repositories
 {
-    public interface INeighborhoodRepository :IRepositoryBase<Neighborhood>
+    [ContractClass(typeof(INeighborhoodRepositoryContract))]
+    public interface INeighborhoodRepository : IRepositoryBase<Neighborhood>, IAlreadyExistService
     {
         IList<Neighborhood> FindBySimilarName(string name);
 
@@ -17,5 +20,78 @@ namespace HOAHome.Repositories
         IList<Neighborhood> FindNearPoint(Point point);
 
         Neighborhood CreateNew(Neighborhood newNeighborhood, Guid userIdThatCreatedNeighborhood);
+        IList<Home> GetHomes(Guid neighborhoodId);
+
+        void RemoveHome(Guid neighborhoodId, Guid homeId);
+
+        NeighboorhoodHome AddHome(Guid neighborhoodId, Home home);
+        
+    }
+
+    [ContractClassFor(typeof(INeighborhoodRepository))]
+    sealed class INeighborhoodRepositoryContract : INeighborhoodRepository
+    {
+        Neighborhood IRepositoryBase<Neighborhood>.Get(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IList<Neighborhood> IRepositoryBase<Neighborhood>.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepositoryBase<Neighborhood>.Delete(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IRepositoryBase<Neighborhood>.SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IAlreadyExistService.Exist(Guid notId, string fieldName, object value)
+        {
+            throw new NotImplementedException();
+        }
+
+        IList<Neighborhood> INeighborhoodRepository.FindBySimilarName(string name)
+        {
+            Contract.Ensures(Contract.Result<IList<Neighborhood>>() != null);
+            return null;
+        }
+
+        IList<Neighborhood> INeighborhoodRepository.FindNearPoint(Point point)
+        {
+            Contract.Ensures(Contract.Result<IList<Neighborhood>>() != null);
+            return null;
+        }
+
+        Neighborhood INeighborhoodRepository.CreateNew(Neighborhood newNeighborhood, Guid userIdThatCreatedNeighborhood)
+        {
+            throw new NotImplementedException();
+        }
+
+        IList<Home> INeighborhoodRepository.GetHomes(Guid neighborhoodId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        void INeighborhoodRepository.RemoveHome(Guid neighborhoodId, Guid homeId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        NeighboorhoodHome INeighborhoodRepository.AddHome(Guid neighborhoodId, Home home)
+        {
+            Contract.Requires(neighborhoodId != Guid.Empty);
+            Contract.Requires(home != null);
+            //Contract.Requires(home.Id != Guid.Empty);
+            Contract.Ensures(Contract.Result<NeighboorhoodHome>() != null);
+            return null;
+        }
     }
 }

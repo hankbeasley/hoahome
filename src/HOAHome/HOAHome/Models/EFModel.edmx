@@ -10,6 +10,7 @@
           <EntitySet Name="Content" EntityType="COHHomeModel.Store.Content" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ContentType" EntityType="COHHomeModel.Store.ContentType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Home" EntityType="COHHomeModel.Store.Home" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NeighboorhoodHome" EntityType="COHHomeModel.Store.NeighboorhoodHome" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Neighborhood" EntityType="COHHomeModel.Store.Neighborhood" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Role" EntityType="COHHomeModel.Store.Role" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UserHome" EntityType="COHHomeModel.Store.UserHome" store:Type="Tables" Schema="dbo" />
@@ -21,6 +22,14 @@
           <AssociationSet Name="FK_Content_Neighborhood" Association="COHHomeModel.Store.FK_Content_Neighborhood">
             <End Role="Neighborhood" EntitySet="Neighborhood" />
             <End Role="Content" EntitySet="Content" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NeighboorhoodHome_Home" Association="COHHomeModel.Store.FK_NeighboorhoodHome_Home">
+            <End Role="Home" EntitySet="Home" />
+            <End Role="NeighboorhoodHome" EntitySet="NeighboorhoodHome" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NeighboorhoodHome_Neighborhood" Association="COHHomeModel.Store.FK_NeighboorhoodHome_Neighborhood">
+            <End Role="Neighborhood" EntitySet="Neighborhood" />
+            <End Role="NeighboorhoodHome" EntitySet="NeighboorhoodHome" />
           </AssociationSet>
           <AssociationSet Name="FK_Neighborhood_AppUser" Association="COHHomeModel.Store.FK_Neighborhood_AppUser">
             <End Role="AppUser" EntitySet="AppUser" />
@@ -97,6 +106,14 @@
           <Property Name="Latitude" Type="float" />
           <Property Name="Longitude" Type="float" />
         </EntityType>
+        <EntityType Name="NeighboorhoodHome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NeighborhoodId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HomeId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
       warning 6005: The data type 'geography' is not supported; the column 'Geo' in table 'HOAHomeDB.dbo.Neighborhood' was excluded.
       -->
@@ -155,6 +172,30 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Content">
+              <PropertyRef Name="NeighborhoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NeighboorhoodHome_Home">
+          <End Role="Home" Type="COHHomeModel.Store.Home" Multiplicity="1" />
+          <End Role="NeighboorhoodHome" Type="COHHomeModel.Store.NeighboorhoodHome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Home">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NeighboorhoodHome">
+              <PropertyRef Name="HomeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NeighboorhoodHome_Neighborhood">
+          <End Role="Neighborhood" Type="COHHomeModel.Store.Neighborhood" Multiplicity="1" />
+          <End Role="NeighboorhoodHome" Type="COHHomeModel.Store.NeighboorhoodHome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Neighborhood">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NeighboorhoodHome">
               <PropertyRef Name="NeighborhoodId" />
             </Dependent>
           </ReferentialConstraint>
@@ -273,6 +314,15 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="UserNeighborhood" EntitySet="UserNeighborhoods" />
           </AssociationSet>
+          <EntitySet Name="NeighboorhoodHomes" EntityType="COHHomeModel.NeighboorhoodHome" />
+          <AssociationSet Name="FK_NeighboorhoodHome_Home" Association="COHHomeModel.FK_NeighboorhoodHome_Home">
+            <End Role="Home" EntitySet="Homes" />
+            <End Role="NeighboorhoodHome" EntitySet="NeighboorhoodHomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NeighboorhoodHome_Neighborhood" Association="COHHomeModel.FK_NeighboorhoodHome_Neighborhood">
+            <End Role="Neighborhood" EntitySet="Neighborhoods" />
+            <End Role="NeighboorhoodHome" EntitySet="NeighboorhoodHomes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AppUser">
           <Key>
@@ -309,7 +359,8 @@
           <Property Type="String" Name="AddressFull" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="GoogleFeatureId" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Double" Name="Latitude" />
-          <Property Type="Double" Name="Longitude" /></EntityType>
+          <Property Type="Double" Name="Longitude" />
+          <NavigationProperty Name="NeighboorhoodHomes" Relationship="COHHomeModel.FK_NeighboorhoodHome_Home" FromRole="Home" ToRole="NeighboorhoodHome" /></EntityType>
         <EntityType Name="Neighborhood">
           <Key>
             <PropertyRef Name="Id" /></Key>
@@ -320,6 +371,7 @@
           <NavigationProperty Name="PrimaryContact" Relationship="COHHomeModel.FK_Neighborhood_AppUser" FromRole="Neighborhood" ToRole="AppUser" />
           <NavigationProperty Name="Contents" Relationship="COHHomeModel.FK_Content_Neighborhood" FromRole="Neighborhood" ToRole="Content" />
           <NavigationProperty Name="UserNeighborhoods" Relationship="COHHomeModel.FK_UserNeighborHood_Neighborhood" FromRole="Neighborhood" ToRole="UserNeighborhood" />
+          <NavigationProperty Name="NeighboorhoodHomes" Relationship="COHHomeModel.FK_NeighboorhoodHome_Neighborhood" FromRole="Neighborhood" ToRole="NeighboorhoodHome" />
           </EntityType>
         <EntityType Name="UserHome">
           <Key>
@@ -455,6 +507,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NeighboorhoodHome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Guid" Name="NeighborhoodId" Nullable="false" />
+          <Property Type="Guid" Name="HomeId" Nullable="false" />
+          <NavigationProperty Name="Home" Relationship="COHHomeModel.FK_NeighboorhoodHome_Home" FromRole="NeighboorhoodHome" ToRole="Home" />
+          <NavigationProperty Name="Neighborhood" Relationship="COHHomeModel.FK_NeighboorhoodHome_Neighborhood" FromRole="NeighboorhoodHome" ToRole="Neighborhood" />
+        </EntityType>
+        <Association Name="FK_NeighboorhoodHome_Home">
+          <End Type="COHHomeModel.Home" Role="Home" Multiplicity="1" />
+          <End Type="COHHomeModel.NeighboorhoodHome" Role="NeighboorhoodHome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Home">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NeighboorhoodHome">
+              <PropertyRef Name="HomeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NeighboorhoodHome_Neighborhood">
+          <End Type="COHHomeModel.Neighborhood" Role="Neighborhood" Multiplicity="1" />
+          <End Type="COHHomeModel.NeighboorhoodHome" Role="NeighboorhoodHome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Neighborhood">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NeighboorhoodHome">
+              <PropertyRef Name="NeighborhoodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -541,6 +627,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="NeighboorhoodHomes">
+            <EntityTypeMapping TypeName="COHHomeModel.NeighboorhoodHome">
+              <MappingFragment StoreEntitySet="NeighboorhoodHome">
+                <ScalarProperty Name="HomeId" ColumnName="HomeId" />
+                <ScalarProperty Name="NeighborhoodId" ColumnName="NeighborhoodId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -588,7 +683,7 @@
           <ConnectorPoint PointX="2" PointY="10.4612939453125" />
         </AssociationConnector>
         <AssociationConnector Association="COHHomeModel.FK_Content_Neighborhood" >
-          <ConnectorPoint PointX="1.375" PointY="8.1148893229166674" />
+          <ConnectorPoint PointX="1.375" PointY="8.3071907552083335" />
           <ConnectorPoint PointX="1.375" PointY="9" />
         </AssociationConnector>
         <EntityTypeShape EntityType="COHHomeModel.Role" Width="1.5" PointX="1.875" PointY="12.5" Height="1.5956835937499996" />
@@ -598,16 +693,28 @@
           <ConnectorPoint PointX="4.125" PointY="3.9564518229166667" />
         </AssociationConnector>
         <AssociationConnector Association="COHHomeModel.FK_UserNeighborHood_Neighborhood" >
-          <ConnectorPoint PointX="2.25" PointY="6.9324446614583337" />
-          <ConnectorPoint PointX="2.4166666666666665" PointY="6.9324446614583328" />
-          <ConnectorPoint PointX="2.5833333333333335" PointY="6.9324446614583337" />
-          <ConnectorPoint PointX="4.875" PointY="6.9324446614583337" />
+          <ConnectorPoint PointX="2.25" PointY="7.0285953776041667" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="7.0285953776041659" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="7.0285953776041667" />
+          <ConnectorPoint PointX="4.875" PointY="7.0285953776041667" />
           <ConnectorPoint PointX="4.875" PointY="5.4898893229166674" />
         </AssociationConnector>
         <AssociationConnector Association="COHHomeModel.FK_UserNeighborHood_Role" >
           <ConnectorPoint PointX="2.5" PointY="12.5" />
-          <ConnectorPoint PointX="2.5" PointY="5.1701464843750005" />
-          <ConnectorPoint PointX="4.125" PointY="5.1701464843750005" />
+          <ConnectorPoint PointX="2.5" PointY="5.170146484375" />
+          <ConnectorPoint PointX="4.125" PointY="5.170146484375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="COHHomeModel.NeighboorhoodHome" Width="1.5" PointX="6.125" PointY="6.125" Height="1.9802864583333317" />
+        <AssociationConnector Association="COHHomeModel.FK_NeighboorhoodHome_Home" >
+          <ConnectorPoint PointX="8.5" PointY="4.201396484375" />
+          <ConnectorPoint PointX="8.5" PointY="7.1151432291666659" />
+          <ConnectorPoint PointX="7.625" PointY="7.1151432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="COHHomeModel.FK_NeighboorhoodHome_Neighborhood" >
+          <ConnectorPoint PointX="2.25" PointY="7.6294409179687488" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="7.6294409179687479" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="7.6294409179687488" />
+          <ConnectorPoint PointX="6.125" PointY="7.6294409179687488" />
         </AssociationConnector>
         </Diagram></Diagrams>
   </Designer>

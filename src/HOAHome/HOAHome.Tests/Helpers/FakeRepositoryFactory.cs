@@ -13,11 +13,20 @@ namespace HOAHome.Tests.Helpers
         {   
             MockNeighborhoodRepository = new Mock<INeighborhoodRepository>();
             this.Neighborhood = MockNeighborhoodRepository.Object;
+
+            MockHomeRepository = new Mock<IHomeRepository>();
+            this.Home = MockHomeRepository.Object;
         }
         public Mock<INeighborhoodRepository> MockNeighborhoodRepository;
         public INeighborhoodRepository Neighborhood
         {
             get; set;
+        }
+        public Mock<IHomeRepository> MockHomeRepository;
+        public IHomeRepository Home
+        {
+            get;
+            set;
         }
     }
 }

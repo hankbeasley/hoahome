@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,11 +11,12 @@ namespace HOAHome.Code.Mvc
     {
         protected override object CreateModel(ControllerContext controllerContext, ModelBindingContext bindingContext, Type modelType)
         {
-            
-            
-            if (!string.IsNullOrEmpty(bindingContext.ValueProvider.GetValue("Id").AttemptedValue))
+            var idValue = bindingContext.ValueProvider.GetValue("Id");
+          
+            if (!string.IsNullOrEmpty(idValue.AttemptedValue))
             {
-                Guid id = new Guid(bindingContext.ValueProvider.GetValue("Id").AttemptedValue);
+                Guid id = new Guid(idValue.AttemptedValue);
+                Contract.Assume(id != Guid.Empty);
                 var entity = ((IPersistanceContainer)controllerContext.Controller).Load(id);
                 return entity;
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +14,7 @@ namespace HOAHome.Code.Mvc
         public String NeighborhoodRoleName { get; set; }
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
+           
             if (!base.AuthorizeCore(httpContext))
             {
                 return false;
@@ -22,6 +24,8 @@ namespace HOAHome.Code.Mvc
             {
                 roleId = Role.Administrator.Id;
             }
+            //var nhid = httpContext.Items["nhid"];
+            if (httpContext.Items["nhid"] == null) throw new InvalidOperationException("context must contain nhid");
             Guid neighborhoodId = new Guid((String)httpContext.Items["nhid"]);
             bool isInNeighborhood = Code.Security.Principal.IsUserInNeighborhoodRole(Code.Security.Identity.Current.Id, neighborhoodId,
                                                                     roleId);

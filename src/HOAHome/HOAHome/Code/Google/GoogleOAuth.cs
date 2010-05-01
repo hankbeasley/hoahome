@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -75,6 +76,9 @@ namespace HOAHome.Code.Google
 
         public static AppUser HandleAuthenticationResponse(IAuthenticationResponse response, IPersistanceFramework persistance)
         {
+            Contract.Requires(response != null);
+            Contract.Requires(persistance != null);
+
             var attibuteExtension = response.GetExtension<FetchResponse>();
             var oAuth = response.GetExtension<AuthorizationApprovedResponse>();
             AuthorizedTokenResponse accessToken = MvcApplication.GoogleWebConsumer.ProcessUserAuthorization(response);
@@ -104,10 +108,12 @@ namespace HOAHome.Code.Google
 
         private static AppUser SyncUserWithHOAHome(AppUser claimedUser, IPersistanceFramework persistance)
         {
-
+            Contract.Requires(claimedUser != null);
+            Contract.Requires(persistance != null);
             var user = persistance.CreateQueryContext<AppUser>().Where(u => u.GoogleId == claimedUser.GoogleId).FirstOrDefault();
                 if (user != null)
                 {
+
                     user.LastLogin = DateTime.Now;
                     user.AccessToken = claimedUser.AccessToken;
                     user.AccessTokenSecret = claimedUser.AccessTokenSecret;

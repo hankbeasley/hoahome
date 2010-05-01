@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Security.Principal;
@@ -26,7 +27,7 @@ namespace HOAHome.Controllers
     [HandleError]
     public partial class AccountController : Controller, IPersistanceContainer
     {
-        private IPersistanceFramework entities = new PersistanceFramework( new COHHomeEntities());
+        private readonly IPersistanceFramework entities = new PersistanceFramework( new COHHomeEntities());
 
         public AccountController()
            
@@ -64,6 +65,7 @@ namespace HOAHome.Controllers
                 switch (response.Status)
                 {
                     case AuthenticationStatus.Authenticated:
+                        Contract.Assume(entities != null);
                         GoogleOAuth.HandleAuthenticationResponse(response, entities);
 
                         return RedirectToAction("Index", "Home");

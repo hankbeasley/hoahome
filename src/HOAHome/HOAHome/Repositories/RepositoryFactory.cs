@@ -17,5 +17,11 @@ namespace HOAHome.Repositories
                 return new NeighborhoodRepository(_persistance);
             }
         }
+
+        public IHomeRepository Home
+        {
+            get { return new HomeRepository(this._persistance); }
+           
+        }
     }
 }

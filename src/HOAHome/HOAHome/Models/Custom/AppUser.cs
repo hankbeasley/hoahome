@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,6 +24,7 @@ namespace HOAHome.Models
         }
 
         public static AppUser FromCookieString(Guid id, string userData){
+            Contract.Ensures(Contract.Result<AppUser>() != null);
             //string[] items = userData.Split('|');
             //return new AppUser { Id = id, FirstName = items[0], LastName = items[1] };
             return new AppUser { Id = id, DisplayName = userData };

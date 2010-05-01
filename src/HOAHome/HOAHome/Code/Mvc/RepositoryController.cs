@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,6 +31,7 @@ namespace HOAHome.Code.Mvc
         }
         public virtual ActionResult Edit(Guid id)
         {
+            Contract.Requires(id != Guid.Empty);
             this.ViewData.Model = this.Repository.Get(id);
             return this.View("Create");
         }
@@ -53,6 +55,7 @@ namespace HOAHome.Code.Mvc
 
         public virtual ActionResult Details(Guid id)
         {
+            Contract.Requires(id != Guid.Empty);
             this.ViewData.Model = Repository.Get(id);
             return this.View();
         }
@@ -66,6 +69,7 @@ namespace HOAHome.Code.Mvc
 
         object IPersistanceContainer.Load(Guid id)
         {
+            
             return this.Repository.Get(id);
         }
     }
