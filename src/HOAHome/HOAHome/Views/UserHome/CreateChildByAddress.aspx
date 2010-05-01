@@ -15,6 +15,10 @@
         <%=this.Html.Hidden("latitude") %>
         <%=this.Html.Hidden("longitude") %>        
     <% } %>
+    <script type="text/javascript" >
+        //configuration for map
+        var allowName = true;
+</script>
     <div id="map"></div>
     <div>
         <%=Html.ActionLink("Cancel", MVC.Account.Settings()) %>

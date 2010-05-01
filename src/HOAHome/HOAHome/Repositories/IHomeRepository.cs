@@ -18,7 +18,11 @@ namespace HOAHome.Repositories
         Home IHomeRepository.GetOrCreateHome(string addressFull, double latitude, double longitude)
         {
            Contract.Requires(addressFull != null);
-           Contract.Ensures(Contract.Result<Home>() != null);
+           Contract.Requires(latitude >=-90 && latitude <= 90);
+           Contract.Requires(longitude >= -180 && longitude <= 180);
+
+            Contract.Ensures(Contract.Result<Home>() != null);
+            
             return null;
         }
 

@@ -3,6 +3,7 @@
   <TestList name="Lists of Tests" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
   <TestList name="RealDBTest" id="c45f73ca-616c-404b-89de-5cbd34420dfc" parentListId="f595163e-df09-41f9-a6e5-c52e2efd13a3">
     <TestLinks>
+      <TestLink id="ffa8d753-6b45-32b0-01bb-f82d9afb11f7" name="TestAddAndRemoveHomes" storage="hoahome.tests\bin\debug\hoahome.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="9933842a-4b3e-fd35-f8a2-10a4f3c73bb6" name="SearchByDistanceTest" storage="hoahome.tests\bin\debug\hoahome.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="916ea6c4-edbb-0465-29de-353e8a37e99b" name="TestPointInAndOutOfTheTriangle" storage="hoahome.tests\bin\debug\hoahome.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     </TestLinks>

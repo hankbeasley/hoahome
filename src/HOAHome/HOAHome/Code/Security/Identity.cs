@@ -61,7 +61,7 @@ namespace HOAHome.Code.Security
                         return identity;
                     
                 }
-                return null;
+                throw new ApplicationException("Not logged in");
 
             }
         }

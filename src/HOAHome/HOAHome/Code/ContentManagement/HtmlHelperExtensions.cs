@@ -21,8 +21,15 @@ namespace HOAHome.Code.ContentManagement
         private static string cmsbinding = @"<script>var cmsIds=""{0}"";</script>";
         public static string CmsEditorBinding(this HtmlHelper htmlHelper)
         {
-            Contract.Requires(htmlHelper.ViewContext.RouteData != null );
+            Contract.Requires(htmlHelper != null);
+            Contract.Requires(htmlHelper.ViewContext != null);
+            Contract.Requires(htmlHelper.ViewContext.RouteData != null);
+            Contract.Requires(htmlHelper.ViewContext.HttpContext != null);
+            Contract.Requires(htmlHelper.ViewContext.HttpContext.User != null);
+            Contract.Requires(htmlHelper.ViewContext.RouteData != null);
+            Contract.Requires(htmlHelper.ViewContext.RouteData.Values != null);
             Contract.Requires(htmlHelper.ViewContext.RouteData.Values["nhid"] != null);
+
             
 
             Guid nhid = new Guid((String) htmlHelper.ViewContext.RouteData.Values["nhid"]);
@@ -41,7 +48,26 @@ namespace HOAHome.Code.ContentManagement
             }
             return string.Format(cmsbinding, ids);
         }
+        
+        public static MvcHtmlString IfAdmin(this HtmlHelper htmlHelper, Func<MvcHtmlString> outputThis)
+        {
+            Contract.Requires(htmlHelper != null);
+            Contract.Requires(htmlHelper.ViewContext != null);
+            Contract.Requires(htmlHelper.ViewContext.RouteData != null);
+            Contract.Requires(htmlHelper.ViewContext.HttpContext != null);
+            Contract.Requires(htmlHelper.ViewContext.HttpContext.User != null);
+            Contract.Requires(htmlHelper.ViewContext.RouteData != null);
+            Contract.Requires(htmlHelper.ViewContext.RouteData.Values != null);
+            Contract.Requires(htmlHelper.ViewContext.RouteData.Values["nhid"] != null);
+            Contract.Requires(outputThis != null);
+           
 
+            Guid nhid = new Guid((String)htmlHelper.ViewContext.RouteData.Values["nhid"]);
+            bool isAdmin = htmlHelper.ViewContext.HttpContext.User.Identity.IsAuthenticated &&
+                Code.Security.Principal.IsUserInNeighborhoodRole(Code.Security.Identity.Current.Id, nhid,
+                                                                            Role.Administrator.Id);
+            return !isAdmin ? null : outputThis();
+        }
         [ContractInvariantMethod]
         static void ObjectInvariant() { Contract.Invariant(ViewDataKey !=null); }
     }

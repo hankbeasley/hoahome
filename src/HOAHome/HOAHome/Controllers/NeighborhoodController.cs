@@ -114,10 +114,10 @@ namespace HOAHome.Controllers
             var homes = this.Repository.GetHomes(new Guid(this.ControllerContext.RouteData.Values["nhid"].ToString()));
             return View(homes);
         }
+        [NeighborhoodRole(NeighborhoodRoleName= "Administrator")]
         public virtual ViewResult AddHome()
         {
             return View();
-
         }
 
         private Guid GetNhId()
@@ -136,13 +136,13 @@ namespace HOAHome.Controllers
             Contract.Assume(nhid != Guid.Empty);
             return nhid;
         }
-
+        [NeighborhoodRole(NeighborhoodRoleName = "Administrator")]
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual RedirectToRouteResult AddHome(string addressFull, double latitude, double longitude)
         {
             Contract.Requires(addressFull != null, "addressFull cannot be null");
-            //Contract.Requires(latitude != 0.0);
-            //Contract.Requires(longitude != 0.0);
+            Contract.Requires(latitude >= -90 && latitude <= 90);
+            Contract.Requires(longitude >= -180 && longitude <= 180);
             
             var nhid = this.GetNhId();
 
@@ -154,7 +154,7 @@ namespace HOAHome.Controllers
 
             return this.RedirectToAction("Homes");
         }
-
+        [NeighborhoodRole(NeighborhoodRoleName = "Administrator")]
         public virtual RedirectToRouteResult RemoveHome(Guid homeId)
         {
             Contract.Requires(homeId != Guid.Empty);

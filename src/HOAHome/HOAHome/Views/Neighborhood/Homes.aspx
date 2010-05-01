@@ -6,6 +6,6 @@
         <%= this.Html.DisplayFor(f=>item) %>
     
     <% } %>
-    <%= this.Html.ActionLink("Add new", MVC.Neighborhood.AddHome()) %>
+    <%= this.Html.IfAdmin(()=>this.Html.ActionLink("Add new", MVC.Neighborhood.AddHome())) %>
 </asp:Content>
 
