@@ -22,6 +22,8 @@ using T4MVC;
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static class MVC {
+    static readonly nhClass s_nh = new nhClass();
+    public static nhClass nh { get { return s_nh; } }
     public static HOAHome.Controllers.AccountController Account = new HOAHome.Controllers.T4MVC_AccountController();
     public static HOAHome.Controllers.ContentController Content = new HOAHome.Controllers.T4MVC_ContentController();
     public static HOAHome.Controllers.DevelopmentController Development = new HOAHome.Controllers.T4MVC_DevelopmentController();
@@ -33,6 +35,13 @@ public static class MVC {
 }
 
 namespace T4MVC {
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class nhClass {
+        public readonly string Name = "nh";
+        public HOAHome.Areas.nh.Controllers.HomeController Home = new HOAHome.Areas.nh.Controllers.T4MVC_HomeController();
+        public HOAHome.Areas.nh.Controllers.NeighborhoodController Neighborhood = new HOAHome.Areas.nh.Controllers.T4MVC_NeighborhoodController();
+        public T4MVC.nh.SharedController Shared = new T4MVC.nh.SharedController();
+    }
 }
 
 namespace System.Web.Mvc {
@@ -144,7 +153,7 @@ namespace System.Web.Mvc {
             result.Controller = controller;
             result.Action = action;
             result.RouteValueDictionary = new RouteValueDictionary();
-             
+            result.RouteValueDictionary.Add("Area", area ?? ""); 
             result.RouteValueDictionary.Add("Controller", controller);
             result.RouteValueDictionary.Add("Action", action);
         }

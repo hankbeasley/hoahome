@@ -3,13 +3,13 @@
     if (Request.IsAuthenticated) {
 %>
         Welcome <b><%= HOAHome.Code.Security.Identity.Current.Name %></b>!
-        [ <%= Html.ActionLink("Log Off", "LogOff", "Account") %> ]
-        [<%= Html.ActionLink("Settings", "Settings", "Account")%> ]
+        [ <%= Html.ActionLink("Log Off", MVC.Account.LogOff()) %> ]
+        [<%= Html.ActionLink("Settings", MVC.Account.Settings())%> ]
 <%
     }
     else {
 %> 
-        [ <%= Html.ActionLink("Log On", "LogOn", "Account") %> ]
+        [ <%= Html.ActionLink("Log On", MVC.Account.LogOn()) %> ]
 <%
     }
 %>

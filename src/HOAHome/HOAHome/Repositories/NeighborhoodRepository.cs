@@ -93,7 +93,7 @@ namespace HOAHome.Repositories
 
         public void RemoveHome(Guid neighborhoodId, Guid homeId)
         {
-            var neighboorhoodHome = this.Persistance.CreateQueryContext<NeighboorhoodHome>().Where(nh => nh.NeighborhoodId == neighborhoodId).Single();
+            var neighboorhoodHome = this.Persistance.CreateQueryContext<NeighboorhoodHome>().Where(nh => nh.NeighborhoodId == neighborhoodId && homeId == nh.HomeId).Single();
             Contract.Assume(neighboorhoodHome != null);
             this.Persistance.Delete(neighboorhoodHome);
         }

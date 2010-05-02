@@ -156,7 +156,7 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_Neighborhood.index.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_Table_1.index.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_AppUserGoogleId.index.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_UserHome.pkey.sql">
@@ -235,6 +235,12 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\NeighboorhoodHome.table.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_UserHome.index.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_NeighboorhoodHomeUnique.index.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

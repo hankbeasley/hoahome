@@ -99,74 +99,9 @@ namespace HOAHome.Controllers
         //    return View();
         //}
 
-        public virtual ViewResult Index()
-        {
-            //this.ControllerContext.RouteData.
-            this.ViewData.Add("id", this.ControllerContext.RouteData.Values["nhid"]);
-            var bundle = new ContentBundle();
-            bundle.Add(ContentType.HomePageMain.Id, this.ContentRepository.GetContent(ContentType.HomePageMain));
-            this.ViewData.Add(typeof(ContentBundle).Name, bundle);
-            return View();
-        }
 
-        public virtual ViewResult Homes()
-        {
-            var homes = this.Repository.GetHomes(new Guid(this.ControllerContext.RouteData.Values["nhid"].ToString()));
-            return View(homes);
-        }
-        [NeighborhoodRole(NeighborhoodRoleName= "Administrator")]
-        public virtual ViewResult AddHome()
-        {
-            return View();
-        }
 
-        private Guid GetNhId()
-        {
-            Contract.Ensures(Contract.Result<Guid>() != Guid.Empty);
-            string nhidText = (String) this.ControllerContext.RouteData.Values["nhid"];
-            if (nhidText == null)
-            {
-                throw new ApplicationException("Could not get routing value nhid");
-            }
-            var nhid = new Guid(nhidText);
-            if (nhid == Guid.Empty)
-            {
-                throw new ApplicationException("Invalid nhid");
-            }
-            Contract.Assume(nhid != Guid.Empty);
-            return nhid;
-        }
-        [NeighborhoodRole(NeighborhoodRoleName = "Administrator")]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public virtual RedirectToRouteResult AddHome(string addressFull, double latitude, double longitude)
-        {
-            Contract.Requires(addressFull != null, "addressFull cannot be null");
-            Contract.Requires(latitude >= -90 && latitude <= 90);
-            Contract.Requires(longitude >= -180 && longitude <= 180);
-            
-            var nhid = this.GetNhId();
-
-            var home= this._repositoryFactory.Home.GetOrCreateHome(addressFull, latitude, longitude);
-            this._repositoryFactory.Home.SaveChanges();
-
-            this._repositoryFactory.Neighborhood.AddHome(nhid, home);
-            this._repositoryFactory.Neighborhood.SaveChanges();
-
-            return this.RedirectToAction("Homes");
-        }
-        [NeighborhoodRole(NeighborhoodRoleName = "Administrator")]
-        public virtual RedirectToRouteResult RemoveHome(Guid homeId)
-        {
-            Contract.Requires(homeId != Guid.Empty);
-
-            var nhid = this.GetNhId();
-            this._repositoryFactory.Neighborhood.RemoveHome(nhid,homeId);
-            this._repositoryFactory.Neighborhood.SaveChanges();
-
-            this._repositoryFactory.Home.DeleteIfNotAssociatedWithHomesOrNeighborHoods(homeId);
-            this._repositoryFactory.Home.SaveChanges();
-
-            return this.RedirectToAction("Homes");
-        }
+        
+        
     }
 }

@@ -66,8 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\nh\Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ControllerTestBase.cs" />
-    <Compile Include="Controllers\IntegrationTest\NeighborhoodControllerTest.cs" />
+    <Compile Include="Areas\nh\Controllers\IntegrationTest\HomeControllerTest.cs" />
     <Compile Include="Controllers\NeighborhoodControllerTest.cs" />
     <Compile Include="Controllers\UserHomeControllerTest.cs" />
     <Compile Include="Google\GoogleOAuthTest.cs" />
@@ -95,7 +96,9 @@
   <ItemGroup>
     <Shadow Include="Test References\HOAHome.accessor" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controllers\IntegrationTest\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

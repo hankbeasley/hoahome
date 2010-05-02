@@ -28,5 +28,11 @@ namespace HOAHome.Tests.Helpers
             get;
             set;
         }
+
+
+        public Code.ContentManagement.IContentRepository ContentRepository(Guid nhid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

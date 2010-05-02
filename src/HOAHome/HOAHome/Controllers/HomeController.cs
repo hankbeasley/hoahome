@@ -12,7 +12,7 @@ namespace HOAHome.Controllers
     [HandleError]
     public partial class HomeController : Controller
     {
-        private IRepositoryFactory _repositoryFactory;
+        private readonly IRepositoryFactory _repositoryFactory;
         private readonly IMapDataService _mapService;
 
         public HomeController(): this(new RepositoryFactory(), new MapDataService())

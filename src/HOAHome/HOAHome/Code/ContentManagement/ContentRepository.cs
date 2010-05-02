@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Diagnostics.Contracts;
 using HOAHome.Code.EntityFramework;
 using HOAHome.Models;
 using System.Linq;
 
 namespace HOAHome.Code.ContentManagement
 {
-    public class ContentRepository
+    public class ContentRepository : IContentRepository
     {
-        private Guid _neighborhoodId;
-        private IPersistanceFramework _persistance;
+        private readonly Guid _neighborhoodId;
+        private readonly IPersistanceFramework _persistance;
         public ContentRepository(Guid neighborhoodId, IPersistanceFramework persistance)
         {
+            Contract.Requires(persistance != null);
             _neighborhoodId = neighborhoodId;
             _persistance = persistance;
         }
@@ -43,4 +45,6 @@ namespace HOAHome.Code.ContentManagement
             this._persistance.SaveChanges();
         }
     }
+
+    
 }

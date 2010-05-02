@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using HOAHome.Code.Security;
-using HOAHome.Controllers;
+using HOAHome.Areas.nh.Controllers;
 using HOAHome.Models;
 using HOAHome.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace HOAHome.Tests.Controllers.IntegrationTest
 {
     [TestClass]
-    public class NeighborhoodControllerTest
+    public class HomeControllerTest
     {
         [TestMethod]
         public void TestAddAndRemoveHomes()
@@ -21,7 +21,7 @@ namespace HOAHome.Tests.Controllers.IntegrationTest
             var context = new ControllerContext();
             context.RouteData.Values.Add("nhid", nhid.ToString());
             
-            var controller = new NeighborhoodController();
+            var controller = new HomeController();
             controller.ControllerContext = context;
 
             var result = controller.AddHome("newAddress", 70, -30);

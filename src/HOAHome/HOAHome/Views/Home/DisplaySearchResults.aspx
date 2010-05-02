@@ -11,7 +11,7 @@
         <tr><th>Address</th><th>Neighborhood</th><th></th></tr>
         <% foreach (var item in Model)
             { %>
-            <tr><td><%= Html.Encode(item.Name) %></td><td><%=this.Html.ActionLink(item.Name, "Index", "Neighborhood", new{nhid=item.Id}, null) %> </td><td>Map It</td></tr>
+            <tr><td><%=this.Html.ActionLink(item.Name, MVC.nh.Neighborhood.Index().AddRouteValue("nhid",item.Id)) %></td><td><%=this.Html.ActionLink(item.Name, "Index", "Neighborhood", new{nhid=item.Id}, null) %> </td><td>Map It</td></tr>
          <%} %>
     
     </table>

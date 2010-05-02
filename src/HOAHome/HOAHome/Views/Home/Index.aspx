@@ -7,7 +7,7 @@
 <asp:Content ID="indexContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%= Html.Encode(ViewData["Message"]) %></h2>
    
-   <% using (Html.BeginForm(MVC.Home.DisplaySearchResults()))
+   <% using (Html.BeginForm(MVC.Home.DisplaySearchResults(), FormMethod.Post))
       { %>
         <fieldset style="width:260px;float:left">
          <legend>Find a Neighborhood</legend>

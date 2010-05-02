@@ -6,7 +6,7 @@
         <li><%= Html.ActionLink("Documents",  "Documents", "Neighborhood")%></li>
             <li><%= Html.ActionLink("Board of Directors", "Index", "Director", new { @class = "anchorclass", rel="boardMenu" })%></li>
             <li><%= Html.ActionLink("Calendar", "Calendar", "Neighborhood")%></li>
-             <li><%= Html.ActionLink("Homes",  "Homes", "Neighborhood")%></li>
+             <li><%= Html.ActionLink("Homes", MVC.nh.Home.Homes())%></li>
         <li>
             <%= Html.ActionLink("Wave", "Wave", "Neighborhood")%></li>
     </ul>

@@ -271,7 +271,7 @@
 				</Entry>
 			</Relationship>
 		</Element>
-		<Element Type="ISql100Index" Name="[dbo].[AppUser].[IX_Table_1]">
+		<Element Type="ISql100Index" Name="[dbo].[AppUser].[IX_AppUserGoogleId]">
 			<Property Name="IsUnique" Value="True" />
 			<Relationship Name="ColumnSpecifications">
 				<Entry>

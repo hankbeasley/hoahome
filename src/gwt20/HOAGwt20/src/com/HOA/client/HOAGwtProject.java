@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-@MultipageEntryPoint(urlPattern = "UserHome/CreateChildByAddress.*|nh/.*/Neighborhood/AddHome.*")
+@MultipageEntryPoint(urlPattern = "UserHome/CreateChildByAddress.*|nh/.*/Home/AddHome.*")
 //@MultipageEntryPoint(urlPattern = "/")
 public class HOAGwtProject implements EntryPoint {
 	
