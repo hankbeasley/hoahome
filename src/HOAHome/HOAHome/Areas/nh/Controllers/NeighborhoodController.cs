@@ -14,8 +14,8 @@ namespace HOAHome.Areas.nh.Controllers
     public partial class NeighborhoodController : NeighborhoodControllerBase
     {
         public NeighborhoodController():base(new RepositoryFactory()){}
-        
-        
+
+
         
         public virtual ViewResult Index()
         {

@@ -56,6 +56,7 @@ namespace HOAHome.Code.Security
                     
                         string cookieValue = formsCookie.Value;
                         var ticket = FormsAuthentication.Decrypt(cookieValue);
+                        Contract.Assume(ticket != null);
                         Contract.Assume(ticket.Name != null);
                         var identity = new Identity(AppUser.FromCookieString(new Guid(ticket.Name), ticket.UserData));
                         return identity;

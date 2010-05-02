@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using DotNetOpenAuth.ApplicationBlock;
 using DotNetOpenAuth.Messaging;
+using DotNetOpenAuth.OAuth.ChannelElements;
 using DotNetOpenAuth.OpenId;
 using DotNetOpenAuth.OpenId.RelyingParty;
 using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
@@ -20,7 +21,7 @@ namespace HOAHome.Code.Google
     public class GoogleOAuth
     {
         private static OpenIdRelyingParty openid;// = new OpenIdRelyingParty();
-        const string GoogleOPIdentifier = "https://www.google.com/accounts/o8/id";
+        static readonly string GoogleOPIdentifier = "https://www.google.com/accounts/o8/id";
         static GoogleOAuth()
         {
             if (System.Web.HttpContext.Current != null)
@@ -54,6 +55,9 @@ namespace HOAHome.Code.Google
             // We will customize the realm to use http or https based on what the
             // return_to URL will be (which will be this page).
             Realm realm = System.Web.HttpContext.Current.Request.Url.Scheme + Uri.SchemeDelimiter + Configuration.ConsumerKey + "/";
+            //var userIdentifier = GoogleOPIdentifier;
+            //Contract.Assume(userIdentifier != null);
+           // Contract.Assume(openid.);
             IAuthenticationRequest authReq = openid.CreateRequest(GoogleOPIdentifier);
             
             // Prepare the OAuth extension
@@ -66,11 +70,17 @@ namespace HOAHome.Code.Google
             fetch.Attributes.AddRequired(WellKnownAttributes.Name.First);
             fetch.Attributes.AddRequired(WellKnownAttributes.Name.Last);
             authReq.AddExtension(fetch);
-            return authReq.RedirectingResponse.AsActionResult();
+            var response = authReq.RedirectingResponse;
+            //Contract.Assume(response.ResponseStream != null);
+            return response.AsActionResult();
 
         }
 
         public static IAuthenticationResponse GetResponse(){
+            if (HttpContext.Current == null || HttpContext.Current.Request == null)
+            {
+                throw new ApplicationException("must run inside http context");
+            }
             return openid.GetResponse();
         }
 
@@ -81,6 +91,7 @@ namespace HOAHome.Code.Google
 
             var attibuteExtension = response.GetExtension<FetchResponse>();
             var oAuth = response.GetExtension<AuthorizationApprovedResponse>();
+            Contract.Assume(MvcApplication.GoogleWebConsumer.TokenManager is IOpenIdOAuthTokenManager);
             AuthorizedTokenResponse accessToken = MvcApplication.GoogleWebConsumer.ProcessUserAuthorization(response);
 
             if (accessToken == null)
@@ -89,9 +100,10 @@ namespace HOAHome.Code.Google
             }
 
             State.GoogleAccessToken = accessToken.AccessToken;
-
+           
             AppUser claimedUser = new AppUser();
             claimedUser.AccessToken = accessToken.AccessToken;
+            Contract.Assume(!string.IsNullOrEmpty(claimedUser.AccessToken));
             claimedUser.AccessTokenSecret = MvcApplication.GoogleTokenManager.GetTokenSecret(accessToken.AccessToken);
             claimedUser.GoogleId = response.ClaimedIdentifier;
             claimedUser.Email = attibuteExtension.Attributes[WellKnownAttributes.Contact.Email].Values.First();

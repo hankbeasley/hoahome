@@ -70,7 +70,8 @@ namespace HOAHome.Repositories
 
         Neighborhood INeighborhoodRepository.CreateNew(Neighborhood newNeighborhood, Guid userIdThatCreatedNeighborhood)
         {
-            throw new NotImplementedException();
+            Contract.Requires<ArgumentNullException>(newNeighborhood != null);
+            return null;
         }
 
         IList<Home> INeighborhoodRepository.GetHomes(Guid neighborhoodId)

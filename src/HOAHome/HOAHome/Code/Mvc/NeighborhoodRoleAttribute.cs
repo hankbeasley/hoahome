@@ -25,6 +25,8 @@ namespace HOAHome.Code.Mvc
                 roleId = Role.Administrator.Id;
             }
             //var nhid = httpContext.Items["nhid"];
+            Contract.Assume(httpContext != null);
+            Contract.Assume(httpContext.Items != null);
             if (httpContext.Items["nhid"] == null) throw new InvalidOperationException("context must contain nhid");
             Guid neighborhoodId = new Guid((String)httpContext.Items["nhid"]);
             bool isInNeighborhood = Code.Security.Principal.IsUserInNeighborhoodRole(Code.Security.Identity.Current.Id, neighborhoodId,

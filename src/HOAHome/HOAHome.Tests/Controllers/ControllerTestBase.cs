@@ -5,6 +5,7 @@ using System.Text;
 using HOAHome.Code.EntityFramework;
 using HOAHome.Controllers;
 using HOAHome.Code.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HOAHome.Tests.Controllers
 {
@@ -17,7 +18,8 @@ namespace HOAHome.Tests.Controllers
         protected Moq.Mock<IPersistanceFramework> GetPersistanceMock()
         {
             var mock = new Moq.Mock<IPersistanceFramework>();
-            CustomController_Accessor<Q>.AttachShadow(controller).Persistance = mock.Object;
+            new PrivateObject(controller).SetFieldOrProperty("Persistance", mock.Object);
+            //CustomController_Accessor<Q>.AttachShadow(controller).Persistance = mock.Object;
             return mock;
 
         }

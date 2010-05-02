@@ -19,11 +19,8 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace HOAHome.Controllers {
+namespace HOAHome.Areas.nh.Controllers {
     public partial class ContentController {
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ContentController() { }
-
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected ContentController(Dummy d):this() { }
 
@@ -40,9 +37,9 @@ namespace HOAHome.Controllers {
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ContentController Actions { get { return MVC.Content; } }
+        public ContentController Actions { get { return MVC.nh.Content; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "";
+        public readonly string Area = "nh";
         [GeneratedCode("T4MVC", "2.0")]
         public readonly string Name = "Content";
 
@@ -63,7 +60,7 @@ namespace HOAHome.Controllers {
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class T4MVC_ContentController: HOAHome.Controllers.ContentController {
+    public class T4MVC_ContentController: HOAHome.Areas.nh.Controllers.ContentController {
         public T4MVC_ContentController() : base(Dummy.Instance) { }
 
         public override System.Web.Mvc.ActionResult Update(System.Guid id, string content) {

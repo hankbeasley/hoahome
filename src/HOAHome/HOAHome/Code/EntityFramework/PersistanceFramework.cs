@@ -18,6 +18,8 @@ namespace HOAHome.Code.EntityFramework
            // Contract.Requires(context.MetadataWorkspace != null);
             Contract.Ensures(this._eContainer != null);
             Contract.Assume(context.MetadataWorkspace != null);
+            Contract.Assume(context.ObjectStateManager != null);
+
             this._context = context;
             this._eContainer = _context.MetadataWorkspace.GetEntityContainer(this._context.DefaultContainerName, DataSpace.CSpace);
             if (this._eContainer == null)
@@ -50,6 +52,8 @@ namespace HOAHome.Code.EntityFramework
                 var auditable = (IAuditable)entity;
                 auditable.CreatedDate = DateTime.Now;
                 auditable.ModifiedDate = auditable.CreatedDate;
+                Contract.Assume(System.Threading.Thread.CurrentPrincipal!= null);
+                //Contract.Assume(System.Threading.Thread.CurrentPrincipal.Identity !=null);
                 auditable.CreatedBy = System.Threading.Thread.CurrentPrincipal.Identity.Name;
                 auditable.ModifiedBy = System.Threading.Thread.CurrentPrincipal.Identity.Name;
             }
@@ -59,10 +63,15 @@ namespace HOAHome.Code.EntityFramework
 
         public void SaveChanges()
         {
-            foreach (ObjectStateEntry objectState in _context.ObjectStateManager.GetObjectStateEntries(System.Data.EntityState.Modified))
+            Contract.Assume(_context.ObjectStateManager != null);
+            var changedEntities = _context.ObjectStateManager.GetObjectStateEntries(System.Data.EntityState.Modified);
+            Contract.Assume(changedEntities != null);
+            foreach (ObjectStateEntry objectState in changedEntities)
             {
+                Contract.Assume(objectState != null);
                 if (objectState.Entity is IAuditable)
                 {
+                    Contract.Assume(System.Threading.Thread.CurrentPrincipal != null);
                     var auditable = (IAuditable)objectState.Entity;
                     auditable.ModifiedDate = DateTime.Now;
                     auditable.ModifiedBy = System.Threading.Thread.CurrentPrincipal.Identity.Name;
@@ -87,9 +96,11 @@ namespace HOAHome.Code.EntityFramework
             {
                 throw new InvalidOperationException(string.Format("Could not find an entity set for this type({0}) Are you sure you have created the right model definition?", t));
             }
-            return entitySets.First().Name;
+            var first = entitySets.First();
+            Contract.Assume(first != null);
+            return first.Name;
         }
-        private Type GetEntityBaseType(Type t)
+        private static Type GetEntityBaseType(Type t)
         {
             Contract.Requires(t != null);
             if (t.BaseType == typeof(System.Data.Objects.DataClasses.EntityObject))
@@ -136,7 +147,9 @@ namespace HOAHome.Code.EntityFramework
 
             foreach (string include in includes)
             {
-                query = ((ObjectQuery<T>)query).Include(include);
+                var objectQuery = ((ObjectQuery<T>) query);
+                Contract.Assume(objectQuery != null);
+                query = objectQuery.Include(include);
             }
             if (query == null) throw new ApplicationException();
             return query;
@@ -145,7 +158,7 @@ namespace HOAHome.Code.EntityFramework
         {
             Contract.Requires(query!=null);
             Contract.Ensures(Contract.Result<IQueryable<T>>() != null);
-            if (typeof(T) != this.GetEntityBaseType(typeof(T)))
+            if (typeof(T) != GetEntityBaseType(typeof(T)))
             {
                 var result = ((ObjectQuery<T>)query).OfType<T>();
                 if (result == null) throw new ApplicationException();
@@ -191,6 +204,7 @@ namespace HOAHome.Code.EntityFramework
         {
             Contract.Invariant(this._context != null);
             Contract.Invariant(this._eContainer != null);
+           // Contract.Invariant(this._context.ObjectStateManager != null);
         }
     }
 }

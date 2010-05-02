@@ -8,6 +8,7 @@ using DotNetOpenAuth.OpenId.Extensions.ProviderAuthenticationPolicy;
 
 namespace HOAHome.Code
 {
+
     public class State
     {
         public static ClaimsResponse ProfileFields

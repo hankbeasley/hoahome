@@ -13,7 +13,7 @@ namespace HOAHome.Code.ContentManagement
         {
             return this._content[id];
         }
-
+        [Pure]
         public Guid[] GetIds()
         {
             Contract.Ensures(Contract.Result<Guid[]>() != null);
@@ -22,6 +22,11 @@ namespace HOAHome.Code.ContentManagement
         public void Add(Guid id, string content)
         {
             this._content.Add(id, content);
+        }
+        [ContractInvariantMethod]
+        private void ObjectInvariant()
+        {
+            Contract.Invariant(this._content != null);
         }
     }
 }

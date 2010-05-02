@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using Google.GData.Client;
@@ -44,17 +45,19 @@ namespace HOAHome.Code
             this.Request.Headers.Remove("Authorization"); // needed?
             this.Request.Headers.Add(oauthHeader);
         }
-    
-      /// <summary>
+
+        /// <summary>
         /// Generates an OAuth header.
         /// </summary>
         /// <param name="uri">The URI of the request</param>
         /// <param name="consumerKey">The consumer key</param>
         /// <param name="consumerSecret">The consumer secret</param>
+        /// <param name="token"></param>
         /// <param name="httpMethod">The http method</param>
         /// <returns>The OAuth authorization header</returns>
         private static string GenerateHeader(Uri uri, String consumerKey, String consumerSecret, string token, String httpMethod)
         {
+            Contract.Assume(!string.IsNullOrEmpty(token));
             //token = System.Web.HttpContext.Current.Server.UrlEncode(token);
             //string accessecret = 
             OAuthUtil oauthUtil = new OAuthUtil();

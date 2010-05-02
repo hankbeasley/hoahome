@@ -22,8 +22,8 @@ namespace HOAHome.Tests.Google
             mock.Setup(p => p.SaveChanges());
 
             var claimedUser = new AppUser() { GoogleId = "testid1", FirstName="googleName" };
-
-            var syncedUser = GoogleOAuth_Accessor.SyncUserWithHOAHome(claimedUser, mock.Object);
+            AppUser syncedUser = (AppUser)new PrivateType(typeof(GoogleOAuth)).InvokeStatic("SyncUserWithHOAHome", claimedUser, mock.Object);
+            //var syncedUser = GoogleOAuth_Accessor.SyncUserWithHOAHome(claimedUser, mock.Object);
 
             Assert.AreEqual("HoaName", syncedUser.FirstName);
             Assert.AreEqual("HoaName", users[0].FirstName);
@@ -41,8 +41,10 @@ namespace HOAHome.Tests.Google
             mock.Setup(p => p.CreateQueryContext<AppUser>()).Returns(users.AsQueryable());
             mock.Setup(p => p.AttachNew(claimedUser));
             mock.Setup(p => p.SaveChanges());
+
+            AppUser syncedUser = (AppUser)new PrivateType(typeof(GoogleOAuth)).InvokeStatic("SyncUserWithHOAHome", claimedUser, mock.Object);
            
-            var syncedUser = GoogleOAuth_Accessor.SyncUserWithHOAHome(claimedUser, mock.Object);
+            //var syncedUser = GoogleOAuth_Accessor.SyncUserWithHOAHome(claimedUser, mock.Object);
 
             Assert.AreEqual("googleName", syncedUser.FirstName);
             Assert.AreEqual("googleLastName, googleName", syncedUser.DisplayName);

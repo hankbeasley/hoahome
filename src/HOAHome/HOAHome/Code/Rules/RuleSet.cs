@@ -71,7 +71,7 @@ namespace HOAHome.Code.Rules
 
         public void AddErrorsToModelState(ModelStateDictionary modelState, object service)
         {
-
+            Contract.Requires<ArgumentNullException>(modelState != null, "modelState");
             bool valid = this.ValidateAllRules(new Dictionary<Type, object> { { typeof(IAlreadyExistService), service } });
             if (!valid)
             {

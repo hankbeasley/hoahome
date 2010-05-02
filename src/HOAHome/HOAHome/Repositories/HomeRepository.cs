@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using HOAHome.Code.EntityFramework;
@@ -15,6 +16,7 @@ namespace HOAHome.Repositories
 
         public HomeRepository(IPersistanceFramework persistance) : base(persistance)
         {
+            Contract.Requires<ArgumentNullException>(persistance != null);
         }
         public Home GetOrCreateHome(string addressFull, double latitude, double longitude)
         {

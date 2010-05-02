@@ -8,6 +8,7 @@ using System.Web.Mvc.Ajax;
 using HOAHome.Models;
 using HOAHome.Code.Mvc;
 using HOAHome.Code.Google;
+using MvcContrib;
 
 namespace HOAHome.Controllers
 {
@@ -30,6 +31,7 @@ namespace HOAHome.Controllers
         public virtual ActionResult CreateChildByAddress(Guid parentId, [Bind(Exclude = "Id")] UserHome userHome, string addressFull, double latitude, double longitude)
         {
             Contract.Requires(addressFull != null, "addressFull cannot be null");
+            Contract.Requires(userHome != null);
             Contract.Requires(userHome.Name != null);
             //Contract.Requires(latitude != 0);
             //Contract.Requires(longitude != 0);

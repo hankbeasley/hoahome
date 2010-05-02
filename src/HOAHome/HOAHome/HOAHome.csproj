@@ -161,9 +161,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Code\Google\GoogleOAuth.cs" />
+    <Compile Include="Code\Google\IFooContract.cs" />
     <Compile Include="Code\Google\IMapDataService.cs" />
     <Compile Include="Code\Google\MapDataService.cs" />
     <Compile Include="Code\InMemoryTokenManager.cs" />
+    <Compile Include="Code\Mvc\ModelMetadataProvider.cs" />
     <Compile Include="Code\Mvc\NeighborhoodRoleAttribute.cs" />
     <Compile Include="Code\Mvc\CustomController.cs">
       <SubType>Code</SubType>
@@ -191,11 +193,8 @@
     <Compile Include="Code\Security\Identity.cs" />
     <Compile Include="Code\Security\Principal.cs" />
     <Compile Include="Code\State.cs" />
-    <Compile Include="ContentController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Areas\nh\Controllers\ContentController.cs" />
     <Compile Include="Controllers\DevelopmentController.cs" />
     <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -227,6 +226,9 @@
     <Compile Include="Models\Custom\Role.cs" />
     <Compile Include="Models\Custom\UserHome.cs" />
     <Compile Include="NeighborhoodController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="nh.ContentController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="nh.HomeController.generated.cs">

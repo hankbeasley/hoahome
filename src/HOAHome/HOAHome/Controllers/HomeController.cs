@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,6 +22,8 @@ namespace HOAHome.Controllers
 
         public HomeController(IRepositoryFactory repositoryFactory, IMapDataService mapService)
         {
+            Contract.Requires(repositoryFactory != null);
+            Contract.Requires(mapService != null);
             _repositoryFactory = repositoryFactory;
             _mapService = mapService;
         }
@@ -61,18 +64,13 @@ namespace HOAHome.Controllers
             return View(results.AsReadOnly());
         }
 
-        //public class SearchCriteria
-        //{
-        //    /// <summary>
-        //    /// Searchs for a Neighborhood where the name Like '%name%'
-        //    /// </summary>
-        //    public string Name { get; set; }
+        [ContractInvariantMethod]
+        void ObjectInvariant()
+        {
+            Contract.Invariant(this._mapService != null);
+            Contract.Invariant(this._repositoryFactory != null);
+        }
 
-        //    /// <summary>
-        //    /// Searches within two miles of this address entered
-        //    /// </summary>
-        //    public string Address { get; set; }
-        //}
 
     }
 }

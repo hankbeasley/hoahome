@@ -34,7 +34,7 @@ namespace HOAHome.Code.EntityFramework
 
         T IPersistanceFramework.Create<T>()
         {
-            //Contract.Ensures(Contract.Result<T>().Id != Guid.Empty);
+            Contract.Ensures(Contract.Result<T>() != null);
             return default(T);
         }
 

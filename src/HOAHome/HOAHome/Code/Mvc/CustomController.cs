@@ -125,5 +125,11 @@ namespace HOAHome.Code.Mvc
             throw new NotImplementedException();
         }
         protected virtual void AdditionalBindings(T entity, ActionType type) { }
+
+        [ContractInvariantMethod]
+        void ObjectInvariant()
+        {
+            Contract.Invariant(this.Persistance != null);
+        }  
     }
 }

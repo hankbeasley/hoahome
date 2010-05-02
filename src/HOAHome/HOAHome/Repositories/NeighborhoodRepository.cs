@@ -13,10 +13,12 @@ namespace HOAHome.Repositories
     {
         public NeighborhoodRepository(IPersistanceFramework persistance) : base(persistance)
         {
+            Contract.Requires<ArgumentNullException>(persistance != null);
         }
 
         public Neighborhood CreateNew(Neighborhood newNeighborhood, Guid userIdThatCreatedNeighborhood)
         {
+            
             if (newNeighborhood.PrimaryContactId == Guid.Empty)
             {
                 newNeighborhood.PrimaryContactId = userIdThatCreatedNeighborhood;

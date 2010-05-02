@@ -42,6 +42,7 @@ namespace HOAHome.Controllers
         [ValidateInput(false)]
         public virtual ActionResult Authenticate()
         {
+            Contract.Assume(this.ViewData != null);
 
             var response = GoogleOAuth.GetResponse(); 
             if (response == null)

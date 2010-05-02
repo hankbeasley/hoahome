@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AppUser>" %>
 <%@ Import Namespace="HOAHome.Models" %>
 <%@ Import Namespace="MvcContrib.UI.Grid" %>
+<%@ Import Namespace="HOAHome" %>
 
 <asp:Content ID="registerTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Settings

@@ -17,7 +17,7 @@ namespace HOAHome.Tests.Controllers
         {
             var mock = new Moq.Mock<IPersistanceFramework>();
             var controller = new UserHomeController();
-            UserHomeController_Accessor.AttachShadow(controller).Persistance = mock.Object;
+            new PrivateObject(controller).SetFieldOrProperty("Persistance",mock.Object);
             mock.Setup(p => p.CreateQueryContext<Home>()).Returns(HomesList);
             var newHomeThatShouldBeCreated = new Home();
             mock.Setup(p => p.Create<Home>()).Returns(newHomeThatShouldBeCreated);
@@ -41,7 +41,8 @@ namespace HOAHome.Tests.Controllers
         {
             var mock = new Moq.Mock<IPersistanceFramework>();
             var controller = new UserHomeController();
-            UserHomeController_Accessor.AttachShadow(controller).Persistance = mock.Object;
+            new PrivateObject(controller).SetFieldOrProperty("Persistance", mock.Object);
+            //UserHomeController_Accessor.AttachShadow(controller).Persistance = mock.Object;
             var existingHome = new Home();
             mock.Setup(p => p.CreateQueryContext<Home>()).Returns(HomesList);
             

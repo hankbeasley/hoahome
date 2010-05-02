@@ -36,26 +36,13 @@ namespace HOAHome.Controllers
         public NeighborhoodController(IRepositoryFactory repositoryFactory)
             : base(repositoryFactory.Neighborhood)
         {
+            Contract.Requires<ArgumentNullException>(repositoryFactory != null);
             _repositoryFactory = repositoryFactory;
         }
 
         private IRepositoryFactory _repositoryFactory;
 
-        private ContentRepository ContentRepository
-        {
-            get
-            {
-                if (this._contentRepository == null)
-                {
-                    this._contentRepository =
-                   new ContentRepository(new Guid(this.ControllerContext.RouteData.Values["nhid"].ToString()),
-                                         new PersistanceFramework(new COHHomeEntities()));
-                }
-                return this._contentRepository;
-            }
-        }
-
-        private ContentRepository _contentRepository;
+        
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]

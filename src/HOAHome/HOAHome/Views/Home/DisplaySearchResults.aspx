@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IList<HOAHome.Models.Neighborhood>>" %>
+<%@ Import Namespace="HOAHome" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	DisplaySearchResults
@@ -11,7 +12,7 @@
         <tr><th>Address</th><th>Neighborhood</th><th></th></tr>
         <% foreach (var item in Model)
             { %>
-            <tr><td><%=this.Html.ActionLink(item.Name, MVC.nh.Neighborhood.Index().AddRouteValue("nhid",item.Id)) %></td><td><%=this.Html.ActionLink(item.Name, "Index", "Neighborhood", new{nhid=item.Id}, null) %> </td><td>Map It</td></tr>
+            <tr><td><%=T4Extensions.ActionLink(this.Html, item.Name, T4Extensions.AddRouteValue(MVC.nh.Neighborhood.Index(), "nhid",item.Id)) %></td><td><%=this.Html.ActionLink(item.Name, "Index", "Neighborhood", new{nhid=item.Id}, null) %> </td><td>Map It</td></tr>
          <%} %>
     
     </table>

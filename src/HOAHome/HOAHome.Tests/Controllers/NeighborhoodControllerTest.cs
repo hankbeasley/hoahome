@@ -2,12 +2,12 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 using System.Web.Routing;
 using HOAHome.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using HOAHome.Models;
 using HOAHome.Controllers;
-using System.Web.Mvc;
 using HOAHome.Code.Security;
 
 namespace HOAHome.Tests.Controllers
@@ -27,8 +27,10 @@ namespace HOAHome.Tests.Controllers
 
 
             var controller = new NeighborhoodController(factory);
+            AppUser testingUser = (AppUser)new PrivateType(typeof(Identity)).GetStaticField("TestingAppUser");
+           
             factory.MockNeighborhoodRepository.Setup(
-                r => r.CreateNew(entitySubmited, Identity_Accessor.TestingAppUser.Id));
+                r => r.CreateNew(entitySubmited, testingUser.Id));
             factory.MockNeighborhoodRepository.Setup(r => r.SaveChanges());
 
 

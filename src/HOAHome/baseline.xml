@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Assembly>
-  <Outcome Message="The interface 'DotNetOpenAuth.Messaging.IMessage' specifies the class 'DotNetOpenAuth.Messaging.IMessageContract' as its contract class, but that class does not point back to this interface." />
-  <Outcome Message="The interface 'DotNetOpenAuth.Messaging.IChannelBindingElement' specifies the class 'DotNetOpenAuth.Messaging.IChannelBindingElementContract' as its contract class, but that class does not point back to this interface." />
-  <Outcome Message="The interface 'DotNetOpenAuth.OpenId.Provider.IRequest' specifies the class 'DotNetOpenAuth.OpenId.Provider.IRequestContract' as its contract class, but that class does not point back to this interface." />
-  <Outcome Message="The class 'DotNetOpenAuth.OpenId.Provider.Request' specifies the class 'DotNetOpenAuth.OpenId.Provider.RequestContract' as its contract class, but that class does not point back to this class." />
-  <Outcome Message="The class 'DotNetOpenAuth.OAuth.ChannelElements.SigningBindingElementBase' specifies the class 'DotNetOpenAuth.OAuth.ChannelElements.SigningBindingElementBaseContract' as its contract class, but that class does not point back to this class." />
-  <Outcome Message="The class 'DotNetOpenAuth.OpenId.Identifier' specifies the class 'DotNetOpenAuth.OpenId.IdentifierContract' as its contract class, but that class does not point back to this class." />
-  <Outcome Message="The class 'DotNetOpenAuth.Messaging.Channel' specifies the class 'DotNetOpenAuth.Messaging.ChannelContract' as its contract class, but that class does not point back to this class." />
-  <Outcome Message="The interface 'DotNetOpenAuth.Messaging.IProtocolMessageWithExtensions' specifies the class 'DotNetOpenAuth.Messaging.IProtocolMessageWithExtensionsContract' as its contract class, but that class does not point back to this interface." />
   <Method Name="HOAHome.Models.COHHomeEntities..ctor()">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ContextOptions'" PrimaryILOffset="17" MethodILOffset="0" />
   </Method>
@@ -16,34 +8,6 @@
   </Method>
   <Method Name="HOAHome.Models.COHHomeEntities..ctor(System.Data.EntityClient.EntityConnection)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ContextOptions'" PrimaryILOffset="13" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.EntityFramework.PersistanceFramework.GetEntitySet(System.Type)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'System.Linq.Enumerable.First(entitySets)'" PrimaryILOffset="6e" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.EntityFramework.PersistanceFramework.InitalizeEntity(T)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'System.Threading.Thread.CurrentPrincipal'" PrimaryILOffset="61" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.EntityFramework.PersistanceFramework.SaveChanges()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._context.ObjectStateManager'" PrimaryILOffset="d" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="12" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'objectState'" PrimaryILOffset="22" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'System.Threading.Thread.CurrentPrincipal'" PrimaryILOffset="4b" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.EntityFramework.PersistanceFramework.AddIncludes(System.Linq.IQueryable&lt;T,System.String[])">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'query'" PrimaryILOffset="39" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.InMemoryTokenManager.GetTokenSecret(System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.tokensAndSecrets'" PrimaryILOffset="7" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.InMemoryTokenManager.StoreNewRequestToken(DotNetOpenAuth.OAuth.Messages.UnauthorizedTokenRequest,DotNetOpenAuth.OAuth.Messages.ITokenSecretContainingMessage)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.tokensAndSecrets'" PrimaryILOffset="20" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.InMemoryTokenManager.ExpireRequestTokenAndStoreNewAccessToken(System.String,System.String,System.String,System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.tokensAndSecrets'" PrimaryILOffset="7" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.InMemoryTokenManager.StoreOpenIdAuthorizedRequestToken(System.String,DotNetOpenAuth.OpenId.Extensions.OAuth.AuthorizationApprovedResponse)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'authorization'" PrimaryILOffset="7" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.tokensAndSecrets'" PrimaryILOffset="11" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.MvcApplication.get_GoogleTokenManager()">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'System.Web.HttpContext.Current'" PrimaryILOffset="5" MethodILOffset="0" />
@@ -113,26 +77,21 @@
   </Method>
   <Method Name="HOAHome.Code.Google.GoogleOAuth.CreateGoogleAuthenticationAction()">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'System.Web.HttpContext.Current'" PrimaryILOffset="5" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'authReq'" PrimaryILOffset="8e" MethodILOffset="0" />
+    <Outcome Kind="Requires" Outcome="Top" Message="requires unproven: identifier == null || identifier.Length &gt; 0" PrimaryILOffset="15" MethodILOffset="33" />
+    <Outcome Kind="Requires" Outcome="Top" Message="requires unproven: userSuppliedIdentifier != null" PrimaryILOffset="d" MethodILOffset="38" />
+    <Outcome Kind="Requires" Outcome="Top" Message="requires unproven: response != null" PrimaryILOffset="d" MethodILOffset="9b" />
   </Method>
   <Method Name="HOAHome.Code.Google.GoogleOAuth.HandleAuthenticationResponse(DotNetOpenAuth.OpenId.RelyingParty.IAuthenticationResponse,HOAHome.Code.EntityFramework.IPersistanceFramework)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="69" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'attibuteExtension'" PrimaryILOffset="86" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'attibuteExtension.Attributes'" PrimaryILOffset="90" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="95" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="b5" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="d5" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'appUser'" PrimaryILOffset="ee" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'System.Web.HttpContext.Current'" PrimaryILOffset="136" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.Security.Identity.get_Current()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'ticket'" PrimaryILOffset="3e" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="93" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'attibuteExtension'" PrimaryILOffset="b0" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="bf" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="df" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="ff" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'appUser'" PrimaryILOffset="118" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'System.Web.HttpContext.Current'" PrimaryILOffset="160" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Controllers.AccountController.Authenticate()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'response.Exception'" PrimaryILOffset="bc" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ViewData != null);" PrimaryILOffset="0" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="c1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="9a" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'response.Exception'" PrimaryILOffset="cd" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Controllers.AccountController.Settings()">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.entities'" PrimaryILOffset="1e" MethodILOffset="0" />
@@ -143,22 +102,99 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="12" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Controllers.AccountController.HOAHome.Code.Mvc.IPersistanceContainer.Load(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'HOAHome.Code.Security.Identity.Current'" PrimaryILOffset="b" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.entities'" PrimaryILOffset="16" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Code.ContentManagement.ContentBundle.GetContent(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._content'" PrimaryILOffset="7" MethodILOffset="0" />
+  <Method Name="HOAHome.Code.Rules.UniqueFieldRule.GetErrorMessage()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._getFieldValueFunction'" PrimaryILOffset="11" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Code.ContentManagement.ContentBundle.GetIds()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._content'" PrimaryILOffset="16" MethodILOffset="0" />
+  <Method Name="HOAHome.Code.Rules.UniqueFieldRule.HOAHome.Code.Rules.IRuleThatNeedsServices.IsValidUsingService(System.Collections.Generic.Dictionary&lt;System.Type,System.Object)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'serviceBundle'" PrimaryILOffset="b" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._getFieldValueFunction'" PrimaryILOffset="3f" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'existService'" PrimaryILOffset="74" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Code.ContentManagement.ContentBundle.Add(System.Guid,System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._content'" PrimaryILOffset="8" MethodILOffset="0" />
+  <Method Name="HOAHome.Code.Rules.RuleSet.ValidateAllRules(System.Collections.Generic.Dictionary&lt;System.Type,System.Object)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._persistenceRelatedRules'" PrimaryILOffset="8" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._brokenRules'" PrimaryILOffset="37" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'rule'" PrimaryILOffset="41" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._brokenRules'" PrimaryILOffset="4f" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Models.ContentType.get_Contents()">
+  <Method Name="HOAHome.Code.Rules.RuleSet.AddErrorsToModelState(System.Web.Mvc.ModelStateDictionary,System.Object)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._brokenRules'" PrimaryILOffset="39" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'rule'" PrimaryILOffset="4d" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possible use of a null array '((HOAHome.Code.Rules.IRule)rule).ParticipatingLogicalFields'" PrimaryILOffset="52" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.get_PrimaryContact()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.set_PrimaryContact(HOAHome.Models.AppUser)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.get_PrimaryContactReference()">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Models.ContentType.set_Contents(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.Content)">
+  <Method Name="HOAHome.Models.Neighborhood.set_PrimaryContactReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.AppUser)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.get_Contents()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.set_Contents(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.Content)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.get_UserNeighborhoods()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.set_UserNeighborhoods(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.UserNeighborhood)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.get_NeighborhoodHomes()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Neighborhood.set_NeighborhoodHomes(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.NeighborhoodHome)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.get_AppUser()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.set_AppUser(HOAHome.Models.AppUser)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.get_AppUserReference()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.set_AppUserReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.AppUser)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.get_Neighborhood()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.set_Neighborhood(HOAHome.Models.Neighborhood)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.get_NeighborhoodReference()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.set_NeighborhoodReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Neighborhood)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.get_Role()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.set_Role(HOAHome.Models.Role)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.get_RoleReference()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.UserNeighborhood.set_RoleReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Role)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Models.Role.get_UserNeighborhoods()">
@@ -167,45 +203,33 @@
   <Method Name="HOAHome.Models.Role.set_UserNeighborhoods(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.UserNeighborhood)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Repositories.RepositoryBase.Get(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="d" MethodILOffset="0" />
+  <Method Name="HOAHome.Models.NeighborhoodHome.get_Home()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Repositories.RepositoryBase.GetAll()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="c" MethodILOffset="0" />
+  <Method Name="HOAHome.Models.NeighborhoodHome.set_Home(HOAHome.Models.Home)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Repositories.RepositoryBase.Delete(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="7" MethodILOffset="0" />
+  <Method Name="HOAHome.Models.NeighborhoodHome.get_HomeReference()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Repositories.RepositoryBase.SaveChanges()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="6" MethodILOffset="0" />
+  <Method Name="HOAHome.Models.NeighborhoodHome.set_HomeReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Home)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Repositories.AppUserRepository.IsUserInNeighborhoodRole(System.Guid,System.Guid,System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="27" MethodILOffset="0" />
+  <Method Name="HOAHome.Models.NeighborhoodHome.get_Neighborhood()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Code.ContentManagement.HtmlHelperExtensions.Cms(System.Web.Mvc.HtmlHelper,HOAHome.Models.ContentType)">
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(htmlHelper != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'htmlHelper'" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(htmlHelper.ViewData != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'htmlHelper.ViewData'" PrimaryILOffset="b" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(contentType != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'contentType'" PrimaryILOffset="1c" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'bundle'" PrimaryILOffset="2d" MethodILOffset="0" />
+  <Method Name="HOAHome.Models.NeighborhoodHome.set_Neighborhood(HOAHome.Models.Neighborhood)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Code.ContentManagement.HtmlHelperExtensions.CmsEditorBinding(System.Web.Mvc.HtmlHelper)">
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(htmlHelper != null);" PrimaryILOffset="3b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'htmlHelper'" PrimaryILOffset="1" MethodILOffset="3b" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(htmlHelper.ViewContext != null);" PrimaryILOffset="3b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'htmlHelper.ViewContext'" PrimaryILOffset="6" MethodILOffset="3b" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(htmlHelper.ViewContext.RouteData.Values != null);" PrimaryILOffset="3b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'htmlHelper.ViewContext.RouteData.Values'" PrimaryILOffset="2b" MethodILOffset="3b" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(htmlHelper.ViewContext.HttpContext != null);" PrimaryILOffset="3b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'htmlHelper.ViewContext.HttpContext'" PrimaryILOffset="6c" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(htmlHelper.ViewContext.HttpContext.User != null);" PrimaryILOffset="3b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'htmlHelper.ViewContext.HttpContext.User'" PrimaryILOffset="71" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'HOAHome.Code.Security.Identity.Current'" PrimaryILOffset="82" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(htmlHelper.ViewData != null);" PrimaryILOffset="3b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'htmlHelper.ViewData'" PrimaryILOffset="a6" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'bundle'" PrimaryILOffset="b7" MethodILOffset="0" />
+  <Method Name="HOAHome.Models.NeighborhoodHome.get_NeighborhoodReference()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.NeighborhoodHome.set_NeighborhoodReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Neighborhood)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Models.Home.get_UserHomes()">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
@@ -213,11 +237,55 @@
   <Method Name="HOAHome.Models.Home.set_UserHomes(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.UserHome)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Models.Home.get_NeighboorhoodHomes()">
+  <Method Name="HOAHome.Models.Home.get_NeighborhoodHomes()">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Models.Home.set_NeighboorhoodHomes(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.NeighboorhoodHome)">
+  <Method Name="HOAHome.Models.Home.set_NeighborhoodHomes(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.NeighborhoodHome)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Content.get_ContentType()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Content.set_ContentType(HOAHome.Models.ContentType)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Content.get_ContentTypeReference()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Content.set_ContentTypeReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.ContentType)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Content.get_Neighborhood()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Content.set_Neighborhood(HOAHome.Models.Neighborhood)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Content.get_NeighborhoodReference()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.Content.set_NeighborhoodReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Neighborhood)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.ContentType.get_Contents()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Models.ContentType.set_Contents(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.Content)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Code.ContentManagement.ContentRepository.SetContent(System.Guid,System.String)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._persistance'" PrimaryILOffset="20" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Code.ContentManagement.ContentRepository.SaveChanges()">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._persistance'" PrimaryILOffset="6" MethodILOffset="0" />
+  </Method>
+  <Method Name="HOAHome.Code.ContentManagement.ContentRepository.GetContent(HOAHome.Models.ContentType)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._persistance'" PrimaryILOffset="20" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'contentType'" PrimaryILOffset="169" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Google.MapDataService.AddHome(HOAHome.Models.Home)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'entry.Title'" PrimaryILOffset="17" MethodILOffset="0" />
@@ -228,10 +296,6 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'insertedEntry'" PrimaryILOffset="8c" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'insertedEntry.Id'" PrimaryILOffset="91" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'insertedEntry.Id.Uri'" PrimaryILOffset="96" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.Google.MapDataService.GeoCodeAddress(System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'response'" PrimaryILOffset="3b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'result'" PrimaryILOffset="63" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Google.MapDataService.AddFull(System.String)">
     <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(featureid != null);" PrimaryILOffset="11" MethodILOffset="0" />
@@ -248,9 +312,7 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'fullUri'" PrimaryILOffset="4" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Mvc.NeighborhoodRoleAttribute.AuthorizeCore(System.Web.HttpContextBase)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'httpContext'" PrimaryILOffset="34" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'httpContext.Items'" PrimaryILOffset="3e" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'HOAHome.Code.Security.Identity.Current'" PrimaryILOffset="71" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'httpContext.Items'" PrimaryILOffset="4a" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Mvc.NeighborhoodRoleAttribute.OnAuthorization(System.Web.Mvc.AuthorizationContext)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'filterContext'" PrimaryILOffset="1" MethodILOffset="0" />
@@ -260,23 +322,16 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'filterContext.HttpContext.Items'" PrimaryILOffset="25" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Mvc.CustomController.Details(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="13" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="1d" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Mvc.CustomController.Create(T)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ModelState'" PrimaryILOffset="e" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="1c" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="42" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ModelState'" PrimaryILOffset="1f" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="53" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Mvc.CustomController.Edit(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="d" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="1f" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Code.Mvc.CustomController.Delete(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="17" MethodILOffset="0" />
-  </Method>
   <Method Name="HOAHome.Code.Mvc.CustomController.List()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="12" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="17" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Mvc.CustomController.Edit(T)">
@@ -284,15 +339,7 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ModelState'" PrimaryILOffset="6" MethodILOffset="0" />
     <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ViewData != null);" PrimaryILOffset="1" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="19" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="2b" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="59" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.Mvc.CustomController.CreateChild(System.Guid,T)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="7" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="23" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.Mvc.CustomController.HOAHome.Code.Mvc.IPersistanceContainer.Load(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.Persistance'" PrimaryILOffset="d" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.Mvc.CustomModelBinder.CreateModel(System.Web.Mvc.ControllerContext,System.Web.Mvc.ModelBindingContext,System.Type)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'bindingContext'" PrimaryILOffset="1" MethodILOffset="0" />
@@ -305,19 +352,6 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="7" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="13" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Code.Rules.RuleSet.ValidateAllRules(System.Collections.Generic.Dictionary&lt;System.Type,System.Object)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._persistenceRelatedRules'" PrimaryILOffset="8" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._brokenRules'" PrimaryILOffset="37" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'rule'" PrimaryILOffset="41" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._brokenRules'" PrimaryILOffset="4f" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.Rules.RuleSet.AddErrorsToModelState(System.Web.Mvc.ModelStateDictionary,System.Object)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._brokenRules'" PrimaryILOffset="28" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'rule'" PrimaryILOffset="3c" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possible use of a null array '((HOAHome.Code.Rules.IRule)rule).ParticipatingLogicalFields'" PrimaryILOffset="41" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(modelState != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'modelState'" PrimaryILOffset="57" MethodILOffset="0" />
-  </Method>
   <Method Name="HOAHome.Code.Mvc.RepositoryController.Edit(System.Guid)">
     <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ViewData != null);" PrimaryILOffset="11" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="30" MethodILOffset="0" />
@@ -326,6 +360,8 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="2e" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ModelState'" PrimaryILOffset="39" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="4c" MethodILOffset="0" />
+    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ModelState != null);" PrimaryILOffset="1" MethodILOffset="0" />
+    <Outcome Kind="Requires" Outcome="Top" Message="requires unproven: modelState != null (modelState)" PrimaryILOffset="c" MethodILOffset="2e" />
   </Method>
   <Method Name="HOAHome.Code.Mvc.RepositoryController.Details(System.Guid)">
     <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ViewData != null);" PrimaryILOffset="11" MethodILOffset="0" />
@@ -374,9 +410,9 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'value'" PrimaryILOffset="55" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.OAuthRequest.GenerateHeader(System.Uri,System.String,System.String,System.String,System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="24" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(httpMethod != null);" PrimaryILOffset="0" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'httpMethod'" PrimaryILOffset="2b" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="32" MethodILOffset="0" />
+    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(httpMethod != null);" PrimaryILOffset="1" MethodILOffset="0" />
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'httpMethod'" PrimaryILOffset="39" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Code.OAuthRequest.EnsureCredentials()">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.factory'" PrimaryILOffset="12" MethodILOffset="0" />
@@ -388,54 +424,6 @@
   <Method Name="HOAHome.Code.Rules.Services.AlreadyExistService.Exist(System.Guid,System.String,System.Object)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._existFunction'" PrimaryILOffset="9" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Code.Rules.UniqueFieldRule.GetErrorMessage()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._getFieldValueFunction'" PrimaryILOffset="11" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.Rules.UniqueFieldRule.HOAHome.Code.Rules.IRuleThatNeedsServices.IsValidUsingService(System.Collections.Generic.Dictionary&lt;System.Type,System.Object)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'serviceBundle'" PrimaryILOffset="b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._getFieldValueFunction'" PrimaryILOffset="5a" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'existService'" PrimaryILOffset="64" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Content.get_ContentType()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Content.set_ContentType(HOAHome.Models.ContentType)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Content.get_ContentTypeReference()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Content.set_ContentTypeReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.ContentType)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Content.get_Neighborhood()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Content.set_Neighborhood(HOAHome.Models.Neighborhood)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Content.get_NeighborhoodReference()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Content.set_NeighborhoodReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Neighborhood)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.ContentManagement.ContentRepository.SetContent(System.Guid,System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._persistance'" PrimaryILOffset="20" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'contentEntity'" PrimaryILOffset="121" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.ContentManagement.ContentRepository.SaveChanges()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._persistance'" PrimaryILOffset="6" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Code.ContentManagement.ContentRepository.GetContent(HOAHome.Models.ContentType)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._persistance'" PrimaryILOffset="20" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(contentType != null);" PrimaryILOffset="0" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'contentType'" PrimaryILOffset="169" MethodILOffset="0" />
-  </Method>
   <Method Name="HOAHome.Controllers.ContentController.get_ContentRepository()">
     <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext != null);" PrimaryILOffset="1" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext'" PrimaryILOffset="f" MethodILOffset="0" />
@@ -445,207 +433,13 @@
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData.Values'" PrimaryILOffset="1e" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="23" MethodILOffset="0" />
   </Method>
-  <Method Name="HOAHome.Models.Neighborhood.get_PrimaryContact()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.set_PrimaryContact(HOAHome.Models.AppUser)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.get_PrimaryContactReference()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.set_PrimaryContactReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.AppUser)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.get_Contents()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.set_Contents(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.Content)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.get_UserNeighborhoods()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.set_UserNeighborhoods(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.UserNeighborhood)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.get_NeighboorhoodHomes()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.Neighborhood.set_NeighboorhoodHomes(System.Data.Objects.DataClasses.EntityCollection&lt;HOAHome.Models.NeighboorhoodHome)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.get_AppUser()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.set_AppUser(HOAHome.Models.AppUser)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.get_AppUserReference()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.set_AppUserReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.AppUser)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.get_Neighborhood()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.set_Neighborhood(HOAHome.Models.Neighborhood)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.get_NeighborhoodReference()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.set_NeighborhoodReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Neighborhood)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.get_Role()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.set_Role(HOAHome.Models.Role)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.get_RoleReference()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.UserNeighborhood.set_RoleReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Role)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.NeighboorhoodHome.get_Home()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.NeighboorhoodHome.set_Home(HOAHome.Models.Home)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.NeighboorhoodHome.get_HomeReference()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.NeighboorhoodHome.set_HomeReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Home)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.NeighboorhoodHome.get_Neighborhood()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="15" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.NeighboorhoodHome.set_Neighborhood(HOAHome.Models.Neighborhood)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="16" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.NeighboorhoodHome.get_NeighborhoodReference()">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Models.NeighboorhoodHome.set_NeighborhoodReference(System.Data.Objects.DataClasses.EntityReference&lt;HOAHome.Models.Neighborhood)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="14" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.NeighborhoodRepository.CreateNew(HOAHome.Models.Neighborhood,System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'newNeighborhood'" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="20" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.NeighborhoodRepository.DoesAnotherNeighborhoodWithNameExist(System.Guid,System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="20" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.NeighborhoodRepository.GetHomes(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="19" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.NeighborhoodRepository.FindBySimilarName(System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="20" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.NeighborhoodRepository.FindNearPoint(HOAHome.Repositories.Point)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="35" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.NeighborhoodRepository.HOAHome.Code.Rules.Services.IAlreadyExistService.Exist(System.Guid,System.String,System.Object)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'value'" PrimaryILOffset="10" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.NeighborhoodRepository.RemoveHome(System.Guid,System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="19" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.NeighborhoodRepository.AddHome(System.Guid,HOAHome.Models.Home)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="6" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'neighborhoodHome'" PrimaryILOffset="e" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.HomeRepository.GetOrCreateHome(System.String,System.Double,System.Double)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="19" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'home'" PrimaryILOffset="a4" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Repositories.HomeRepository.DeleteIfNotAssociatedWithHomesOrNeighborHoods(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="19" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.HomeController.DisplaySearchResults(System.String)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._repositoryFactory'" PrimaryILOffset="d" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._repositoryFactory.Neighborhood'" PrimaryILOffset="13" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._mapService'" PrimaryILOffset="24" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'points'" PrimaryILOffset="2b" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.NeighborhoodController..ctor(HOAHome.Repositories.IRepositoryFactory)">
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(repositoryFactory != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'repositoryFactory'" PrimaryILOffset="18" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.NeighborhoodController.get_ContentRepository()">
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext'" PrimaryILOffset="f" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext.RouteData != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData'" PrimaryILOffset="14" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext.RouteData.Values != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData.Values'" PrimaryILOffset="1e" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="23" MethodILOffset="0" />
-  </Method>
   <Method Name="HOAHome.Controllers.NeighborhoodController.Create(HOAHome.Models.Neighborhood)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'HOAHome.Code.Security.Identity.Current'" PrimaryILOffset="c" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="11" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(entity != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'entity'" PrimaryILOffset="18" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'entity.Rules'" PrimaryILOffset="29" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ModelState'" PrimaryILOffset="34" MethodILOffset="0" />
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="41" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.NeighborhoodController.Index()">
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext'" PrimaryILOffset="11" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext.RouteData != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData'" PrimaryILOffset="16" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext.RouteData.Values != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData.Values'" PrimaryILOffset="20" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ViewData != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="25" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ViewData'" PrimaryILOffset="66" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.NeighborhoodController.Homes()">
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext'" PrimaryILOffset="c" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext.RouteData != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData'" PrimaryILOffset="11" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext.RouteData.Values != null);" PrimaryILOffset="1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData.Values'" PrimaryILOffset="1b" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="20" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="2a" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.NeighborhoodController.GetNhId()">
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext != null);" PrimaryILOffset="15" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext'" PrimaryILOffset="1a" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext.RouteData != null);" PrimaryILOffset="15" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData'" PrimaryILOffset="1f" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(this.ControllerContext.RouteData.Values != null);" PrimaryILOffset="15" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ControllerContext.RouteData.Values'" PrimaryILOffset="29" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.NeighborhoodController.AddHome(System.String,System.Double,System.Double)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._repositoryFactory'" PrimaryILOffset="1e" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._repositoryFactory.Home'" PrimaryILOffset="26" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._repositoryFactory.Neighborhood'" PrimaryILOffset="49" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.NeighborhoodController.RemoveHome(System.Guid)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._repositoryFactory'" PrimaryILOffset="1d" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._repositoryFactory.Neighborhood'" PrimaryILOffset="24" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this._repositoryFactory.Home'" PrimaryILOffset="45" MethodILOffset="0" />
+    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(entity != null);" PrimaryILOffset="1" MethodILOffset="0" />
+    <Outcome Kind="Requires" Outcome="Top" Message="requires unproven: newNeighborhood != null" PrimaryILOffset="7" MethodILOffset="11" />
+    <Outcome Kind="Requires" Outcome="Top" Message="requires unproven: modelState != null (modelState)" PrimaryILOffset="c" MethodILOffset="29" />
   </Method>
   <Method Name="HOAHome.Models.UserHome.set_Home(HOAHome.Models.Home)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="10" MethodILOffset="0" />
@@ -677,13 +471,6 @@
   </Method>
   <Method Name="HOAHome.Controllers.UserHomeController.AssociateParent(System.Guid,HOAHome.Models.UserHome)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'entity'" PrimaryILOffset="7" MethodILOffset="0" />
-  </Method>
-  <Method Name="HOAHome.Controllers.UserHomeController.CreateChildByAddress(System.Guid,HOAHome.Models.UserHome,System.String,System.Double,System.Double)">
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference" PrimaryILOffset="2f" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'home'" PrimaryILOffset="c0" MethodILOffset="0" />
-    <Outcome Kind="Informational" Outcome="Bottom" Message="Contract.Requires(userHome != null);" PrimaryILOffset="0" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'userHome'" PrimaryILOffset="e1" MethodILOffset="0" />
-    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'userHome'" PrimaryILOffset="116" MethodILOffset="0" />
   </Method>
   <Method Name="HOAHome.Services.GisService.GetIntersectingNeighborhoods(System.Double,System.Double)">
     <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly unboxing a null reference" PrimaryILOffset="55" MethodILOffset="0" />

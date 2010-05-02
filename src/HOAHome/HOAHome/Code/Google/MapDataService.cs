@@ -72,8 +72,10 @@ namespace HOAHome.Code.Google
 
             List<Point> results = new List<Point>();
             string response = client.DownloadString(sPath);
+            Contract.Assume(response != null);
             foreach (string result in response.Split('\r'))
             {
+                Contract.Assume(result != null);
                 string[] eResult = result.Split(',');
                 if(eResult.Length != 4) throw new ApplicationException("Google return invalid results");
                 //Contract.Assume(eResult[0] != null);

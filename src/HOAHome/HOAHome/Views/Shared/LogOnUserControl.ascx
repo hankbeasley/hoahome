@@ -1,15 +1,16 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%@ Import Namespace="HOAHome" %>
 <%
     if (Request.IsAuthenticated) {
 %>
         Welcome <b><%= HOAHome.Code.Security.Identity.Current.Name %></b>!
-        [ <%= Html.ActionLink("Log Off", MVC.Account.LogOff()) %> ]
-        [<%= Html.ActionLink("Settings", MVC.Account.Settings())%> ]
+        [ <%= T4Extensions.ActionLink(Html, "Log Off", MVC.Account.LogOff()) %> ]
+        [<%= T4Extensions.ActionLink(Html, "Settings", MVC.Account.Settings())%> ]
 <%
     }
     else {
 %> 
-        [ <%= Html.ActionLink("Log On", MVC.Account.LogOn()) %> ]
+        [ <%= T4Extensions.ActionLink(Html, "Log On", MVC.Account.LogOn()) %> ]
 <%
     }
 %>

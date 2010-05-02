@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<HOAHome.Models.UserHome>" %>
+<%@ Import Namespace="HOAHome" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
@@ -21,7 +22,7 @@
 </script>
     <div id="map"></div>
     <div>
-        <%=Html.ActionLink("Cancel", MVC.Account.Settings()) %>
+        <%=T4Extensions.ActionLink(Html, "Cancel", MVC.Account.Settings()) %>
     </div>
     
 </asp:Content>

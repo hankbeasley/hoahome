@@ -11,7 +11,7 @@ using HOAHome.Repositories;
 namespace HOAHome.Code.Mvc
 {
     public abstract class RepositoryController<T, TE> : Controller, IPersistanceContainer
-        where T : HOAHome.Repositories.IRepositoryBase<TE>
+        where T : class,HOAHome.Repositories.IRepositoryBase<TE>
         where TE : IEntity
     {
         protected T Repository { get; private set; }
@@ -22,6 +22,7 @@ namespace HOAHome.Code.Mvc
 
         public RepositoryController(T repository)
         {
+            Contract.Requires(repository !=null);
             this.Repository = repository;
         }
         [Authorize]
@@ -72,5 +73,15 @@ namespace HOAHome.Code.Mvc
             
             return this.Repository.Get(id);
         }
+
+        //[ContractRuntimeIgnored]
+        //[ContractInvariantMethod]
+        //void ObjectInvariant()
+        //{
+        //    Contract.Invariant(this.ViewData != null);
+        //    Contract.Invariant(this.ModelState != null);
+        //}
+
+
     }
 }
