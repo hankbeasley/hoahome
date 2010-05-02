@@ -11,6 +11,6 @@ pretty well except links to other stuff such as user settings does not switch ur
 
 4. Security has pretty much been implement. Need to finish Principle class
 
-5. Add ability to associate homes with neighborhood.
+5. Add the same home twice to a neighborhood produces and error. research best MVC validation options.
 
 6. Change configration to parse real connection string
