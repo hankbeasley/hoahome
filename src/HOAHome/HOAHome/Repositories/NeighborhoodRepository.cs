@@ -38,7 +38,7 @@ namespace HOAHome.Repositories
        public IList<Home> GetHomes(Guid neighborhoodId)
        {
            return this.Persistance.CreateQueryContext<Home>().Where(
-               h => h.NeighboorhoodHomes.Any(n => n.NeighborhoodId == neighborhoodId)).ToList();
+               h => h.NeighborhoodHomes.Any(n => n.NeighborhoodId == neighborhoodId)).ToList();
        }
         //public IList<Neighborhood> Search(SearchCriteria criteria)
         //{
@@ -93,15 +93,15 @@ namespace HOAHome.Repositories
 
         public void RemoveHome(Guid neighborhoodId, Guid homeId)
         {
-            var neighboorhoodHome = this.Persistance.CreateQueryContext<NeighboorhoodHome>().Where(nh => nh.NeighborhoodId == neighborhoodId && homeId == nh.HomeId).Single();
-            Contract.Assume(neighboorhoodHome != null);
-            this.Persistance.Delete(neighboorhoodHome);
+            var NeighborhoodHome = this.Persistance.CreateQueryContext<NeighborhoodHome>().Where(nh => nh.NeighborhoodId == neighborhoodId && homeId == nh.HomeId).Single();
+            Contract.Assume(NeighborhoodHome != null);
+            this.Persistance.Delete(NeighborhoodHome);
         }
 
 
-        public NeighboorhoodHome AddHome(Guid neighborhoodId, Home home)
+        public NeighborhoodHome AddHome(Guid neighborhoodId, Home home)
         {
-            var neighborhoodHome = this.Persistance.Create<NeighboorhoodHome>();
+            var neighborhoodHome = this.Persistance.Create<NeighborhoodHome>();
             neighborhoodHome.NeighborhoodId = neighborhoodId;
             neighborhoodHome.HomeId = home.Id;
             return neighborhoodHome;

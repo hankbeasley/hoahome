@@ -27,8 +27,8 @@ using HOAHome.Code.EntityFramework;
 [assembly: EdmRelationshipAttribute("COHHomeModel", "FK_UserNeighborHood_AppUser", "AppUser", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.AppUser), "UserNeighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.UserNeighborhood), true)]
 [assembly: EdmRelationshipAttribute("COHHomeModel", "FK_UserNeighborHood_Neighborhood", "Neighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.Neighborhood), "UserNeighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.UserNeighborhood), true)]
 [assembly: EdmRelationshipAttribute("COHHomeModel", "FK_UserNeighborHood_Role", "Role", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.Role), "UserNeighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.UserNeighborhood), true)]
-[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_NeighboorhoodHome_Home", "Home", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.Home), "NeighboorhoodHome", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.NeighboorhoodHome), true)]
-[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_NeighboorhoodHome_Neighborhood", "Neighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.Neighborhood), "NeighboorhoodHome", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.NeighboorhoodHome), true)]
+[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_NeighborhoodHome_Home", "Home", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.Home), "NeighborhoodHome", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.NeighborhoodHome), true)]
+[assembly: EdmRelationshipAttribute("COHHomeModel", "FK_NeighborhoodHome_Neighborhood", "Neighborhood", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(HOAHome.Models.Neighborhood), "NeighborhoodHome", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(HOAHome.Models.NeighborhoodHome), true)]
 
 #endregion
 
@@ -211,18 +211,18 @@ namespace HOAHome.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<NeighboorhoodHome> NeighboorhoodHomes
+        public ObjectSet<NeighborhoodHome> NeighborhoodHomes
         {
             get
             {
-                if ((_NeighboorhoodHomes == null))
+                if ((_NeighborhoodHomes == null))
                 {
-                    _NeighboorhoodHomes = base.CreateObjectSet<NeighboorhoodHome>("NeighboorhoodHomes");
+                    _NeighborhoodHomes = base.CreateObjectSet<NeighborhoodHome>("NeighborhoodHomes");
                 }
-                return _NeighboorhoodHomes;
+                return _NeighborhoodHomes;
             }
         }
-        private ObjectSet<NeighboorhoodHome> _NeighboorhoodHomes;
+        private ObjectSet<NeighborhoodHome> _NeighborhoodHomes;
 
         #endregion
         #region AddTo Methods
@@ -292,11 +292,11 @@ namespace HOAHome.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the NeighboorhoodHomes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the NeighborhoodHomes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToNeighboorhoodHomes(NeighboorhoodHome neighboorhoodHome)
+        public void AddToNeighborhoodHomes(NeighborhoodHome NeighborhoodHome)
         {
-            base.AddObject("NeighboorhoodHomes", neighboorhoodHome);
+            base.AddObject("NeighborhoodHomes", NeighborhoodHome);
         }
 
         #endregion
@@ -1362,18 +1362,18 @@ namespace HOAHome.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighboorhoodHome_Home", "NeighboorhoodHome")]
-        public EntityCollection<NeighboorhoodHome> NeighboorhoodHomes
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighborhoodHome_Home", "NeighborhoodHome")]
+        public EntityCollection<NeighborhoodHome> NeighborhoodHomes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<NeighboorhoodHome>("COHHomeModel.FK_NeighboorhoodHome_Home", "NeighboorhoodHome");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<NeighborhoodHome>("COHHomeModel.FK_NeighborhoodHome_Home", "NeighborhoodHome");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NeighboorhoodHome>("COHHomeModel.FK_NeighboorhoodHome_Home", "NeighboorhoodHome", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NeighborhoodHome>("COHHomeModel.FK_NeighborhoodHome_Home", "NeighborhoodHome", value);
                 }
             }
         }
@@ -1384,26 +1384,26 @@ namespace HOAHome.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="NeighboorhoodHome")]
+    [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="NeighborhoodHome")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class NeighboorhoodHome : EntityObject, IEntity 
+    public partial class NeighborhoodHome : EntityObject, IEntity 
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new NeighboorhoodHome object.
+        /// Create a new NeighborhoodHome object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="neighborhoodId">Initial value of the NeighborhoodId property.</param>
         /// <param name="homeId">Initial value of the HomeId property.</param>
-        public static NeighboorhoodHome CreateNeighboorhoodHome(global::System.Guid id, global::System.Guid neighborhoodId, global::System.Guid homeId)
+        public static NeighborhoodHome CreateNeighborhoodHome(global::System.Guid id, global::System.Guid neighborhoodId, global::System.Guid homeId)
         {
-            NeighboorhoodHome neighboorhoodHome = new NeighboorhoodHome();
-            neighboorhoodHome.Id = id;
-            neighboorhoodHome.NeighborhoodId = neighborhoodId;
-            neighboorhoodHome.HomeId = homeId;
-            return neighboorhoodHome;
+            NeighborhoodHome NeighborhoodHome = new NeighborhoodHome();
+            NeighborhoodHome.Id = id;
+            NeighborhoodHome.NeighborhoodId = neighborhoodId;
+            NeighborhoodHome.HomeId = homeId;
+            return NeighborhoodHome;
         }
 
         #endregion
@@ -1494,16 +1494,16 @@ namespace HOAHome.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighboorhoodHome_Home", "Home")]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighborhoodHome_Home", "Home")]
         public Home Home
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Home>("COHHomeModel.FK_NeighboorhoodHome_Home", "Home").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Home>("COHHomeModel.FK_NeighborhoodHome_Home", "Home").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Home>("COHHomeModel.FK_NeighboorhoodHome_Home", "Home").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Home>("COHHomeModel.FK_NeighborhoodHome_Home", "Home").Value = value;
             }
         }
         /// <summary>
@@ -1515,13 +1515,13 @@ namespace HOAHome.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Home>("COHHomeModel.FK_NeighboorhoodHome_Home", "Home");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Home>("COHHomeModel.FK_NeighborhoodHome_Home", "Home");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Home>("COHHomeModel.FK_NeighboorhoodHome_Home", "Home", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Home>("COHHomeModel.FK_NeighborhoodHome_Home", "Home", value);
                 }
             }
         }
@@ -1532,16 +1532,16 @@ namespace HOAHome.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighboorhoodHome_Neighborhood", "Neighborhood")]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighborhoodHome_Neighborhood", "Neighborhood")]
         public Neighborhood Neighborhood
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_NeighboorhoodHome_Neighborhood", "Neighborhood").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "Neighborhood").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_NeighboorhoodHome_Neighborhood", "Neighborhood").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "Neighborhood").Value = value;
             }
         }
         /// <summary>
@@ -1553,13 +1553,13 @@ namespace HOAHome.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_NeighboorhoodHome_Neighborhood", "Neighborhood");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Neighborhood>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "Neighborhood");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Neighborhood>("COHHomeModel.FK_NeighboorhoodHome_Neighborhood", "Neighborhood", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Neighborhood>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "Neighborhood", value);
                 }
             }
         }
@@ -1784,18 +1784,18 @@ namespace HOAHome.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighboorhoodHome_Neighborhood", "NeighboorhoodHome")]
-        public EntityCollection<NeighboorhoodHome> NeighboorhoodHomes
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome")]
+        public EntityCollection<NeighborhoodHome> NeighborhoodHomes
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<NeighboorhoodHome>("COHHomeModel.FK_NeighboorhoodHome_Neighborhood", "NeighboorhoodHome");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<NeighborhoodHome>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NeighboorhoodHome>("COHHomeModel.FK_NeighboorhoodHome_Neighborhood", "NeighboorhoodHome", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NeighborhoodHome>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome", value);
                 }
             }
         }

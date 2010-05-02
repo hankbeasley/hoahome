@@ -24,7 +24,7 @@ namespace HOAHome.Repositories
 
         void RemoveHome(Guid neighborhoodId, Guid homeId);
 
-        NeighboorhoodHome AddHome(Guid neighborhoodId, Home home);
+        NeighborhoodHome AddHome(Guid neighborhoodId, Home home);
         
     }
 
@@ -85,12 +85,12 @@ namespace HOAHome.Repositories
         }
 
 
-        NeighboorhoodHome INeighborhoodRepository.AddHome(Guid neighborhoodId, Home home)
+        NeighborhoodHome INeighborhoodRepository.AddHome(Guid neighborhoodId, Home home)
         {
             Contract.Requires(neighborhoodId != Guid.Empty);
             Contract.Requires(home != null);
             //Contract.Requires(home.Id != Guid.Empty);
-            Contract.Ensures(Contract.Result<NeighboorhoodHome>() != null);
+            Contract.Ensures(Contract.Result<NeighborhoodHome>() != null);
             return null;
         }
     }

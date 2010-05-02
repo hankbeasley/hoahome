@@ -35,7 +35,7 @@ namespace HOAHome.Repositories
             var homeAssociationsCount =
                 this.Persistance.CreateQueryContext<UserHome>().Where(uh => uh.HomeId == homeId).Count();
             var neighborhoodAssociationsCount =
-                this.Persistance.CreateQueryContext<NeighboorhoodHome>().Where(uh => uh.HomeId == homeId).Count();
+                this.Persistance.CreateQueryContext<NeighborhoodHome>().Where(uh => uh.HomeId == homeId).Count();
             if (homeAssociationsCount + neighborhoodAssociationsCount == 0)
             {
                 this.Persistance.Delete<Home>(homeId);

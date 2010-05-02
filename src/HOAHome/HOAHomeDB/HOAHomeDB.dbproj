@@ -228,13 +228,13 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_NeighboorhoodHome_Home.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_NeighboorhoodHome_Neighborhood.fkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\FK_NeighborhoodHome_Neighborhood.fkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_NeighboorhoodHome.pkey.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Keys\PK_NeighborhoodHome.pkey.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\NeighboorhoodHome.table.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Tables\NeighborhoodHome.table.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Tables\Indexes\IX_UserHome.index.sql">
