@@ -48,7 +48,7 @@ namespace HOAHome.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult Create([Bind(Exclude = "Id")]Neighborhood entity)
         {
-            Contract.Assume(this.ModelState != null);
+            
 
             this.Repository.CreateNew(entity, HOAHome.Code.Security.Identity.Current.Id);
             if (this.ModelState.IsValid) entity.Rules.AddErrorsToModelState(this.ModelState, this.Repository);
@@ -61,6 +61,18 @@ namespace HOAHome.Controllers
             {
                 return this.View("Create");
             }
+        }
+
+
+        public new ModelStateDictionary ModelState
+        {
+         get
+         {
+             Contract.Ensures(Contract.Result<ModelStateDictionary>() != null);
+             var modelState = base.ModelState;
+             Contract.Assume(modelState!=null);
+             return modelState;
+         }
         }
 
         //protected override void Validate(CustomController<Neighborhood>.ActionType actionType, Neighborhood entity)
