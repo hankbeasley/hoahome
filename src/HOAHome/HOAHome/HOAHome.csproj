@@ -274,6 +274,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\nh\Views\Neighborhood\TitlePartial.ascx" />
     <Content Include="Content\anylinkcssmenu.css" />
     <Content Include="Content\anylinkcssmenu.js" />
     <Content Include="Global.asax" />

@@ -63,7 +63,9 @@ namespace HOAHome.Controllers
             }
         }
 
+        
 
+        #region for contracts only
         public new ModelStateDictionary ModelState
         {
          get
@@ -74,7 +76,7 @@ namespace HOAHome.Controllers
              return modelState;
          }
         }
-
+        #endregion
         //protected override void Validate(CustomController<Neighborhood>.ActionType actionType, Neighborhood entity)
         //{
         //    var existingCount = this.Persistance.CreateQueryContext<Neighborhood>().Where(n => n.Name == entity.Name).Count();

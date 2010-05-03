@@ -28,6 +28,8 @@ anylinkcssmenu.init("anchorclass")
     <asp:ContentPlaceHolder ID="MainContent" runat="server" />
 </asp:Content>
 <asp:Content ContentPlaceHolderID="NeighborhoodTitle" runat="server">
-    <asp:ContentPlaceHolder ID="NeighborhoodTitle" runat="server" />
+    <%--<asp:ContentPlaceHolder ID="NeighborhoodTitle" runat="server"></asp:ContentPlaceHolder>--%>
+    <%this.Html.RenderAction(MVC.nh.Neighborhood.TitlePartial()); %>
+    
 </asp:Content> 
 

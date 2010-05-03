@@ -28,6 +28,12 @@ namespace HOAHome.Areas.nh.Controllers
             return View();
         }
 
+        public virtual PartialViewResult TitlePartial()
+        {
+            var nh = this.RepositoryFactory.Neighborhood.Get(this.GetNhId());
+            return this.PartialView(nh);
+        }
+
         [ContractInvariantMethod]
         private void ObjectInvariant()
         {

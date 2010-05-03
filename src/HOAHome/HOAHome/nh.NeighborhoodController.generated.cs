@@ -44,6 +44,7 @@ namespace HOAHome.Areas.nh.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass {
             public readonly string Index = "Index";
+            public readonly string TitlePartial = "TitlePartial";
         }
 
 
@@ -52,6 +53,7 @@ namespace HOAHome.Areas.nh.Controllers {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ViewNames {
             public readonly string Index = "~/Areas/nh/Views/Neighborhood/Index.aspx";
+            public readonly string TitlePartial = "~/Areas/nh/Views/Neighborhood/TitlePartial.ascx";
         }
     }
 
@@ -61,6 +63,11 @@ namespace HOAHome.Areas.nh.Controllers {
 
         public override System.Web.Mvc.ViewResult Index() {
             var callInfo = new T4MVC_ViewResult(Area, Name, ActionNames.Index);
+            return callInfo;
+        }
+
+        public override System.Web.Mvc.PartialViewResult TitlePartial() {
+            var callInfo = new T4MVC_PartialViewResult(Area, Name, ActionNames.TitlePartial);
             return callInfo;
         }
 

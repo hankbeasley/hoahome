@@ -95,6 +95,7 @@ page width. Or, you can specify an exact pixel width. */
     margin-bottom: 0px;
     color: #000;
     padding: 0;
+ 
 }
 
 #header h1
@@ -111,6 +112,7 @@ page width. Or, you can specify an exact pixel width. */
 
 #main
 {
+    clear:both;
     padding: 30px 30px 15px 30px;
     background-color: #fff;
     margin-bottom: 30px;
@@ -266,7 +268,8 @@ table th
 
 #menucontainer
 {
-    margin-top:40px;
+   /* margin-top:40px;*/
+   float:right;
 }
 
 div#title
