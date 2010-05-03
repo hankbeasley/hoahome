@@ -8,7 +8,7 @@
   Search for your home by entering its address below:
     
     <%= Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.") %>
-    <% using (Html.BeginForm())
+    <% using (Html.BeginForm(MVC.UserHome.CreateChildByAddress((Guid)this.ViewData["parentId"]), FormMethod.Post))
        {%>
   
         <%=this.Html.Hidden("Name") %>

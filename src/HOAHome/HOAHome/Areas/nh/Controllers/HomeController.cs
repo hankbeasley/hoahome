@@ -43,22 +43,43 @@ namespace HOAHome.Areas.nh.Controllers
         
         [NeighborhoodRole(NeighborhoodRoleName = "Administrator")]
         [AcceptVerbs(HttpVerbs.Post)]
-        public virtual RedirectToRouteResult AddHome(string addressFull, double latitude, double longitude)
+        public virtual ActionResult AddHome(string addressFull, double latitude, double longitude)
         {
-            Contract.Requires(addressFull != null, "addressFull cannot be null");
+            Contract.Requires(!String.IsNullOrEmpty(addressFull), "addressFull cannot be null");
             Contract.Requires(latitude >= -90 && latitude <= 90);
             Contract.Requires(longitude >= -180 && longitude <= 180);
+            Contract.Assume(this.ModelState != null);
+            this.VaildateAddHome(addressFull);
 
-            var nhid = this.GetNhId();
+            if (this.ModelState.IsValid)
+            {
+                var nhid = this.GetNhId();
 
-            var home = this.RepositoryFactory.Home.GetOrCreateHome(addressFull, latitude, longitude);
-            this.RepositoryFactory.Home.SaveChanges();
+                Contract.Assume(latitude >= -90 && latitude <= 90);
+                Contract.Assume(longitude >= -180 && longitude <= 180);
+                var home = this.RepositoryFactory.Home.GetOrCreateHome(addressFull, latitude, longitude);
+                this.RepositoryFactory.Home.SaveChanges();
 
-            this.RepositoryFactory.Neighborhood.AddHome(nhid, home);
-            this.RepositoryFactory.Neighborhood.SaveChanges();
-
-            return this.RedirectToAction("Homes");
+                this.RepositoryFactory.Neighborhood.AddHome(nhid, home);
+                this.RepositoryFactory.Neighborhood.SaveChanges();
+                return this.RedirectToAction("Homes");
+            }
+            return this.View();
+            
         }
+        [Pure]
+        private void VaildateAddHome(string addressFull)
+        {
+            Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(addressFull));
+
+            if (this.RepositoryFactory.Neighborhood.DoesHomeExist(this.GetNhId(), addressFull))
+            {
+                Contract.Assume(this.ModelState != null);
+                this.ModelState.AddModelError("addressFull", "The home already exist in the neighborhood");
+              //  this.ModelState.IsValid = false;
+            }
+        }
+
         [NeighborhoodRole(NeighborhoodRoleName = "Administrator")]
         public virtual RedirectToRouteResult RemoveHome(Guid homeId)
         {

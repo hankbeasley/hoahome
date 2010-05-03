@@ -25,7 +25,10 @@ namespace HOAHome.Repositories
         void RemoveHome(Guid neighborhoodId, Guid homeId);
 
         NeighborhoodHome AddHome(Guid neighborhoodId, Home home);
-        
+
+
+        bool DoesHomeExist(Guid neighborhoodId, string addressFull);
+
     }
 
     [ContractClassFor(typeof(INeighborhoodRepository))]
@@ -93,6 +96,13 @@ namespace HOAHome.Repositories
             //Contract.Requires(home.Id != Guid.Empty);
             Contract.Ensures(Contract.Result<NeighborhoodHome>() != null);
             return null;
+        }
+
+        [Pure]
+        bool INeighborhoodRepository.DoesHomeExist(Guid neighborhoodId, string addressFull)
+        {
+            Contract.Requires<ArgumentException>(!String.IsNullOrEmpty(addressFull));
+            return false;
         }
     }
 }

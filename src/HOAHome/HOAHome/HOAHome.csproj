@@ -94,6 +94,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Google.GData.Contacts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Mvc.AspNet4">
+      <HintPath>..\lib\Microsoft.Web.Mvc.AspNet4.dll</HintPath>
+    </Reference>
     <Reference Include="MvcContrib">
       <HintPath>..\lib\MvcContrib.dll</HintPath>
     </Reference>
@@ -165,7 +168,7 @@
     <Compile Include="Code\Google\IMapDataService.cs" />
     <Compile Include="Code\Google\MapDataService.cs" />
     <Compile Include="Code\InMemoryTokenManager.cs" />
-    <Compile Include="Code\Mvc\ModelMetadataProvider.cs" />
+    <Compile Include="Code\Mvc\SmartModelMetadataProvider.cs" />
     <Compile Include="Code\Mvc\NeighborhoodRoleAttribute.cs" />
     <Compile Include="Code\Mvc\CustomController.cs">
       <SubType>Code</SubType>
@@ -223,6 +226,7 @@
     <Compile Include="Models\Custom\COHHomeEntities.cs" />
     <Compile Include="Models\Custom\ContentType.cs" />
     <Compile Include="Models\Custom\Neighborhood.cs" />
+    <Compile Include="Models\Custom\NeighborhoodHome.cs" />
     <Compile Include="Models\Custom\Role.cs" />
     <Compile Include="Models\Custom\UserHome.cs" />
     <Compile Include="NeighborhoodController.generated.cs">
@@ -305,7 +309,7 @@
     <Content Include="Areas\nh\Views\Home\Homes.aspx" />
     <Content Include="Areas\nh\Views\Neighborhood\Index.aspx" />
     <Content Include="Views\Neighborhood\List.aspx" />
-    <Content Include="Views\Shared\DisplayTemplates\Home.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\HomeInList.ascx" />
     <Content Include="Views\Shared\DisplayTemplates\UserHome.ascx" />
     <Content Include="Views\Shared\EditorTemplates\UserHome.ascx" />
     <Content Include="Views\UserHome\CreateChildByAddress.aspx" />

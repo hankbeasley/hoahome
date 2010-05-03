@@ -35,7 +35,7 @@ namespace HOAHome.Tests.Areas.nh.Controllers
             factory.MockHomeRepository.VerifyAll();
             factory.MockNeighborhoodRepository.VerifyAll();
 
-            Assert.AreEqual("Homes", result.RouteValues["action"].ToString());
+            Assert.AreEqual("Homes", ((RedirectToRouteResult)result).RouteValues["action"].ToString());
         }
 
         [TestMethod]

@@ -38,6 +38,7 @@ namespace HOAHome
         protected void Application_Start()
         {
             RegisterRoutes(RouteTable.Routes);
+            ModelMetadataProviders.Current = new HOAHome.Code.Mvc.SmartModelMetadataProvider();
         }
 
         internal static WebConsumer GoogleWebConsumer

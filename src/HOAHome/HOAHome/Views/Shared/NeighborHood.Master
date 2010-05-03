@@ -5,9 +5,9 @@
     <ul id="menu">
         <li><%= Html.ActionLink("Home", "Index", "Neighborhood")%></li>
         <li><%= Html.ActionLink("Documents",  "Documents", "Neighborhood")%></li>
-            <li><%= Html.ActionLink("Board of Directors", "Index", "Director", new { @class = "anchorclass", rel="boardMenu" })%></li>
+            <li><%= Html.ActionLink("Board of Directors", "Index", "Director",  cssClass: "anchorclass", rel:"boardMenu")%></li>
             <li><%= Html.ActionLink("Calendar", "Calendar", "Neighborhood")%></li>
-             <li><%= T4Extensions.ActionLink(Html, "Homes", MVC.nh.Home.Homes())%></li>
+             <li><%= this.Html.ActionLink("Homes", MVC.nh.Home.Homes())%></li>
         <li>
             <%= Html.ActionLink("Wave", "Wave", "Neighborhood")%></li>
     </ul>

@@ -24,7 +24,7 @@ namespace HOAHome.Repositories
                 newNeighborhood.PrimaryContactId = userIdThatCreatedNeighborhood;
             }
             this.Persistance.AttachNew(newNeighborhood);
-            UserNeighborhood userNeighborhood = new UserNeighborhood();
+            var userNeighborhood = new UserNeighborhood();
             userNeighborhood.Neighborhood = newNeighborhood;
             userNeighborhood.UserId = userIdThatCreatedNeighborhood;
             userNeighborhood.RoleId = Role.Administrator.Id;
@@ -95,11 +95,18 @@ namespace HOAHome.Repositories
 
         public void RemoveHome(Guid neighborhoodId, Guid homeId)
         {
-            var NeighborhoodHome = this.Persistance.CreateQueryContext<NeighborhoodHome>().Where(nh => nh.NeighborhoodId == neighborhoodId && homeId == nh.HomeId).Single();
-            Contract.Assume(NeighborhoodHome != null);
-            this.Persistance.Delete(NeighborhoodHome);
+            var neighborhoodHome = this.Persistance.CreateQueryContext<NeighborhoodHome>().Where(nh => nh.NeighborhoodId == neighborhoodId && homeId == nh.HomeId).Single();
+            Contract.Assume(neighborhoodHome != null);
+            this.Persistance.Delete(neighborhoodHome);
         }
+        public bool DoesHomeExist(Guid neighborhoodId, string address)
+        {
+         
 
+            return
+                this.Persistance.CreateQueryContext<NeighborhoodHome>().Where(
+                    nh => nh.NeighborhoodId == neighborhoodId && nh.Home.AddressFull == address).Count() > 0;
+        }
 
         public NeighborhoodHome AddHome(Guid neighborhoodId, Home home)
         {

@@ -18,7 +18,7 @@
     
     <div style="clear:both">
 
-        <%=Html.ActionLink("Edit", "Edit", new { id=Model.Id }) %> |
+        <%=Html.ActionLink("Edit", "Edit", routeValues: new { id=Model.Id }) %> |
         <%=Html.ActionLink("Back to List", "Index") %>
    </div>
 

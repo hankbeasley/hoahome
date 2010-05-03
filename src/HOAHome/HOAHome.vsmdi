@@ -5,6 +5,7 @@
     <TestLinks>
       <TestLink id="8aff9369-1b39-7367-0a58-2b4a2743e3d6" name="TestAddAndRemoveHomes" storage="hoahome.tests\bin\debug\hoahome.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="9933842a-4b3e-fd35-f8a2-10a4f3c73bb6" name="SearchByDistanceTest" storage="hoahome.tests\bin\debug\hoahome.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="510994f6-622d-4ec1-9844-00b773022c9e" name="TestCannotAddTheSameHouseTwice" storage="hoahome.tests\bin\debug\hoahome.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
       <TestLink id="916ea6c4-edbb-0465-29de-353e8a37e99b" name="TestPointInAndOutOfTheTriangle" storage="hoahome.tests\bin\debug\hoahome.tests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     </TestLinks>
   </TestList>

@@ -13,10 +13,7 @@ namespace HOAHome.Models
     [ModelBinder(typeof(CustomModelBinder))]
     public partial class UserHome
     {
-        public UserHome()
-        {
-            
-        }
+       
     }
 
 

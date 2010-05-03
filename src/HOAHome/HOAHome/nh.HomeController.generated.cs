@@ -83,8 +83,8 @@ namespace HOAHome.Areas.nh.Controllers {
             return callInfo;
         }
 
-        public override System.Web.Mvc.RedirectToRouteResult AddHome(string addressFull, double latitude, double longitude) {
-            var callInfo = new T4MVC_RedirectToRouteResult(Area, Name, ActionNames.AddHome);
+        public override System.Web.Mvc.ActionResult AddHome(string addressFull, double latitude, double longitude) {
+            var callInfo = new T4MVC_ActionResult(Area, Name, ActionNames.AddHome);
             callInfo.RouteValueDictionary.Add("addressFull", addressFull);
             callInfo.RouteValueDictionary.Add("latitude", latitude);
             callInfo.RouteValueDictionary.Add("longitude", longitude);

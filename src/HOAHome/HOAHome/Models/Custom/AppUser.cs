@@ -34,15 +34,16 @@ namespace HOAHome.Models
 
     public class AppUserMetaData
     {
-        [DisplayName("First Name")]
+        //[DisplayName("First Name")]
         [Required]
         public object FirstName { get; set; }
 
-        [DisplayName("Last Name")]
+       // [DisplayName("Last Name")]
         [Required]
         public object LastName { get; set; }
 
-        [DisplayName("Display Name")]
+        //[DisplayName("Display Namey")]
+        //[Display(AutoGenerateFilter = )]
         [Required]
         public object DisplayName { get; set; }
 

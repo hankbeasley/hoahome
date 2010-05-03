@@ -105,6 +105,8 @@ namespace HOAHome.Code.Mvc
 
         public virtual ActionResult CreateChild(Guid parentId)
         {
+            Contract.Assume(this.ViewData != null);
+            this.ViewData["parentId"] = parentId;
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]

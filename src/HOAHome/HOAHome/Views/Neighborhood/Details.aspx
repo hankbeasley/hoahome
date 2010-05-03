@@ -10,22 +10,7 @@
 
     <fieldset>
         <legend>Fields</legend>
-        <p>
-            Id:
-            <%= Html.Encode(Model.Id) %>
-        </p>
-        <p>
-            Name:
-            <%= Html.Encode(Model.Name) %>
-        </p>
-        <p>
-            PrimaryContactId:
-            <%= Html.Encode(Model.PrimaryContactId) %>
-        </p>
-        <p>
-            KML:
-            <%= Html.Encode(Model.KML) %>
-        </p>
+        <%=this.Html.DisplayForModel() %>
     </fieldset>
     <p>
 

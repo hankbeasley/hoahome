@@ -24,7 +24,7 @@
          <input type="submit" value="save" />
     </fieldset>
        
-        <%= Html.Hidden("Id")%>
+        <%= Html.HiddenFor(c=>c.Id)%>
      
       <fieldset style="float:left">
         <legend>Homes</legend>

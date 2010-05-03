@@ -26,7 +26,7 @@ namespace HOAHome.Models
 
     public class NeighborhoodMetaData
     {
-        [DisplayName("Name")]
+              
         [Required]
         public object Name { get; set; }
     }
