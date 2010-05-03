@@ -14,7 +14,7 @@
     </fieldset>
     <p>
 
-        <%=Html.ActionLink("Edit", "Edit", new { id=Model.Id }) %> |
+        <%=Html.ActionLink("Edit", MVC.Neighborhood.Edit(Model.Id)) %> |
         <%=Html.ActionLink("Back to List", "List") %>
     </p>
 

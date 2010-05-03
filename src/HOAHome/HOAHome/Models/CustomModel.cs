@@ -294,9 +294,9 @@ namespace HOAHome.Models
         /// <summary>
         /// Deprecated Method for adding a new object to the NeighborhoodHomes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToNeighborhoodHomes(NeighborhoodHome NeighborhoodHome)
+        public void AddToNeighborhoodHomes(NeighborhoodHome neighborhoodHome)
         {
-            base.AddObject("NeighborhoodHomes", NeighborhoodHome);
+            base.AddObject("NeighborhoodHomes", neighborhoodHome);
         }
 
         #endregion
@@ -1384,6 +1384,366 @@ namespace HOAHome.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="Neighborhood")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Neighborhood : EntityObject, IEntity ,IAuditable
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Neighborhood object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="primaryContactId">Initial value of the PrimaryContactId property.</param>
+        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
+        /// <param name="modifiedDate">Initial value of the ModifiedDate property.</param>
+        public static Neighborhood CreateNeighborhood(global::System.Guid id, global::System.Guid primaryContactId, global::System.DateTime createdDate, global::System.DateTime modifiedDate)
+        {
+            Neighborhood neighborhood = new Neighborhood();
+            neighborhood.Id = id;
+            neighborhood.PrimaryContactId = primaryContactId;
+            neighborhood.CreatedDate = createdDate;
+            neighborhood.ModifiedDate = modifiedDate;
+            return neighborhood;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Guid _Id = Guid.NewGuid();
+        partial void OnIdChanging(global::System.Guid value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Guid PrimaryContactId
+        {
+            get
+            {
+                return _PrimaryContactId;
+            }
+            set
+            {
+                OnPrimaryContactIdChanging(value);
+                ReportPropertyChanging("PrimaryContactId");
+                _PrimaryContactId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PrimaryContactId");
+                OnPrimaryContactIdChanged();
+            }
+        }
+        private global::System.Guid _PrimaryContactId;
+        partial void OnPrimaryContactIdChanging(global::System.Guid value);
+        partial void OnPrimaryContactIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String KML
+        {
+            get
+            {
+                return _KML;
+            }
+            set
+            {
+                OnKMLChanging(value);
+                ReportPropertyChanging("KML");
+                _KML = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("KML");
+                OnKMLChanged();
+            }
+        }
+        private global::System.String _KML;
+        partial void OnKMLChanging(global::System.String value);
+        partial void OnKMLChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String CreatedBy
+        {
+            get
+            {
+                return _CreatedBy;
+            }
+            set
+            {
+                OnCreatedByChanging(value);
+                ReportPropertyChanging("CreatedBy");
+                _CreatedBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("CreatedBy");
+                OnCreatedByChanged();
+            }
+        }
+        private global::System.String _CreatedBy;
+        partial void OnCreatedByChanging(global::System.String value);
+        partial void OnCreatedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime CreatedDate
+        {
+            get
+            {
+                return _CreatedDate;
+            }
+            set
+            {
+                OnCreatedDateChanging(value);
+                ReportPropertyChanging("CreatedDate");
+                _CreatedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedDate");
+                OnCreatedDateChanged();
+            }
+        }
+        private global::System.DateTime _CreatedDate;
+        partial void OnCreatedDateChanging(global::System.DateTime value);
+        partial void OnCreatedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String ModifiedBy
+        {
+            get
+            {
+                return _ModifiedBy;
+            }
+            set
+            {
+                OnModifiedByChanging(value);
+                ReportPropertyChanging("ModifiedBy");
+                _ModifiedBy = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("ModifiedBy");
+                OnModifiedByChanged();
+            }
+        }
+        private global::System.String _ModifiedBy;
+        partial void OnModifiedByChanging(global::System.String value);
+        partial void OnModifiedByChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime ModifiedDate
+        {
+            get
+            {
+                return _ModifiedDate;
+            }
+            set
+            {
+                OnModifiedDateChanging(value);
+                ReportPropertyChanging("ModifiedDate");
+                _ModifiedDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ModifiedDate");
+                OnModifiedDateChanged();
+            }
+        }
+        private global::System.DateTime _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.DateTime value);
+        partial void OnModifiedDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Location
+        {
+            get
+            {
+                return _Location;
+            }
+            set
+            {
+                OnLocationChanging(value);
+                ReportPropertyChanging("Location");
+                _Location = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Location");
+                OnLocationChanged();
+            }
+        }
+        private global::System.String _Location;
+        partial void OnLocationChanging(global::System.String value);
+        partial void OnLocationChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_Neighborhood_AppUser", "AppUser")]
+        public AppUser PrimaryContact
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_Neighborhood_AppUser", "AppUser").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_Neighborhood_AppUser", "AppUser").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AppUser> PrimaryContactReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_Neighborhood_AppUser", "AppUser");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AppUser>("COHHomeModel.FK_Neighborhood_AppUser", "AppUser", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_Content_Neighborhood", "Content")]
+        public EntityCollection<Content> Contents
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Content>("COHHomeModel.FK_Content_Neighborhood", "Content");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Content>("COHHomeModel.FK_Content_Neighborhood", "Content", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_UserNeighborHood_Neighborhood", "UserNeighborhood")]
+        public EntityCollection<UserNeighborhood> UserNeighborhoods
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "UserNeighborhood");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "UserNeighborhood", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome")]
+        public EntityCollection<NeighborhoodHome> NeighborhoodHomes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<NeighborhoodHome>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NeighborhoodHome>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="NeighborhoodHome")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1399,11 +1759,11 @@ namespace HOAHome.Models
         /// <param name="homeId">Initial value of the HomeId property.</param>
         public static NeighborhoodHome CreateNeighborhoodHome(global::System.Guid id, global::System.Guid neighborhoodId, global::System.Guid homeId)
         {
-            NeighborhoodHome NeighborhoodHome = new NeighborhoodHome();
-            NeighborhoodHome.Id = id;
-            NeighborhoodHome.NeighborhoodId = neighborhoodId;
-            NeighborhoodHome.HomeId = homeId;
-            return NeighborhoodHome;
+            NeighborhoodHome neighborhoodHome = new NeighborhoodHome();
+            neighborhoodHome.Id = id;
+            neighborhoodHome.NeighborhoodId = neighborhoodId;
+            neighborhoodHome.HomeId = homeId;
+            return neighborhoodHome;
         }
 
         #endregion
@@ -1560,242 +1920,6 @@ namespace HOAHome.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Neighborhood>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "Neighborhood", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="COHHomeModel", Name="Neighborhood")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Neighborhood : EntityObject, IEntity 
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Neighborhood object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="primaryContactId">Initial value of the PrimaryContactId property.</param>
-        public static Neighborhood CreateNeighborhood(global::System.Guid id, global::System.Guid primaryContactId)
-        {
-            Neighborhood neighborhood = new Neighborhood();
-            neighborhood.Id = id;
-            neighborhood.PrimaryContactId = primaryContactId;
-            return neighborhood;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid Id
-        {
-            get
-            {
-                return _Id;
-            }
-            set
-            {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
-            }
-        }
-        private global::System.Guid _Id = Guid.NewGuid();
-        partial void OnIdChanging(global::System.Guid value);
-        partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Name
-        {
-            get
-            {
-                return _Name;
-            }
-            set
-            {
-                OnNameChanging(value);
-                ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Name");
-                OnNameChanged();
-            }
-        }
-        private global::System.String _Name;
-        partial void OnNameChanging(global::System.String value);
-        partial void OnNameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Guid PrimaryContactId
-        {
-            get
-            {
-                return _PrimaryContactId;
-            }
-            set
-            {
-                OnPrimaryContactIdChanging(value);
-                ReportPropertyChanging("PrimaryContactId");
-                _PrimaryContactId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("PrimaryContactId");
-                OnPrimaryContactIdChanged();
-            }
-        }
-        private global::System.Guid _PrimaryContactId;
-        partial void OnPrimaryContactIdChanging(global::System.Guid value);
-        partial void OnPrimaryContactIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String KML
-        {
-            get
-            {
-                return _KML;
-            }
-            set
-            {
-                OnKMLChanging(value);
-                ReportPropertyChanging("KML");
-                _KML = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("KML");
-                OnKMLChanged();
-            }
-        }
-        private global::System.String _KML;
-        partial void OnKMLChanging(global::System.String value);
-        partial void OnKMLChanged();
-
-        #endregion
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_Neighborhood_AppUser", "AppUser")]
-        public AppUser PrimaryContact
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_Neighborhood_AppUser", "AppUser").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_Neighborhood_AppUser", "AppUser").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<AppUser> PrimaryContactReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AppUser>("COHHomeModel.FK_Neighborhood_AppUser", "AppUser");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AppUser>("COHHomeModel.FK_Neighborhood_AppUser", "AppUser", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_Content_Neighborhood", "Content")]
-        public EntityCollection<Content> Contents
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Content>("COHHomeModel.FK_Content_Neighborhood", "Content");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Content>("COHHomeModel.FK_Content_Neighborhood", "Content", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_UserNeighborHood_Neighborhood", "UserNeighborhood")]
-        public EntityCollection<UserNeighborhood> UserNeighborhoods
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "UserNeighborhood");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UserNeighborhood>("COHHomeModel.FK_UserNeighborHood_Neighborhood", "UserNeighborhood", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("COHHomeModel", "FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome")]
-        public EntityCollection<NeighborhoodHome> NeighborhoodHomes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<NeighborhoodHome>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<NeighborhoodHome>("COHHomeModel.FK_NeighborhoodHome_Neighborhood", "NeighborhoodHome", value);
                 }
             }
         }

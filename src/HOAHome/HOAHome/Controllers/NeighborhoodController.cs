@@ -48,10 +48,13 @@ namespace HOAHome.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public virtual ActionResult Create([Bind(Exclude = "Id")]Neighborhood entity)
         {
+            Contract.Assume(this.ModelState != null);
+
             this.Repository.CreateNew(entity, HOAHome.Code.Security.Identity.Current.Id);
-            entity.Rules.AddErrorsToModelState(this.ModelState, this.Repository);
+            if (this.ModelState.IsValid) entity.Rules.AddErrorsToModelState(this.ModelState, this.Repository);
             if (this.ModelState.IsValid)
             {
+                entity.Rules.AddErrorsToModelState(this.ModelState, this.Repository);
                 this.Repository.SaveChanges();
                 return this.RedirectToAction("Details", new {entity.Id});
             } else

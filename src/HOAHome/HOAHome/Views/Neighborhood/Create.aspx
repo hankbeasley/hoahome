@@ -6,13 +6,16 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <%= Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.") %>
+<%
+    Html.EnableClientValidation(); %>
  <%using (this.Html.BeginForm())
       { %>
         <fieldset style="float:left">
         <legend>Nieghborhood Information</legend>
         <p>
-        <%: this.Html.EditorCombo(c=> this.Model.Name) %> 
-        <%= Html.Hidden("KML")%>
+        <%= this.Html.EditorCombo(c=> c.Name) %> 
+        <%= this.Html.HiddenFor(c=>c.KML) %>
+        <%= this.Html.HiddenFor(c=>c.Location) %>
         </p>
 
     

@@ -11,7 +11,7 @@
     [CompletedRegistration] BIT              NOT NULL,
     [CreatedBy]             VARCHAR (50)     NULL,
     [CreatedDate]           DATETIME         NOT NULL,
-    [ModifiedBy]            VARCHAR (50)     NULL,
+    [ModifiedBy]            VARCHAR (50)     NULL ,
     [ModifiedDate]          DATETIME         NOT NULL
 );
 

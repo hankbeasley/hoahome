@@ -1,2 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Assembly />
+<Assembly>
+  <Method Name="HOAHome.Controllers.NeighborhoodController.Create(HOAHome.Models.Neighborhood)">
+    <Outcome Kind="Nonnull" Outcome="Top" Message="Possibly calling a method on a null reference 'this.ModelState'" PrimaryILOffset="2e" MethodILOffset="0" />
+  </Method>
+</Assembly>

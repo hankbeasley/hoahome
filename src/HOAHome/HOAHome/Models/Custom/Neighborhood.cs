@@ -28,6 +28,9 @@ namespace HOAHome.Models
     {
               
         [Required]
+        //[Display(AutoGenerateField = false)]
         public object Name { get; set; }
+        [Display(AutoGenerateField = false)]
+        public object KML { get; set; }
     }
 }

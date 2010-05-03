@@ -154,15 +154,28 @@ public class DrawNeighborhood implements EntryPoint {
 			
 			@Override
 			public void onClick(ClickEvent event) {
-				Util.SetHiddenValue("KML", Util.PolygonToString(lastPolygon));
-				Util.submitForm();
+				Geocoder geocoder = new Geocoder();
+				geocoder.getLocations(lastPolygon.getVertex(0), new LocationCallback() {
+					
+					@Override
+					public void onSuccess(JsArray<Placemark> locations) {
+						Placemark location = locations.get(0);
+						Util.SetHiddenValue("KML", Util.PolygonToString(lastPolygon));
+						Util.SetHiddenValue("Location", location.getCity() + " " + location.getState() + " " + location.getPostalCode());
+						Util.submitForm();
+						
+					}
+					
+					@Override
+					public void onFailure(int statusCode) {
+						Window.alert("Error geocoding from google:" + statusCode);
+						
+					}
+				});
+				
 			}
 		});
 		panel.add(savebtn);
-		
-		
-
-		
 	}
 	
 	private void cancelEdit() {
