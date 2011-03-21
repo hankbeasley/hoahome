@@ -52,7 +52,9 @@ namespace HOAHome.Tests.Controllers
 
 
             var g = new Service("local", "application");//, "ABQIAAAACPMbozlNv9AIzNvsWUm6vhSvnLMDprvOSMH9Qt_oH5Ww7FTw1hRHT7gTSie1yM34rowNwVfw424XPA");
-            g.setUserCredentials("hankbeasleymail@yahoo.com", "walmart");
+            
+            Assert.Fail("Need to put password here");
+            g.setUserCredentials("hankbeasleymail@yahoo.com", "zzz");
             var entry = new AtomEntry();
             entry.Content.ExtensionFactories.Add(new MapsExtension());
             entry.Title.Text = "test";

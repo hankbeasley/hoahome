@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewMasterPage" %>
-<%@ Import Namespace="HOAHome" %>
+
 
 <asp:Content ContentPlaceHolderID="MenuContent" runat="server">
     <ul id="menu">

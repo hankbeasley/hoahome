@@ -442,7 +442,6 @@
 			</Relationship>
 		</Element>
 		<Element Type="ISql90DmlTrigger" Name="[dbo].[createGeometry]">
-			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Property Name="SqlTriggerType" Value="1" />
 			<Property Name="BodyScript">
 				<Value><![CDATA[
@@ -452,6 +451,7 @@ IF UPDATE(KML)
     FROM Neighborhood
     INNER JOIN inserted ON Neighborhood.Id = inserted.Id]]></Value>
 			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Property Name="IsInsertTrigger" Value="True" />
 			<Property Name="IsUpdateTrigger" Value="True" />
 			<Relationship Name="BodyDependencies">

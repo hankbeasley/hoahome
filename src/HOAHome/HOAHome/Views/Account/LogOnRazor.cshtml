@@ -1,0 +1,6 @@
+﻿@using (Html.BeginForm(MVC.Account.Authenticate()))
+{
+    @ViewData["Message"]
+    <text>Please log in through google</text>
+    <input type="submit" value="Login through google" />
+}

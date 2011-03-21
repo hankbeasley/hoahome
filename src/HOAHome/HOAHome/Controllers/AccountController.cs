@@ -36,7 +36,7 @@ namespace HOAHome.Controllers
 
         public virtual ActionResult LogOn()
         {
-            return View();
+            return View("LogOnRazor");
         }
        
         [ValidateInput(false)]
@@ -56,7 +56,7 @@ namespace HOAHome.Controllers
                     catch (ProtocolException ex)
                     {
                         ViewData["Message"] = ex.Message;
-                        return View("LogOn");
+                        return View("LogOnRazor");
                     }
                 
             }
